@@ -40,3 +40,4 @@ ssh-keyscan ${ENV_HOST}     >> ~/.ssh/known_hosts 2> /dev/null
 ssh-keyscan ${ENV_IP}       >> ~/.ssh/known_hosts 2> /dev/null
 echo ""
 
+source ./architecture/full-init.sh

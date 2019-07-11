@@ -50,7 +50,7 @@ ln -s /etc/apache2/sites-available/$ENV_NAME.conf /etc/apache2/sites-enabled/
 
 echo " > Restart Apache"
 
-systemctl restart apache2 > /dev/null
+/etc/init.d/apache2 restart > /dev/null
 
 echo " > /etc/environment"
 echo "export APP_ENV=dev" >> /etc/environment
