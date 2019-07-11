@@ -9,12 +9,16 @@ ENV_USER="smile"
 
 ENV_IP=`getent hosts ${ENV_HOST} | awk '{ print $1 }'`
 
+cd ./architecture/vm/
+
 HOUR=$(date +%H:%M:%S)
 echo "[${HOUR}]===[LXC]==="
 ssh-keygen -R "${ENV_HOST}"
 ssh-keygen -R "${ENV_IP}"
 sudo cremove ${ENV_NAME}
 sudo cdeploy
+
+cd - > /dev/null
 
 sleep 2
 ENV_IP=""

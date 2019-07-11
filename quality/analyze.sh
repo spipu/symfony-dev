@@ -1,9 +1,9 @@
 #!/bin/bash
 
 cd "$( dirname "${BASH_SOURCE[0]}" )"
-cd ./website/
+cd ../website/
 
-LOG_FOLDER="./build/"
+LOG_FOLDER="../quality/build/"
 
 rm -rf $LOG_FOLDER
 mkdir -p $LOG_FOLDER

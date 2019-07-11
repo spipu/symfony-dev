@@ -2,4 +2,4 @@ name=symfonydev
 template=ubuntu-18_04-bionic
 host=symfonydev.lxc
 delivery-user=delivery
-mount=.:/var/www/symfonydev
+mount=./../../:/var/www/symfonydev

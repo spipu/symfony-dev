@@ -1,8 +1,6 @@
 ### > Spipu
 /node_modules
 /public/media
-/build
-/var-test
 ### < Spipu
 
 ###> symfony/framework-bundle ###
