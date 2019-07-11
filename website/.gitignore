@@ -1,0 +1,13 @@
+### > Spipu
+/node_modules
+/public/media
+/build
+/var-test
+### < Spipu
+
+###> symfony/framework-bundle ###
+/.env
+/public/bundles/
+/var/
+/vendor/
+###< symfony/framework-bundle ###

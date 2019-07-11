@@ -1,0 +1,39 @@
+spipu_process:
+    test_rest:
+        name: "Test Rest"
+
+        options:
+            can_be_put_in_queue: true
+            can_be_rerun_automatically: true
+
+        inputs:
+            agency: string
+            product_ids: array
+
+        parameters:
+            ws_url_root: "http://symfonydev.lxc/mock/"
+            ws_url_path: "stock/"
+
+        steps:
+            prepare_query:
+                class: Spipu\ProcessBundle\Step\Test\PrepareQuery
+                parameters:
+                    agency: "{{ input.agency }}"
+                    product_ids: "{{ input.product_ids }}"
+
+            call_json:
+                class: Spipu\ProcessBundle\Step\Generic\CallRest
+                parameters:
+                    url:          "{{ ws_url_root }}{{ ws_url_path }}"
+                    method:       "POST"
+                    query_string: "{{ result.prepare_query }}"
+                    options:
+                        timeout:    "5"
+                        ssl_verify: "false"
+                        headers:
+                            - "Content-Type: application/json;charset=UTF-8"
+
+            analyze_result:
+                class: Spipu\ProcessBundle\Step\Test\AnalyseResult
+                parameters:
+                    result: "{{ result.call_json }}"

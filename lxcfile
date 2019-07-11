@@ -1,0 +1,3 @@
+name=symfonydev
+template=ubuntu-1804-bionic
+mount=.:/var/www/symfonydev

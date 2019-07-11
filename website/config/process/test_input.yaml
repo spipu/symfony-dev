@@ -1,0 +1,43 @@
+spipu_process:
+    test_input:
+        name: "Test Input"
+
+        options:
+            can_be_put_in_queue: true
+            can_be_rerun_automatically: true
+
+        inputs:
+           firstname:  string
+           lastname:   string
+
+        parameters:
+            my_firstname: "Foo"
+            my_lastname:  "Bar"
+
+        steps:
+            name_from:
+                class: Spipu\ProcessBundle\Step\String\MergeStrings
+                parameters:
+                    strings:
+                      - "{{ my_firstname }}"
+                      - "{{ my_lastname }}"
+                    glue: " "
+
+            name_to:
+                class: Spipu\ProcessBundle\Step\String\MergeStrings
+                parameters:
+                    strings:
+                      - "{{ input.firstname }}"
+                      - "{{ input.lastname }}"
+                    glue: " "
+
+            sleep:
+                class: Spipu\ProcessBundle\Step\Generic\Sleep
+                parameters:
+                    seconds: 2
+
+            hello_world:
+                class: Spipu\ProcessBundle\Step\Test\HelloWorld
+                parameters:
+                    name_from: "{{ result.name_from }}"
+                    name_to:   "{{ result.name_to }}"
