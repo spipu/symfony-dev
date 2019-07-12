@@ -4,16 +4,15 @@ cd "$( dirname "${BASH_SOURCE[0]}" )"
 cd ../
 
 source ./architecture/conf/env.sh
-
-ENV_USER="smile"
-ENV_TYPE="lxc"
+source ./architecture/conf/env_lxc.sh
 
 ENV_IP=`getent hosts ${ENV_HOST} | awk '{ print $1 }'`
 
 cd ./architecture/vm/
 
 HOUR=$(date +%H:%M:%S)
-echo "[${HOUR}]===[LXC]==="
+echo "[${HOUR}]===[${ENV_TYPE}]==="
+
 ssh-keygen -R "${ENV_HOST}" > /dev/null
 ssh-keygen -R "${ENV_IP}"   > /dev/null
 sudo cremove ${ENV_NAME}

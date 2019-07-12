@@ -4,14 +4,13 @@ cd "$( dirname "${BASH_SOURCE[0]}" )"
 cd ../
 
 source ./architecture/conf/env.sh
-
-ENV_USER="delivery"
-ENV_TYPE="lxd"
+source ./architecture/conf/env_lxd.sh
 
 cd ./architecture/vm/
 
 HOUR=$(date +%H:%M:%S)
-echo "[${HOUR}]===[LXD]==="
+echo "[${HOUR}]===[${ENV_TYPE}]==="
+
 lxd-remove
 lxd-deploy
 echo ""

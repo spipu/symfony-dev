@@ -4,18 +4,15 @@ cd "$( dirname "${BASH_SOURCE[0]}" )"
 cd ../
 
 source ./architecture/conf/env.sh
-
-ENV_USER="delivery"
-ENV_TYPE="docker"
-ENV_IP="127.0.50.1"
-ENV_PORT="22"
+source ./architecture/conf/env_docker.sh
 
 SSH_PUB=$(cat ~/.ssh/id_rsa.pub)
 
 cd ./architecture/vm/
 
 HOUR=$(date +%H:%M:%S)
-echo "[${HOUR}]===[DOCKER]==="
+echo "[${HOUR}]===[${ENV_TYPE}]==="
+
 ssh-keygen -R "${ENV_HOST}" > /dev/null
 ssh-keygen -R "${ENV_IP}"   > /dev/null
 

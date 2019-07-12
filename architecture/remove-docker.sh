@@ -4,13 +4,12 @@ cd "$( dirname "${BASH_SOURCE[0]}" )"
 cd ../
 
 source ./architecture/conf/env.sh
-
-ENV_IP=`getent hosts ${ENV_HOST} | awk '{ print $1 }'`
+source ./architecture/conf/env_docker.sh
 
 cd ./architecture/vm/
 
 HOUR=$(date +%H:%M:%S)
-echo "[${HOUR}]===[DOCKER]==="
+echo "[${HOUR}]===[${ENV_TYPE}]==="
 
 ssh-keygen -R "${ENV_HOST}"
 ssh-keygen -R "${ENV_IP}"
