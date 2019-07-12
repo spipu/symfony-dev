@@ -59,5 +59,12 @@ RUN echo 'delivery ALL=(SERVERACCOUNTS) NOPASSWD: ALL' >> /etc/sudoers.d/deliver
 RUN chmod 440 /etc/sudoers.d/delivery
 RUN chown root.root /etc/sudoers.d/delivery
 
+# Configure Local
+RUN echo "#Locales"        >> /root/.bashrc
+RUN echo "export LC_ALL=C" >> /root/.bashrc
+
+RUN echo "#Locales"        >> /home/delivery/.bashrc
+RUN echo "export LC_ALL=C" >> /home/delivery/.bashrc
+
 # Restart SSH
 ENTRYPOINT service ssh restart && bash

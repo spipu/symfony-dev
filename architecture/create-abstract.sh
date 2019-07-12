@@ -7,7 +7,7 @@ echo ""
 
 HOUR=$(date +%H:%M:%S)
 echo "[${HOUR}]===[PROVISION]==="
-ssh root@${ENV_HOST} $ENV_FOLDER/architecture/scripts/provision.sh
+ssh root@${ENV_HOST} $ENV_FOLDER/architecture/scripts/provision.sh "$ENV_TYPE"
 
 HOUR=$(date +%H:%M:%S)
 echo "[${HOUR}]===[PERMISSION]==="

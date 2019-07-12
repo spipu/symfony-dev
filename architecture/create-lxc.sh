@@ -14,8 +14,8 @@ cd ./architecture/vm/
 
 HOUR=$(date +%H:%M:%S)
 echo "[${HOUR}]===[LXC]==="
-ssh-keygen -R "${ENV_HOST}"
-ssh-keygen -R "${ENV_IP}"
+ssh-keygen -R "${ENV_HOST}" > /dev/null
+ssh-keygen -R "${ENV_IP}"   > /dev/null
 sudo cremove ${ENV_NAME}
 sudo cdeploy
 

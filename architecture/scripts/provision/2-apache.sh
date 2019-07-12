@@ -33,6 +33,8 @@ echo " > Configure Apache + PHP"
 a2enmod rewrite > /dev/null
 a2enmod headers > /dev/null
 
+echo "ServerName $ENV_HOST" >> /etc/apache2/apache2.conf
+
 rm -f /etc/${PHP_FOLDER}/cli/conf.d/99-provision.ini
 ln -s $CONFIG_FOLDER/php.ini /etc/${PHP_FOLDER}/cli/conf.d/99-provision.ini
 
