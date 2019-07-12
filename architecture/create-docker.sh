@@ -10,6 +10,8 @@ ENV_TYPE="docker"
 
 ENV_IP=`getent hosts ${ENV_HOST} | awk '{ print $1 }'`
 
+SSH_PUB=$(cat ~/.ssh/id_rsa.pub)
+
 cd ./architecture/vm/
 
 HOUR=$(date +%H:%M:%S)
@@ -24,7 +26,7 @@ echo "127.0.50.1 ${ENV_HOST}"         | sudo tee -a /etc/hosts > /dev/null
 
 echo " => Docker"
 sudo docker-compose down -v
-sudo docker-compose build --build-arg ssh_pub_key="$(cat ~/.ssh/id_rsa.pub)" symfonydev
+sudo docker-compose build --build-arg ssh_pub_key="${SSH_PUB}" symfonydev
 sudo docker-compose up -d
 
 cd - > /dev/null

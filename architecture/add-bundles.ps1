@@ -1,11 +1,11 @@
 # Windows Powershell Script
 
-$CURRENT_FOLDER = Get-Location
+$CURRENT_FOLDER=(Get-Location)
 Set-Location (Split-Path $MyInvocation.Line -Parent)
 Set-Location ../
 
-$MAIN_FOLDER = ".\website\src\Spipu"
-$BASE_GIT = "git@github.com:spipu/symfony-bundle"
+$MAIN_FOLDER=".\website\src\Spipu"
+$BASE_GIT="git@github.com:spipu/symfony-bundle"
 
 function setBundle($code, $folder)
 {
@@ -16,7 +16,7 @@ function setBundle($code, $folder)
         git clone $BASE_GIT-$code.git $MAIN_FOLDER/$folder
     } else {
         Write-Output "  => Git Pull"
-        $before = Get-Location
+        $before=(Get-Location)
         Set-Location $MAIN_FOLDER/$folder
         git pull
         git fetch
