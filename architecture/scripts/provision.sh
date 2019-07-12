@@ -19,9 +19,7 @@ ENV_FOLDER_SED=$(echo "$ENV_FOLDER" | sed -e 's/[\/&]/\\&/g')
 
 export DEBIAN_FRONTEND=noninteractive
 
-if [[ "$ENV_TYPE" = "docker" ]]; then
-    export LC_ALL=C
-fi
+export LC_ALL=C
 
 source ./architecture/scripts/provision/0-upgrade.sh
 source ./architecture/scripts/provision/1-packages.sh
