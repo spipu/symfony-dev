@@ -20,6 +20,7 @@ RUN sed -i "/PermitRootLogin/d"        /etc/ssh/sshd_config
 RUN echo ""                                 >> /etc/ssh/sshd_config
 RUN echo "PasswordAuthentication no"        >> /etc/ssh/sshd_config
 RUN echo "PermitRootLogin without-password" >> /etc/ssh/sshd_config
+EXPOSE 22
 
 # Add SSH Key
 RUN mkdir -p /root/.ssh
@@ -66,5 +67,7 @@ RUN echo "export LC_ALL=C" >> /root/.bashrc
 RUN echo "#Locales"        >> /home/delivery/.bashrc
 RUN echo "export LC_ALL=C" >> /home/delivery/.bashrc
 
-# Restart SSH
-ENTRYPOINT service ssh restart && bash
+# Restart Services
+COPY start.sh /root/start.sh
+RUN chmod 755 /root/start.sh
+ENTRYPOINT /root/start.sh && bash

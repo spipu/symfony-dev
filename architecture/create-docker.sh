@@ -24,7 +24,7 @@ echo "127.0.50.1 ${ENV_HOST}"         | sudo tee -a /etc/hosts > /dev/null
 
 echo " => Docker"
 sudo docker-compose down -v
-sudo docker-compose build --build-arg ssh_pub_key="$(cat ~/.ssh/id_rsa.pub)" webapp
+sudo docker-compose build --build-arg ssh_pub_key="$(cat ~/.ssh/id_rsa.pub)" symfonydev
 sudo docker-compose up -d
 
 cd - > /dev/null

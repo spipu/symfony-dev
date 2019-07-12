@@ -24,29 +24,33 @@ d_stop () {
 }
 
 case "$1" in
+    start)
+        d_start
+        ;;
 
-        start|stop)
-                d_${1}
-                ;;
+    stop)
+        d_stop
+        ;;
 
-        restart|reload|force-reload)
-                        d_stop
-                        d_start
-                ;;
+    restart|reload|force-reload)
+        d_stop
+        d_start
+        ;;
 
-        force-stop)
-               d_stop
-                killall -q $daemon_NAME || true
-                sleep 2
-                killall -q -9 $daemon_NAME || true
-                ;;
+    force-stop)
+       d_stop
+        killall -q $daemon_NAME || true
+        sleep 2
+        killall -q -9 $daemon_NAME || true
+        ;;
 
-        status)
-                status_of_proc "$daemon_NAME" "$DAEMON" "system-wide $daemon_NAME" && exit 0 || exit $?
-                ;;
-        *)
-                echo "Usage: /etc/init.d/$daemon_NAME {start|stop|force-stop|restart|reload|force-reload|status}"
-                exit 1
-                ;;
+    status)
+        status_of_proc "$daemon_NAME" "$DAEMON" "system-wide $daemon_NAME" && exit 0 || exit $?
+        ;;
+
+    *)
+        echo "Usage: /etc/init.d/$daemon_NAME {start|stop|force-stop|restart|reload|force-reload|status}"
+        exit 1
+        ;;
 esac
 exit 0

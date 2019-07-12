@@ -1,7 +1,7 @@
 version: '3'
 services:
 
-  webapp:
+  symfonydev:
     build: ./docker
     container_name: symfonydev
     hostname: symfonydev

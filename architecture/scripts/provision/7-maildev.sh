@@ -16,7 +16,7 @@ if [[ "$ENV_TYPE" = "docker" ]]; then
     sed -i "s/{{MAILDEV_BIN}}/$MAILDEV_BIN/g" /etc/init.d/maildev
 
     update-rc.d maildev defaults
-    /etc/init.d/maildev restart
+    /etc/init.d/maildev start
 else
     rm -f /etc/systemd/system/maildev.service
     cp $CONFIG_FOLDER/maildev.service /etc/systemd/system/maildev.service
