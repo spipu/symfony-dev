@@ -2,8 +2,7 @@
 
 HOUR=$(date +%H:%M:%S)
 echo "[${HOUR}]===[CLEAN]==="
-sudo rm -rf ./src/var
-sudo rm -rf ./src/cache
+sudo rm -rf ./website/var
 echo ""
 
 HOUR=$(date +%H:%M:%S)

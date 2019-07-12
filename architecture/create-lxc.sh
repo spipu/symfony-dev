@@ -6,6 +6,7 @@ cd ../
 source ./architecture/conf/env.sh
 
 ENV_USER="smile"
+ENV_TYPE="lxc"
 
 ENV_IP=`getent hosts ${ENV_HOST} | awk '{ print $1 }'`
 
@@ -34,4 +35,4 @@ echo ""
 
 ssh root@${ENV_HOST} rm -f /etc/apt/apt.conf.d/10-smile-proxy.conf
 
-source ./architecture/full-init.sh
+source ./architecture/create-abstract.sh

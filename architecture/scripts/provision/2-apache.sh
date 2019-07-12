@@ -50,7 +50,11 @@ ln -s /etc/apache2/sites-available/$ENV_NAME.conf /etc/apache2/sites-enabled/
 
 echo " > Restart Apache"
 
-/etc/init.d/apache2 restart > /dev/null
+if [[ "$ENV_TYPE" = "docker" ]]; then
+    /etc/init.d/apache2 restart > /dev/null
+else
+    systemctl restart apache2 > /dev/null
+fi
 
 echo " > /etc/environment"
 echo "export APP_ENV=dev" >> /etc/environment

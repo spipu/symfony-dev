@@ -6,6 +6,7 @@ cd ../
 source ./architecture/conf/env.sh
 
 ENV_USER="delivery"
+ENV_TYPE="lxd"
 
 cd ./architecture/vm/
 
@@ -17,4 +18,4 @@ echo ""
 
 cd - > /dev/null
 
-source ./architecture/full-init.sh
+source ./architecture/create-abstract.sh

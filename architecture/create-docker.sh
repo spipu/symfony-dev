@@ -6,6 +6,7 @@ cd ../
 source ./architecture/conf/env.sh
 
 ENV_USER="delivery"
+ENV_TYPE="docker"
 
 ENV_IP=`getent hosts ${ENV_HOST} | awk '{ print $1 }'`
 
@@ -40,4 +41,4 @@ ssh-keyscan ${ENV_HOST}     >> ~/.ssh/known_hosts 2> /dev/null
 ssh-keyscan ${ENV_IP}       >> ~/.ssh/known_hosts 2> /dev/null
 echo ""
 
-source ./architecture/full-init.sh
+source ./architecture/create-abstract.sh
