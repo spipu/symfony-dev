@@ -1,5 +1,10 @@
 imports:
-    - { resource: ../app_configuration.yaml }
+    - { resource: ../app_default_configuration.yaml }
+    - { resource: /etc/symfony/symfonydev.yaml, ignore_errors: true  }
+
+parameters:
+    APP_SETTINGS_REDIS_CACHE_URL:   "redis://%APP_SETTINGS_REDIS_CACHE_HOST%:%APP_SETTINGS_REDIS_CACHE_PORT%/%APP_SETTINGS_REDIS_CACHE_DB%"
+    APP_SETTINGS_REDIS_SESSION_URL: "redis://%APP_SETTINGS_REDIS_SESSION_HOST%:%APP_SETTINGS_REDIS_SESSION_PORT%/%APP_SETTINGS_REDIS_SESSION_DB%"
 
 framework:
     secret: '%APP_SETTINGS_APP_SECRET%'

@@ -36,13 +36,13 @@ a2enmod headers > /dev/null
 echo "ServerName $ENV_HOST" >> /etc/apache2/apache2.conf
 
 rm -f /etc/${PHP_FOLDER}/cli/conf.d/99-provision.ini
-ln -s $CONFIG_FOLDER/php.ini /etc/${PHP_FOLDER}/cli/conf.d/99-provision.ini
+ln -s $CONFIG_FOLDER/php/cli.ini /etc/${PHP_FOLDER}/cli/conf.d/99-provision.ini
 
 rm -f /etc/${PHP_FOLDER}/apache2/conf.d/99-provision.ini
-ln -s $CONFIG_FOLDER/php.ini /etc/${PHP_FOLDER}/apache2/conf.d/99-provision.ini
+ln -s $CONFIG_FOLDER/php/apache.ini /etc/${PHP_FOLDER}/apache2/conf.d/99-provision.ini
 
 rm -f /etc/apache2/sites-available/*
-cp $CONFIG_FOLDER/apache.conf /etc/apache2/sites-available/$ENV_NAME.conf
+cp $CONFIG_FOLDER/apache/virtualhost.conf /etc/apache2/sites-available/$ENV_NAME.conf
 sed -i "s/{{ENV_NAME}}/$ENV_NAME/g"         /etc/apache2/sites-available/$ENV_NAME.conf
 sed -i "s/{{ENV_HOST}}/$ENV_HOST/g"         /etc/apache2/sites-available/$ENV_NAME.conf
 sed -i "s/{{ENV_FOLDER}}/$ENV_FOLDER_SED/g" /etc/apache2/sites-available/$ENV_NAME.conf
@@ -58,5 +58,16 @@ else
     systemctl restart apache2 > /dev/null
 fi
 
-echo " > /etc/environment"
+echo " > Symfony Configuration"
+
 echo "export APP_ENV=dev" >> /etc/environment
+
+mkdir -p /etc/symfony
+rm -f /etc/symfony/$ENV_NAME.yaml
+cp $CONFIG_FOLDER/symfony/app.yaml /etc/symfony/$ENV_NAME.yaml
+sed -i "s/{{ENV_NAME}}/$ENV_NAME/g" /etc/symfony/$ENV_NAME.yaml
+
+chmod 750 /etc/symfony
+chmod 640 /etc/symfony/$ENV_NAME.yaml
+chown root.www-data /etc/symfony
+chown root.www-data /etc/symfony/$ENV_NAME.yaml
