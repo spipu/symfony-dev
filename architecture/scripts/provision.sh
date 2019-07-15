@@ -21,13 +21,16 @@ export DEBIAN_FRONTEND=noninteractive
 
 export LC_ALL=C
 
-source ./architecture/scripts/provision/0-upgrade.sh
-source ./architecture/scripts/provision/1-packages.sh
-source ./architecture/scripts/provision/2-apache.sh
-source ./architecture/scripts/provision/3-mysql.sh
-source ./architecture/scripts/provision/4-composer.sh
-source ./architecture/scripts/provision/5-npm.sh
-source ./architecture/scripts/provision/6-yarn.sh
-source ./architecture/scripts/provision/7-maildev.sh
+source ./architecture/scripts/provision/00-upgrade.sh
+source ./architecture/scripts/provision/01-packages.sh
+source ./architecture/scripts/provision/10-php.sh
+source ./architecture/scripts/provision/11-apache.sh
+source ./architecture/scripts/provision/12-mysql.sh
+source ./architecture/scripts/provision/13-redis.sh
+source ./architecture/scripts/provision/20-composer.sh
+source ./architecture/scripts/provision/21-npm.sh
+source ./architecture/scripts/provision/22-yarn.sh
+source ./architecture/scripts/provision/23-maildev.sh
+source ./architecture/scripts/provision/30-symfony.sh
 
 export DEBIAN_FRONTEND=dialog
