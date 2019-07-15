@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo " > Install Composer"
+echo " > Composer - Install"
 
 wget -q https://getcomposer.org/composer.phar > /dev/null
 mv ./composer.phar /usr/local/bin/composer

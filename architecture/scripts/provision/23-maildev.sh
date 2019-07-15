@@ -1,12 +1,14 @@
 #!/bin/bash
 
-echo " > Install maildev"
+echo " > Mail - Install maildev"
 
 npm install maildev@0.14.0 --global > /dev/null
 
 NPM_PREFIX=$(npm config get prefix)
 MAILDEV_BIN="${NPM_PREFIX}/bin/maildev"
 MAILDEV_BIN=$(echo $MAILDEV_BIN | sed -e 's/[]\/&$*.^[]/\\&/g')
+
+echo " > Mail - Configure"
 
 if [[ "$ENV_TYPE" = "docker" ]]; then
     rm -f /etc/init.d/maildev
@@ -24,11 +26,15 @@ else
     chmod 644 /etc/systemd/system/maildev.service
     sed -i "s/{{MAILDEV_BIN}}/$MAILDEV_BIN/g" /etc/systemd/system/maildev.service
 
-    systemctl enable maildev
+    systemctl -q enable maildev
     systemctl start maildev
 fi
 
+echo " > Mail - Install ssmtp"
+
 apt-get -qq install -y ssmtp > /dev/null
+
+echo " > Mail - Configure ssmtp"
 
 rm -f /etc/ssmtp/ssmtp.conf
 cp $CONFIG_FOLDER/mail/ssmtp.conf /etc/ssmtp/ssmtp.conf

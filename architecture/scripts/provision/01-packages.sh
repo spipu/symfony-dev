@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo " > PACKAGES"
+echo " > Packages - Install"
 
 apt-get -qq -y install \
     sudo lsb-release inetutils-ping curl vim aptitude ca-certificates bash-completion \

@@ -3,7 +3,7 @@
 PHP_VERSION="7.2"
 PHP_FOLDER="php/7.2"
 
-echo " > Install PHP ${PHP_VERSION}"
+echo " > PHP - Install ${PHP_VERSION}"
 
 apt-get -qq -y install \
     php${PHP_VERSION}-cli \
@@ -18,6 +18,7 @@ apt-get -qq -y install \
     php${PHP_VERSION}-mysql \
     php${PHP_VERSION}-pdo \
     php${PHP_VERSION}-pdo-mysql \
+    php${PHP_VERSION}-redis \
     php${PHP_VERSION}-readline \
     php${PHP_VERSION}-simplexml \
     php${PHP_VERSION}-soap \
@@ -26,7 +27,7 @@ apt-get -qq -y install \
     php${PHP_VERSION}-zip \
     > /dev/null
 
-echo " > Configure PHP"
+echo " > PHP - Configure"
 
 mkdir -p  /var/log/php/
 chown www-data.www-data /var/log/php

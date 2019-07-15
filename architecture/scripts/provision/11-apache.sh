@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo " > Install Apache"
+echo " > Apache - Install"
 
 PHP_VERSION="7.2"
 
@@ -10,7 +10,7 @@ apt-get -qq -y install \
     libapache2-mod-php${PHP_VERSION} \
      > /dev/null
 
-echo " > Configure Apache"
+echo " > Apache - Configure"
 a2enmod rewrite > /dev/null
 a2enmod headers > /dev/null
 
@@ -25,7 +25,7 @@ sed -i "s/{{ENV_FOLDER}}/$ENV_FOLDER_SED/g" /etc/apache2/sites-available/$ENV_NA
 rm -f /etc/apache2/sites-enabled/*
 ln -s /etc/apache2/sites-available/$ENV_NAME.conf /etc/apache2/sites-enabled/
 
-echo " > Restart Apache"
+echo " > Apache - Service"
 
 if [[ "$ENV_TYPE" = "docker" ]]; then
     /etc/init.d/apache2 restart > /dev/null

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo " > UPGRADE"
+echo " > Packages - Upgrade"
 
 apt-get -qq update          > /dev/null
 apt-get -qq -y dist-upgrade > /dev/null

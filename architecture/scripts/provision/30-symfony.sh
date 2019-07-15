@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo " > Symfony Configuration"
+echo " > Symfony - Configure"
 
 echo "export APP_ENV=dev" >> /etc/environment
 
