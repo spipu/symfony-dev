@@ -4,7 +4,9 @@
 
 Dev environment for Spipu Bundles
 
-## Install
+[Usage](/doc/usage.md)
+
+## Others
 
 Needed for Unit tests / Analyze the code without having to create LXC / LXD container
 
@@ -16,12 +18,6 @@ Adding the external spipu bundles (we do not use composer because it is for dev 
 
 ```bash
 ./architecture/add-bundles.sh
-```
-
-Initiate the env:
-
-```bash
-./architecture/full-init-xxx.sh
 ```
 
 ## Tests
