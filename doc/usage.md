@@ -12,16 +12,6 @@ Create the symfony project with the following script:
 ./architecture/new-project.sh
 ```
 
-If needed, you can create the file `architecture/conf/env.local.sh` and put the following content (for MacOS for example):
-
-```bash
-#!/bin/bash
-
-# Docker Parameters
-ENV_DOCKER_IP="127.0.0.1"
-ENV_DOCKER_PORT_START="20000"
-```
-
 ## Dev Environment
  
 ### LXC
@@ -55,4 +45,14 @@ ENV_DOCKER_PORT_START="20000"
 
 # Remove the dev env
 ./architecture/remove-docker.sh
+```
+
+If needed, you can create the file `architecture/conf/env.local.sh` and put the following content (for MacOS for example):
+
+```bash
+#!/bin/bash
+
+# Docker Parameters
+ENV_DOCKER_IP="127.0.0.1"
+ENV_DOCKER_PORT_START="20000"
 ```
