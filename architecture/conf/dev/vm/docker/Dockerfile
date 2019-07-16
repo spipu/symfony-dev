@@ -33,39 +33,39 @@ RUN chown -R root.root /root/.ssh
 RUN sed -i "s/# export/export/g" /root/.bashrc
 RUN sed -i "s/# alias/alias/g"   /root/.bashrc
 
-# Configure User Delivery - CREATE
+# Configure Delivery User - CREATE
 RUN groupadd -f www-data
-RUN useradd -g www-data -s /bin/bash -u 1000 -m delivery
+RUN useradd -g www-data -s /bin/bash -u 1000 -m {{ENV_USER}}
 
-# Configure User Delivery - BASH
-RUN sed -i "s/#force_color_prompt/force_color_prompt/g" /home/delivery/.bashrc
-RUN sed -i "s/#alias/alias/g"                           /home/delivery/.bashrc
+# Configure Delivery User - BASH
+RUN sed -i "s/#force_color_prompt/force_color_prompt/g" /home/{{ENV_USER}}/.bashrc
+RUN sed -i "s/#alias/alias/g"                           /home/{{ENV_USER}}/.bashrc
 
-# Configure User Delivery - SSH KEY
-RUN mkdir -p /home/delivery/.ssh/
-RUN echo "$ssh_pub_key" > /home/delivery/.ssh/authorized_keys
-RUN chmod 700 /home/delivery/.ssh
-RUN chmod 600 /home/delivery/.ssh/authorized_keys
-RUN chown -R delivery.www-data /home/delivery/.ssh
+# Configure Delivery User - SSH KEY
+RUN mkdir -p /home/{{ENV_USER}}/.ssh/
+RUN echo "$ssh_pub_key" > /home/{{ENV_USER}}/.ssh/authorized_keys
+RUN chmod 700 /home/{{ENV_USER}}/.ssh
+RUN chmod 600 /home/{{ENV_USER}}/.ssh/authorized_keys
+RUN chown -R {{ENV_USER}}.www-data /home/{{ENV_USER}}/.ssh
 
-# Configure User Delivery - WWW FOLDER
+# Configure Delivery User - WWW FOLDER
 RUN mkdir -p /var/www
-RUN chown delivery.root /var/www
+RUN chown {{ENV_USER}}.root /var/www
 RUN chmod 755 /var/www
 
-# Configure User Delivery - SUDOER
+# Configure Delivery User - SUDOER
 RUN mkdir -p /etc/sudoers.d/
-RUN echo 'Runas_Alias SERVERACCOUNTS=www-data'         >  /etc/sudoers.d/delivery
-RUN echo 'delivery ALL=(SERVERACCOUNTS) NOPASSWD: ALL' >> /etc/sudoers.d/delivery
-RUN chmod 440 /etc/sudoers.d/delivery
-RUN chown root.root /etc/sudoers.d/delivery
+RUN echo 'Runas_Alias SERVERACCOUNTS=www-data' >  /etc/sudoers.d/{{ENV_USER}}
+RUN echo '{{ENV_USER}} ALL=(SERVERACCOUNTS) NOPASSWD: ALL' >> /etc/sudoers.d/{{ENV_USER}}
+RUN chmod 440 /etc/sudoers.d/{{ENV_USER}}
+RUN chown root.root /etc/sudoers.d/{{ENV_USER}}
 
 # Configure Local
 RUN echo "#Locales"        >> /root/.bashrc
 RUN echo "export LC_ALL=C" >> /root/.bashrc
 
-RUN echo "#Locales"        >> /home/delivery/.bashrc
-RUN echo "export LC_ALL=C" >> /home/delivery/.bashrc
+RUN echo "#Locales"        >> /home/{{ENV_USER}}/.bashrc
+RUN echo "export LC_ALL=C" >> /home/{{ENV_USER}}/.bashrc
 
 # Restart Services
 COPY start.sh /root/start.sh
