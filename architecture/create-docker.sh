@@ -3,8 +3,8 @@
 cd "$( dirname "${BASH_SOURCE[0]}" )"
 cd ../
 
+ENV_TYPE="docker"
 source ./architecture/conf/env.sh
-source ./architecture/conf/env_docker.sh
 
 SSH_PUB=$(cat ~/.ssh/id_rsa.pub)
 
@@ -23,7 +23,7 @@ echo "${ENV_IP} ${ENV_HOST}"         | sudo tee -a /etc/hosts > /dev/null
 
 echo " => Docker"
 sudo docker-compose down -v
-sudo docker-compose build --build-arg ssh_pub_key="${SSH_PUB}" symfonydev
+sudo docker-compose build --build-arg ssh_pub_key="${SSH_PUB}" ${ENV_NAME}
 sudo docker-compose up -d
 
 cd - > /dev/null

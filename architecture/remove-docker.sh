@@ -3,8 +3,8 @@
 cd "$( dirname "${BASH_SOURCE[0]}" )"
 cd ../
 
+ENV_TYPE="docker"
 source ./architecture/conf/env.sh
-source ./architecture/conf/env_docker.sh
 
 cd ./architecture/vm/
 

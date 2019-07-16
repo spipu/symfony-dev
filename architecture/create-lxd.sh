@@ -3,8 +3,8 @@
 cd "$( dirname "${BASH_SOURCE[0]}" )"
 cd ../
 
+ENV_TYPE="lxd"
 source ./architecture/conf/env.sh
-source ./architecture/conf/env_lxd.sh
 
 cd ./architecture/vm/
 

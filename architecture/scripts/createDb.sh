@@ -3,6 +3,8 @@
 cd "$( dirname "${BASH_SOURCE[0]}" )"
 cd ../../
 
+ENV_TYPE="none"
+ENV_DO_NOT_GENERATE="yes"
 source ./architecture/conf/env.sh
 
 DB_NAME="$ENV_NAME"

@@ -3,15 +3,16 @@
 cd "$( dirname "${BASH_SOURCE[0]}" )"
 cd ../../
 
-source ./architecture/conf/env.sh
-
-CONFIG_FOLDER="$ENV_FOLDER/architecture/conf/dev"
-
 if [[ ! "$1" ]]; then
     echo "ERROR - You must provide a env_type parameter: lxd|lxc|docker"
     exit 1
 fi
 ENV_TYPE="$1"
+ENV_DO_NOT_GENERATE="yes"
+source ./architecture/conf/env.sh
+
+CONFIG_FOLDER="$ENV_FOLDER/architecture/conf/dev"
+
 
 echo "Provisioning for [$ENV_TYPE]"
 

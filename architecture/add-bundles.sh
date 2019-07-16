@@ -3,7 +3,10 @@
 cd "$( dirname "${BASH_SOURCE[0]}" )"
 cd ../
 
-MAIN_FOLDER="./website/src/Spipu"
+ENV_TYPE="none"
+source ./architecture/conf/env.sh
+
+MAIN_FOLDER="./${WEB_FOLDER}/src/Spipu"
 BASE_GIT="git@github.com:spipu/symfony-bundle"
 
 function setBundle() {

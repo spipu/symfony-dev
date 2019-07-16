@@ -1,0 +1,19 @@
+version: '3'
+services:
+
+  {{ENV_NAME}}:
+    build: ./docker
+    container_name: {{ENV_NAME}}
+    hostname: {{ENV_NAME}}
+    restart: unless-stopped
+    volumes:
+      - ../../:/var/www/{{ENV_NAME}}
+    tty: true
+    expose:
+      - 80
+      - 22
+      - 1080
+    ports:
+      - "127.0.50.1:80:80"
+      - "127.0.50.1:22:22"
+      - "127.0.50.1:1080:1080"

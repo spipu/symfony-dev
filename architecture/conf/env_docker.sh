@@ -4,4 +4,4 @@ ENV_TYPE="docker"
 ENV_USER="delivery"
 
 ENV_IP="127.0.50.1"
-ENV_PORT="22"
+ENV_SSH_PORT="22"
