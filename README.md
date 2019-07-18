@@ -34,6 +34,10 @@ to execute only the unit tests on the host machine:
 ./phpunit.sh
 ```
 
+## Demo
+
+Look at https://github.com/spipu/symfony-demo for a full demo
+
 ## License
 
 This program is distributed under the MIT License. For more information see the [./LICENSE.md](./LICENSE.md) file.
