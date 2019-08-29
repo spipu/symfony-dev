@@ -1,3 +1,7 @@
+phpqa:
+    extensions:
+        - php
+
 phpcs:
     standard: phpcs.xml
     allowedErrorsCount: 0
@@ -32,6 +36,4 @@ phpunit:
 parallel-lint:
     allowedErrorsCount: 0
 
-# Php file extensions to parse.
-extensions:
-    - php
+
