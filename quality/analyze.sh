@@ -13,7 +13,7 @@ rm -rf ./var-test/
 ./vendor/bin/phpqa \
     --analyzedDirs src \
     --ignoredDirs vendor,Tests \
-    --tools phpmetrics,phploc,phpcs,phpmd,pdepend,phpcpd,phpunit,parallel-lint \
+    --tools phpmetrics,phploc,pdepend,phpcs:0,phpmd:0,phpcpd:0,parallel-lint:0,phpunit:0 \
     --config ./ \
     --buildDir $LOG_FOLDER \
     --report offline \
