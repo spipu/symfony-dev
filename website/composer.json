@@ -4,7 +4,7 @@
     "license": "MIT",
     "description": "A project to develop bundles",
     "require": {
-        "php": "^7.2.10",
+        "php": "^7.2.19",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "ext-json": "*",
@@ -54,7 +54,7 @@
         },
         "sort-packages": true,
         "platform": {
-            "php": "7.2.10",
+            "php": "7.2.19",
             "ext-bcmath": "1",
             "ext-ctype": "1",
             "ext-gd": "1",
