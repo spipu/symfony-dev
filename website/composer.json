@@ -4,12 +4,13 @@
     "license": "MIT",
     "description": "A project to develop bundles",
     "require": {
-        "php": "^7.2.19",
+        "php": "^7.3",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "ext-json": "*",
         "ext-pdo": "*",
         "ext-zip": "*",
+        "predis/predis": "^1.1",
         "sensio/framework-extra-bundle": "*",
         "sensiolabs/security-checker": "*",
         "symfony/asset": "*",
@@ -54,7 +55,7 @@
         },
         "sort-packages": true,
         "platform": {
-            "php": "7.2.19",
+            "php": "7.3.9",
             "ext-bcmath": "1",
             "ext-ctype": "1",
             "ext-gd": "1",
