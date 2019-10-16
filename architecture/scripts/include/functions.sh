@@ -80,3 +80,11 @@ function remplaceVariableInFile() {
 
     sed -i "s/{{$CODE}}/$VALUE_SED/g" "$FILE"
 }
+
+# Array in function - check if array $2 contains element $1
+function arrayIn() {
+    set +e
+    local e
+    for e in "${@:2}"; do [[ "$e" == "$1" ]] && return 0; done
+    return 1 && set -e
+}

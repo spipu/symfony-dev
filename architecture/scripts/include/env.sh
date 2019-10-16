@@ -1,18 +1,34 @@
 #!/bin/bash
 
+# load the list of the available environment
+ENVIRONMENTS=()
+for entry in ./architecture/conf/env_*.sh
+do
+    code=$(echo $entry | cut -d '_' -f 2 | cut -d '.' -f 1)
+    if [[ "$code" != "all" ]]; then
+        ENVIRONMENTS+=("$code")
+    fi
+done
+
+# The env is required
 if [[ ! "$ENV_TYPE" ]]; then
     if [[ ! "$1" ]]; then
         showMessage "Available environments:"
-        showMessage " - lxd"
-        showMessage " - lxc"
-        showMessage " - docker"
-        showMessage " - preprod"
-        showMessage " - prod"
-        showError "You must provide a environment parameter"
+        for code in "${ENVIRONMENTS[@]}"; do
+            showMessage " - $code"
+        done
+        showError "You must provide a environment"
         exit 1
     fi
 
     ENV_TYPE="$1"
+fi
+
+# Display error if the environment is unknown
+arrayIn "${ENV_TYPE}" "${ENVIRONMENTS[@]}"
+if [[ $? = 1 ]]; then
+    showError "No environment $1"
+    exit 1
 fi
 
 # Global Parameters
