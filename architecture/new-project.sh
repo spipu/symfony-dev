@@ -4,7 +4,7 @@ cd "$( dirname "${BASH_SOURCE[0]}" )"
 cd ../
 
 ENV_TYPE="none"
-source ./architecture/conf/env.sh
+source ./architecture/scripts/include/init.sh
 
 PROJECT_NAME="${ENV_NAME}"
 FOLDER_PROJECT="./${WEB_FOLDER}"

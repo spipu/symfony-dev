@@ -4,7 +4,7 @@ cd "$( dirname "${BASH_SOURCE[0]}" )"
 cd ../
 
 ENV_TYPE="docker"
-source ./architecture/conf/env.sh
+source ./architecture/scripts/include/init.sh
 
 cd ./architecture/vm/
 

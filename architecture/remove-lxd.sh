@@ -4,7 +4,7 @@ cd "$( dirname "${BASH_SOURCE[0]}" )"
 cd ../
 
 ENV_TYPE="lxd"
-source ./architecture/conf/env.sh
+source ./architecture/scripts/include/init.sh
 
 ENV_IP=`getent hosts ${ENV_HOST} | awk '{ print $1 }'`
 
