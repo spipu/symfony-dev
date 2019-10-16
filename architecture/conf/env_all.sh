@@ -28,7 +28,7 @@ APACHE_PROTECT_ADMIN="all"
 
 # Symfony
 APP_SECRET="ce96b39e4a36d3541ec8b232186267ee"
-APP_MAILER="smtp://127.0.0.1:1025?encryption=&auth_mode="
+APP_MAILER="smtp://127.0.0.1:1025"
 
 # Yarn
 APP_USE_YARN="no"

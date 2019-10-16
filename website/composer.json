@@ -10,6 +10,7 @@
         "ext-json": "*",
         "ext-pdo": "*",
         "ext-zip": "*",
+        "components/jquery": "^3.0",
         "predis/predis": "^1.1",
         "sensio/framework-extra-bundle": "*",
         "sensiolabs/security-checker": "*",
@@ -19,6 +20,8 @@
         "symfony/flex": "*",
         "symfony/form": "*",
         "symfony/framework-bundle": "*",
+        "symfony/mailer": "4.3.*",
+        "symfony/mime": "4.3.*",
         "symfony/monolog-bundle": "*",
         "symfony/orm-pack": "*",
         "symfony/process": "*",
@@ -30,8 +33,7 @@
         "symfony/validator": "*",
         "symfony/web-link": "*",
         "symfony/yaml": "*",
-        "twbs/bootstrap":      "^4.0",
-        "components/jquery":   "^3.0"
+        "twbs/bootstrap": "^4.0"
     },
     "require-dev": {
         "edgedesign/phpqa": "^1.20",
