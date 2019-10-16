@@ -25,10 +25,12 @@ if [[ ! "$ENV_TYPE" ]]; then
 fi
 
 # Display error if the environment is unknown
-arrayIn "${ENV_TYPE}" "${ENVIRONMENTS[@]}"
-if [[ $? = 1 ]]; then
-    showError "No environment $1"
-    exit 1
+if [[ "${ENV_TYPE}" != "none" ]]; then
+    arrayIn "${ENV_TYPE}" "${ENVIRONMENTS[@]}"
+    if [[ $? = 1 ]]; then
+        showError "No environment ${ENV_TYPE}"
+        exit 1
+    fi
 fi
 
 # Global Parameters
