@@ -63,6 +63,9 @@ function remplaceVariablesInFile() {
     remplaceVariableInFile "$FILE" "SSL_CERT_PUBLIC"  "$SSL_CERT_PUBLIC"
     remplaceVariableInFile "$FILE" "SSL_CERT_PRIVATE" "$SSL_CERT_PRIVATE"
 
+    # APACHE
+    remplaceVariableInFile "$FILE" "APACHE_PROTECT_ADMIN" "$APACHE_PROTECT_ADMIN"
+
     # Symfony
     remplaceVariableInFile "$FILE" "APP_SECRET" "$APP_SECRET"
     remplaceVariableInFile "$FILE" "APP_MAILER" "$APP_MAILER"

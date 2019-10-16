@@ -6,6 +6,8 @@ if [[ ! "$ENV_TYPE" ]]; then
         showMessage " - lxd"
         showMessage " - lxc"
         showMessage " - docker"
+        showMessage " - preprod"
+        showMessage " - prod"
         showError "You must provide a environment parameter"
         exit 1
     fi

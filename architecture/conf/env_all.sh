@@ -23,9 +23,12 @@ SSL_CERT_FOLDER="/etc/ssl/dev-certs"
 SSL_CERT_PUBLIC="${SSL_CERT_FOLDER}/dev-cert.crt"
 SSL_CERT_PRIVATE="${SSL_CERT_FOLDER}/dev-cert.key"
 
+# Apache
+APACHE_PROTECT_ADMIN="all"
+
 # Symfony
 APP_SECRET="ce96b39e4a36d3541ec8b232186267ee"
 APP_MAILER="smtp://127.0.0.1:1025?encryption=&auth_mode="
 
 # Yarn
-APP_USE_YARN="yes"
+APP_USE_YARN="no"
