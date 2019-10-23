@@ -10,7 +10,6 @@
         "ext-json": "*",
         "ext-pdo": "*",
         "ext-zip": "*",
-        "components/jquery": "^3.0",
         "predis/predis": "^1.1",
         "sensio/framework-extra-bundle": "*",
         "sensiolabs/security-checker": "*",
