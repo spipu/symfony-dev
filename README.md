@@ -25,13 +25,13 @@ Adding the external spipu bundles (we do not use composer because it is for dev 
 to execute all the tests on the host machine:
 
 ```bash
-./analyze.sh
+./quality/analyze.sh
 ```
 
 to execute only the unit tests on the host machine:
 
 ```bash
-./phpunit.sh
+./quality/phpunit.sh
 ```
 
 ## Demo
