@@ -55,7 +55,7 @@
         },
         "sort-packages": true,
         "platform": {
-            "php": "7.2.19",
+            "php": "7.2.24",
             "ext-bcmath": "1",
             "ext-ctype": "1",
             "ext-gd": "1",
