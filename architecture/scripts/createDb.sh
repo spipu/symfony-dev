@@ -11,8 +11,6 @@ source ./architecture/scripts/include/init.sh
 
 showTitle "Create Database"
 
-MYSQL="mysql"
-
 function createUserAndDatabase() {
     MYSQL="mysql"
     MYSQL_HOST="$1"
