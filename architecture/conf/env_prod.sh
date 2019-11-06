@@ -20,6 +20,7 @@ SSL_CERT_PRIVATE="${SSL_CERT_FOLDER}/website.key"
 
 # Apache
 APACHE_PROTECT_ADMIN="xx.xx.xx.xx"
+EXPORT_FOLDER="$ENV_FOLDER/shared/var/export/"
 
 # Symfony
 APP_SECRET="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"

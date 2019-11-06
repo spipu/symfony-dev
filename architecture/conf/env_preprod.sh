@@ -15,6 +15,9 @@ SSL_CERT_FOLDER="/etc/website/certs"
 SSL_CERT_PUBLIC="${SSL_CERT_FOLDER}/website.crt"
 SSL_CERT_PRIVATE="${SSL_CERT_FOLDER}/website.key"
 
+# Apache
+EXPORT_FOLDER="$ENV_FOLDER/shared/var/export/"
+
 # Symfony
 APP_SECRET="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 

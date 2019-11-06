@@ -1,6 +1,9 @@
 #!/bin/bash
 
-cd "$( dirname "${BASH_SOURCE[0]}" )"
+set -e
+
+bashSource=$(readlink -f "${BASH_SOURCE[0]}")
+cd "$(dirname "$bashSource")"
 cd ../../
 
 ENV_DO_NOT_GENERATE="yes"

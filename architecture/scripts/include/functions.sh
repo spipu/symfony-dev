@@ -42,14 +42,16 @@ function remplaceVariablesInFile() {
     FILE="$1"
 
     # Env
-    remplaceVariableInFile "$FILE" "ENV_NAME"   "$ENV_NAME"
-    remplaceVariableInFile "$FILE" "ENV_USER"   "$ENV_USER"
-    remplaceVariableInFile "$FILE" "ENV_HOST"   "$ENV_HOST"
-    remplaceVariableInFile "$FILE" "ENV_MODE"   "$ENV_MODE"
-    remplaceVariableInFile "$FILE" "ENV_CODE"   "$ENV_CODE"
-    remplaceVariableInFile "$FILE" "ENV_NAME"   "$ENV_NAME"
-    remplaceVariableInFile "$FILE" "ENV_FOLDER" "$ENV_FOLDER"
-    remplaceVariableInFile "$FILE" "WEB_FOLDER" "$WEB_FOLDER"
+    remplaceVariableInFile "$FILE" "ENV_NAME"      "$ENV_NAME"
+    remplaceVariableInFile "$FILE" "ENV_USER"      "$ENV_USER"
+    remplaceVariableInFile "$FILE" "ENV_HOST"      "$ENV_HOST"
+    remplaceVariableInFile "$FILE" "ENV_MODE"      "$ENV_MODE"
+    remplaceVariableInFile "$FILE" "ENV_CODE"      "$ENV_CODE"
+    remplaceVariableInFile "$FILE" "ENV_NAME"      "$ENV_NAME"
+    remplaceVariableInFile "$FILE" "ENV_FOLDER"    "$ENV_FOLDER"
+    remplaceVariableInFile "$FILE" "WEB_FOLDER"    "$WEB_FOLDER"
+    remplaceVariableInFile "$FILE" "EXPORT_FOLDER" "$EXPORT_FOLDER"
+    remplaceVariableInFile "$FILE" "MAIN_FOLDER"   "$MAIN_FOLDER"
 
     # MySQL
     remplaceVariableInFile "$FILE" "DB_NAME" "$DB_NAME"

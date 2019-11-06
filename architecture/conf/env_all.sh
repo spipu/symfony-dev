@@ -10,6 +10,11 @@ ENV_USER="delivery"
 ENV_FOLDER="/var/www/$ENV_NAME"
 WEB_FOLDER="website"
 
+# Delivery
+GIT_PROJECT="git@github.com:spipu/symfony-dev.git"
+GIT_BRANCH="master"
+RELEASES_TO_KEEP=5
+
 # MySQL
 DB_NAME="$ENV_NAME"
 DB_USER="$ENV_NAME"
@@ -25,6 +30,7 @@ SSL_CERT_PRIVATE="${SSL_CERT_FOLDER}/dev-cert.key"
 
 # Apache
 APACHE_PROTECT_ADMIN="all"
+EXPORT_FOLDER="$ENV_FOLDER/$WEB_FOLDER/var/export/"
 
 # Symfony
 APP_SECRET="ce96b39e4a36d3541ec8b232186267ee"

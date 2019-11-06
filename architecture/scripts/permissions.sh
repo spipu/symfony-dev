@@ -1,14 +1,15 @@
 #!/bin/bash
 
-cd "$( dirname "${BASH_SOURCE[0]}" )"
+set -e
+
+bashSource=$(readlink -f "${BASH_SOURCE[0]}")
+cd "$(dirname "$bashSource")"
 cd ../../
 
 ENV_DO_NOT_GENERATE="yes"
 source ./architecture/scripts/include/init.sh
 
 showTitle "Permissions"
-
-MAIN_FOLDER="${ENV_FOLDER}/${WEB_FOLDER}"
 
 mkdir -p ${MAIN_FOLDER}/var
 chown -R www-data.www-data ${MAIN_FOLDER}/var

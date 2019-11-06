@@ -3,6 +3,7 @@
 cd "$( dirname "${BASH_SOURCE[0]}" )"
 cd ../../../
 
+source ./architecture/scripts/provision/00-delivery-user.sh
 source ./architecture/scripts/provision/01-repo.sh
 source ./architecture/scripts/provision/02-upgrade.sh
 source ./architecture/scripts/provision/03-packages.sh
