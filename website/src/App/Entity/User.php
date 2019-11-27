@@ -4,13 +4,13 @@ declare(strict_types = 1);
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Spipu\UserBundle\Entity\GenericUser;
+use Spipu\UserBundle\Entity\AbstractUser;
 
 /**
+ * @ORM\Entity(repositoryClass="Spipu\UserBundle\Repository\UserRepository")
  * @ORM\Table(name="spipu_user")
- * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
-class User extends GenericUser
+class User extends AbstractUser
 {
     /**
      * @var string|null

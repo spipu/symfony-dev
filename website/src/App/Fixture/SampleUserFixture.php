@@ -5,8 +5,9 @@ namespace App\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\DBAL\Connection;
 use Spipu\CoreBundle\Fixture\FixtureInterface;
-use Spipu\UserBundle\Entity\GenericUser;
-use Spipu\UserBundle\Service\ModuleConfiguration;
+use Spipu\UserBundle\Entity\UserInterface;
+use Spipu\UserBundle\Repository\UserRepository;
+use Spipu\UserBundle\Service\ModuleConfigurationInterface;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -27,7 +28,7 @@ class SampleUserFixture implements FixtureInterface
     private $encoder;
 
     /**
-     * @var ModuleConfiguration
+     * @var ModuleConfigurationInterface
      */
     private $moduleConfiguration;
 
@@ -35,6 +36,11 @@ class SampleUserFixture implements FixtureInterface
      * @var Connection
      */
     private $connection;
+
+    /**
+     * @var UserRepository
+     */
+    private $userRepository;
 
     /**
      * @var int
@@ -46,19 +52,22 @@ class SampleUserFixture implements FixtureInterface
      *
      * @param ObjectManager $objectManager
      * @param UserPasswordEncoderInterface $encoder
-     * @param ModuleConfiguration $moduleConfiguration
+     * @param ModuleConfigurationInterface $moduleConfiguration
      * @param Connection $connection
+     * @param UserRepository $userRepository
      */
     public function __construct(
         ObjectManager $objectManager,
         UserPasswordEncoderInterface $encoder,
-        ModuleConfiguration $moduleConfiguration,
-        Connection $connection
+        ModuleConfigurationInterface $moduleConfiguration,
+        Connection $connection,
+        UserRepository $userRepository
     ) {
         $this->objectManager = $objectManager;
         $this->moduleConfiguration = $moduleConfiguration;
         $this->encoder = $encoder;
         $this->connection = $connection;
+        $this->userRepository = $userRepository;
     }
 
     /**
@@ -94,6 +103,7 @@ class SampleUserFixture implements FixtureInterface
         $maxPerStep = 1000;
 
         $progressBar = new ProgressBar($output, $this->maxSteps);
+        $progressBar->minSecondsBetweenRedraws(5);
         $progressBar->start();
 
         for ($step = 0; $step < $this->maxSteps; $step ++) {
@@ -116,7 +126,7 @@ class SampleUserFixture implements FixtureInterface
     {
         $output->writeln("Remove Sample Users");
 
-        $queryBuilder = $this->moduleConfiguration->getRepository()->createQueryBuilder('u');
+        $queryBuilder = $this->userRepository->createQueryBuilder('u');
 
         $queryBuilder->delete($this->moduleConfiguration->getEntityName(), 'u');
         $queryBuilder->where('u.username like :username');
@@ -127,12 +137,12 @@ class SampleUserFixture implements FixtureInterface
 
     /**
      * @param string $identifier
-     * @return GenericUser|null
+     * @return UserInterface|null
      */
-    private function findObject(string $identifier): ?GenericUser
+    private function findObject(string $identifier): ?UserInterface
     {
-        /** @var GenericUser $object */
-        $object = $this->moduleConfiguration->getRepository()->findOneBy(['username' => $identifier]);
+        /** @var UserInterface $object */
+        $object = $this->userRepository->findOneBy(['username' => $identifier]);
 
         return $object;
     }

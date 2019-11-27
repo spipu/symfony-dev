@@ -36,7 +36,7 @@ services:
         arguments:
             - '@doctrine.orm.default_entity_manager'
             - '@security.user_password_encoder.generic'
-            - '@Spipu\UserBundle\Service\ModuleConfiguration'
+            - '@Spipu\UserBundle\Service\ModuleConfigurationInterface'
 
     # Menu Definition
     spipu.ui.service.menu_definition:
@@ -44,11 +44,11 @@ services:
         arguments:
           - '@Spipu\ConfigurationBundle\Service\Manager'
 
-    Spipu\UserBundle\Service\ModuleConfiguration:
+    Spipu\UserBundle\Service\ModuleConfigurationInterface:
+        class: Spipu\UserBundle\Service\ModuleConfiguration
         public: true
         arguments:
             - 'App:User'
             - '\App\Entity\User'
-            - '@App\Repository\UserRepository'
             - '%env(APP_ACCOUNT_CREATION)%'
             - '%env(APP_ACCOUNT_RECOVERY)%'
