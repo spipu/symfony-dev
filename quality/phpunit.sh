@@ -7,7 +7,7 @@ LOG_FOLDER="../quality/build/"
 
 rm -rf ./var-test/
 
-./vendor/bin/phpunit -c ./.phpunit.xml
+./bin/phpunit -c ./.phpunit.xml
 
 echo ""
 echo "Coverage Report: ./quality/build/coverage/index.html"

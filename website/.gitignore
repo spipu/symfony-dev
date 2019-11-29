@@ -3,6 +3,10 @@
 /public/media
 ### < Spipu
 
+### > PhpUnit Bridge
+/bin/.phpunit
+### < Spipu Bridge
+
 ###> symfony/framework-bundle ###
 /.env
 /public/bundles/

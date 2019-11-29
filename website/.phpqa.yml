@@ -24,8 +24,8 @@ phpmetrics:
     git: false
 
 phpunit:
+    binary: bin/phpunit
     allowedErrorsCount: 0
-    binary: null
     config: .phpunit.xml
     reports:
         file: []

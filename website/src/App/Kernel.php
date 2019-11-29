@@ -46,7 +46,10 @@ class Kernel extends BaseKernel
     {
         $container->addResource(new FileResource($this->getProjectDir().'/config/bundles.php'));
         $container->setParameter('container.autowiring.strict_mode', true);
-        $container->setParameter('container.dumper.inline_class_loader', \PHP_VERSION_ID < 70400 || !ini_get('opcache.preload'));
+        $container->setParameter(
+            'container.dumper.inline_class_loader',
+            \PHP_VERSION_ID < 70400 || !ini_get('opcache.preload')
+        );
         $container->setParameter('container.dumper.inline_factories', true);
 
         $confDir = $this->getProjectDir().'/config';
