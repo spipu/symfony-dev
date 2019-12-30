@@ -2,7 +2,7 @@
 
 namespace App\Fixture;
 
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Persistence\ObjectManager;
 use Doctrine\DBAL\Connection;
 use Spipu\CoreBundle\Fixture\FixtureInterface;
 use Spipu\UserBundle\Entity\UserInterface;
