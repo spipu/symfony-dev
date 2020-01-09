@@ -11,7 +11,7 @@ spipu_process:
             product_ids: array
 
         parameters:
-            ws_url_root: "http://symfonydev.lxc/mock/"
+            ws_url_root: "https://symfonydev.lxc/mock/"
             ws_url_path: "stock/"
 
         steps:
