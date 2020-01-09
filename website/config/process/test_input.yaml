@@ -7,8 +7,12 @@ spipu_process:
             can_be_rerun_automatically: true
 
         inputs:
-           firstname:  string
-           lastname:   string
+           firstname:   string
+           lastname:    string
+           test_int:    int
+           test_float:  float
+           test_bool:   bool
+           test_array:  array
 
         parameters:
             my_firstname: "Foo"
