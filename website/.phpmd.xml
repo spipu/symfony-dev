@@ -7,7 +7,9 @@
 
     <description>Spipu rulesets</description>
 
-    <rule ref="rulesets/cleancode.xml"/>
+    <rule ref="rulesets/cleancode.xml">
+        <exclude name="UndefinedVariable"/>
+    </rule>
     <rule ref="rulesets/codesize.xml"/>
     <rule ref="rulesets/design.xml"/>
     <rule ref="rulesets/unusedcode.xml"/>
