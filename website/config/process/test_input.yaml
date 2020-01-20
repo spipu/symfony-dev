@@ -16,6 +16,9 @@ spipu_process:
                 type:    "string"
                 options: Spipu\ProcessBundle\Form\Options\Status
             test_bool:         "bool"
+            test_file:
+                type:    "file"
+                allowed_mime_types: "application/pdf"
             test_array:        "array"
 
         parameters:
