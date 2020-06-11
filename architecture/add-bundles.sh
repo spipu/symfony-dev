@@ -1,14 +1,13 @@
 #!/bin/bash
 
 set -e
-
 bashSource=$(readlink -f "${BASH_SOURCE[0]}")
 cd "$(dirname "$bashSource")"
 cd ../
 
 ENV_TYPE="none"
 ENV_DO_NOT_GENERATE="yes"
-source ./architecture/conf/env.sh
+source ./architecture/scripts/include/init.sh
 
 MAIN_FOLDER="./${WEB_FOLDER}/src/Spipu"
 BASE_GIT="git@github.com:spipu/symfony-bundle"
