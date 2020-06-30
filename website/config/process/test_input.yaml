@@ -12,14 +12,30 @@ spipu_process:
             current_user_name: "string"
             test_int:          "int"
             test_float:        "float"
-            test_option:
-                type:    "string"
-                options: Spipu\ProcessBundle\Form\Options\Status
             test_bool:         "bool"
+            test_array:        "array"
+            test_optional_string:
+                type:     "string"
+                required: false
+            test_option:
+                type:     "string"
+                options:  Spipu\ProcessBundle\Form\Options\Status
+                required: true
+            test_optional_option:
+                type:     "string"
+                options:  Spipu\ProcessBundle\Form\Options\Status
+                required: false
+            test_multi_option:
+                type:     "array"
+                options:  Spipu\ProcessBundle\Form\Options\Status
+                required: true
+            test_optional_multi_option:
+                type:     "array"
+                options:  Spipu\ProcessBundle\Form\Options\Status
+                required: false
             test_file:
                 type:    "file"
                 allowed_mime_types: "application/pdf"
-            test_array:        "array"
 
         parameters:
             my_firstname: "Foo"
