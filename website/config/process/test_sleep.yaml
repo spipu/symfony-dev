@@ -1,0 +1,48 @@
+spipu_process:
+    test_sleep:
+        name: "Test Sleep"
+
+        options:
+            can_be_put_in_queue: true
+            can_be_rerun_automatically: false
+
+        steps:
+            sleep_1:
+                class: Spipu\ProcessBundle\Step\Generic\Sleep
+                parameters:
+                    seconds: 30
+
+            sleep_2:
+                class: Spipu\ProcessBundle\Step\Generic\Sleep
+                parameters:
+                    seconds: 90
+
+            sleep_3:
+                class: Spipu\ProcessBundle\Step\Generic\Sleep
+                parameters:
+                    seconds: 180
+
+            sleep_4:
+                class: Spipu\ProcessBundle\Step\Generic\Sleep
+                parameters:
+                    seconds: 300
+
+            sleep_5:
+                class: Spipu\ProcessBundle\Step\Generic\Sleep
+                parameters:
+                    seconds: 300
+
+            sleep_6:
+                class: Spipu\ProcessBundle\Step\Generic\Sleep
+                parameters:
+                    seconds: 300
+
+            sleep_7:
+                class: Spipu\ProcessBundle\Step\Generic\Sleep
+                parameters:
+                    seconds: 300
+
+            sleep_8:
+                class: Spipu\ProcessBundle\Step\Generic\Sleep
+                parameters:
+                    seconds: 300

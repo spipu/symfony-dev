@@ -9,6 +9,7 @@
         "ext-iconv": "*",
         "ext-json": "*",
         "ext-pdo": "*",
+        "ext-posix": "*",
         "ext-zip": "*",
         "predis/predis": "^1.1",
         "sensio/framework-extra-bundle": "*",
