@@ -1,0 +1,40 @@
+paths:
+    - ./src
+exclude_files: ~
+layers:
+  # Bundle Layers
+  - name: Spipu_Configuration
+    collectors:
+      - type: className
+        regex: Spipu\\ConfigurationBundle\\.*
+  - name: Spipu_Core
+    collectors:
+      - type: className
+        regex: Spipu\\CoreBundle\\.*
+  - name: Spipu_Process
+    collectors:
+      - type: className
+        regex: Spipu\\ProcessBundle\\.*
+  - name: Spipu_Ui
+    collectors:
+      - type: className
+        regex: Spipu\\UiBundle\\.*
+  - name: Spipu_User
+    collectors:
+      - type: className
+        regex: Spipu\\UserBundle\\.*
+
+ruleset:
+  Spipu_Core: ~
+  Spipu_Ui:
+    - Spipu_Core
+  Spipu_User:
+    - Spipu_Core
+    - Spipu_Ui
+  Spipu_Configuration:
+    - Spipu_Core
+    - Spipu_Ui
+  Spipu_Process:
+    - Spipu_Core
+    - Spipu_Ui
+    - Spipu_Configuration

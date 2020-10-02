@@ -182,6 +182,18 @@
             "ref": "fb7e19da7f013d0d422fa9bce16f5c510e27609b"
         }
     },
+    "sensiolabs-de/deptrac-shim": {
+        "version": "0.7",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "0.7",
+            "ref": "1f7e6648916732a736466ccf2caa5b4b4e7f4968"
+        },
+        "files": [
+            "depfile.yaml"
+        ]
+    },
     "sensiolabs/security-checker": {
         "version": "4.0",
         "recipe": {

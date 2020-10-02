@@ -13,6 +13,7 @@
         "ext-zip": "*",
         "predis/predis": "^1.1",
         "sensio/framework-extra-bundle": "*",
+        "sensiolabs-de/deptrac-shim": "^0.8.2",
         "sensiolabs/security-checker": "*",
         "symfony/asset": "*",
         "symfony/console": "*",
