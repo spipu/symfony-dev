@@ -9,16 +9,46 @@
 {% block body %}
     <div class="row">
         <div class="col-12">
-            <div class="card">
+            <div class="card mb-3">
                 <div class="card-header">
-                    Ma homepage
+                    My Homepage
                 </div>
                 <div class="card-body">
-                    Ceci est un test de homepage...
+                    This is a homepage test
                 </div>
                 <div class="card-footer">
-                    footer génial
+                    Great footer
                 </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="card mb-3">
+                <div class="card-header">
+                    Configuration Test
+                </div>
+                <table class="table table-striped table-hover table-sm mb-0">
+                    <tbody>
+                        <tr><th>Password</th></tr>
+                        <tr><td>
+                                Good Password:
+                                {% if configuration.goodPassword %}
+                                    <span class="badge badge-success">Yes</span>
+                                {% else %}
+                                    <span class="badge badge-danger">No</span>
+                                {% endif %}
+                        </td></tr>
+                        <tr><th>File</th></tr>
+                        <tr><td>
+                            {% if 'test.type.file'|get_config %}
+                                {{ 'test.type.file'|get_config }}<br />
+                                <img src="{{ 'test.type.file'|get_config_file_url }}" style="max-width: 100px; max-height: 100px"/>
+                            {% endif %}
+                        </td></tr>
+                        <tr><th>Encrypted</th></tr>
+                        <tr><td>{{ configuration.encrypted }}</td></tr>
+                        <tr><td>{{ configuration.decrypted }}</td></tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

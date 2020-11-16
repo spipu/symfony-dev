@@ -6,9 +6,17 @@ spipu_configuration:
     app.website.name:
         type:     string
         required: true
-        default:  "Demo"
+        default:  "Symfony Dev"
 
-    app.website.logo:
+    test.type.encrypted:
+        type:     encrypted
+        required: true
+
+    test.type.file:
         type: file
         required: false
         file_type: ['jpeg', 'png']
+
+    test.type.password:
+        type:     password
+        required: true
