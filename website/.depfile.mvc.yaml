@@ -45,6 +45,7 @@ ruleset:
     - MVC_Ui
     - MVC_Form
     - MVC_FormOptions
+    - MVC_Validator
   MVC_Entity:
     - MVC_Repository
     - MVC_Validator
