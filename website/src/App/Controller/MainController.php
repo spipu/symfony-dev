@@ -5,6 +5,7 @@ namespace App\Controller;
 
 use Spipu\ConfigurationBundle\Exception\ConfigurationException;
 use Spipu\ConfigurationBundle\Service\Manager as ConfigurationManager;
+use Spipu\CoreBundle\Service\EncryptorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -22,8 +23,13 @@ class MainController extends AbstractController
      * @throws ConfigurationException
      */
     public function home(
-        ConfigurationManager $configurationManager
+        ConfigurationManager $configurationManager,
+        EncryptorInterface $encryptor
     ): Response {
+        $originalValue  = 'My String To Encrypt';
+        $encryptedValue = $encryptor->encrypt($originalValue);
+        $decryptedValue = $encryptor->decrypt($encryptedValue);
+
         return $this->render(
             'main/home.html.twig',
             [
@@ -31,7 +37,12 @@ class MainController extends AbstractController
                     'goodPassword' => $configurationManager->isPasswordValid('test.type.password', 'password'),
                     'encrypted'    => $configurationManager->get('test.type.encrypted'),
                     'decrypted'    => $configurationManager->getEncrypted('test.type.encrypted'),
-                ]
+                ],
+                'encryptor' => [
+                    'original'  => $originalValue,
+                    'encrypted' => $encryptedValue,
+                    'decrypted' => $decryptedValue,
+                ],
             ]
         );
     }

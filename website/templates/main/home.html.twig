@@ -51,5 +51,22 @@
                 </table>
             </div>
         </div>
+        <div class="col-12">
+            <div class="card mb-3">
+                <div class="card-header">
+                    Encryptor Test
+                </div>
+                <table class="table table-striped table-hover table-sm mb-0">
+                    <tbody>
+                        <tr><th>Original</th></tr>
+                        <tr><td>{{ encryptor.original }}</td></tr>
+                        <tr><th>Encrypted</th></tr>
+                        <tr><td>{{ encryptor.encrypted }}</td></tr>
+                        <tr><th>Decrypted</th></tr>
+                        <tr><td>{{ encryptor.decrypted }}</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 {% endblock body %}
