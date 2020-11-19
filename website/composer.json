@@ -10,6 +10,7 @@
         "ext-json": "*",
         "ext-pdo": "*",
         "ext-posix": "*",
+        "ext-sodium": "*",
         "ext-zip": "*",
         "predis/predis": "^1.1",
         "sensio/framework-extra-bundle": "*",

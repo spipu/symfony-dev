@@ -8,6 +8,7 @@ fi
 
 mkdir -p /etc/symfony
 createFromTemplate "$CONFIG_FOLDER/symfony/app.yaml" "/etc/symfony/$ENV_NAME.yaml"
+remplaceVariableInFile "/etc/symfony/$ENV_NAME.yaml" "APP_ENCRYPTOR_KEY_PAIR" "$APP_ENCRYPTOR_KEY_PAIR"
 
 chmod 750 /etc/symfony
 chmod 640 /etc/symfony/$ENV_NAME.yaml

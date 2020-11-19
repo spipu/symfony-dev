@@ -19,6 +19,7 @@ class MainController extends AbstractController
     /**
      * @Route("/", name="app_home", methods="GET")
      * @param ConfigurationManager $configurationManager
+     * @param EncryptorInterface $encryptor
      * @return Response
      * @throws ConfigurationException
      */

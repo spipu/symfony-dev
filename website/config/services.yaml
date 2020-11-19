@@ -8,6 +8,8 @@ parameters:
     # needed for functional tests
     env(APP_ACCOUNT_CREATION): "true"
     env(APP_ACCOUNT_RECOVERY): "true"
+    # Encryptor Configuration
+    spipu.core.encryptor.key_pair: "%APP_SETTINGS_APP_ENCRYPTOR_KEY_PAIR%"
 
 services:
     # default configuration for services in *this* file
