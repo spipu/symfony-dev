@@ -11,10 +11,16 @@ mkdir -p $LOG_FOLDER
 # Cleanup
 rm -rf ./var-test
 
+# Create temporary Key Pair
+APP_ENCRYPTOR_KEY_PAIR=$(php -r "echo sodium_bin2base64(sodium_crypto_box_keypair(), SODIUM_BASE64_VARIANT_ORIGINAL);")
+export APP_ENCRYPTOR_KEY_PAIR
+
 # Tests - PhpUnit
-export APP_ENCRYPTOR_KEY_PAIR="x/Pd7jf0DwDnoLBQqqX15cSyNsP777YDDow662IihulwvaBIsSjT3/qR6+JR2glrXh5jQQJq6Ex9OolQcFFdIQ=="
 ./bin/phpunit -c ./.phpunit.xml
-export APP_ENCRYPTOR_KEY_PAIR=""
+
+# Clean temporary Key Pair
+APP_ENCRYPTOR_KEY_PAIR=""
+export APP_ENCRYPTOR_KEY_PAIR
 
 # Output
 firefox "${LOG_FOLDER}coverage/index.html"
