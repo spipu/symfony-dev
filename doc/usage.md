@@ -2,6 +2,12 @@
 
 ## Dev Environment
 
+In first create a symbolic link to the php version architecture folder that you want to use:
+
+```shell script
+ln -s ./architecture-php7.4 ./architecture
+```
+
 | Site | Url | Comment |
 |------|-----|---------|
 | Web     | https://symfonydev.lxc/     | Personal account must be used for log-in | 
