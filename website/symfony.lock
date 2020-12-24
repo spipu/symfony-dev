@@ -98,6 +98,9 @@
     "egulias/email-validator": {
         "version": "2.1.6"
     },
+    "friendsofphp/proxy-manager-lts": {
+        "version": "v1.0.0"
+    },
     "grasmash/expander": {
         "version": "1.0.0"
     },
@@ -106,6 +109,15 @@
     },
     "jakub-onderka/php-parallel-lint": {
         "version": "v1.0.0"
+    },
+    "laminas/laminas-code": {
+        "version": "3.4.1"
+    },
+    "laminas/laminas-eventmanager": {
+        "version": "3.2.1"
+    },
+    "laminas/laminas-zendframework-bridge": {
+        "version": "1.1.1"
     },
     "league/container": {
         "version": "2.4.1"
@@ -413,6 +425,9 @@
     },
     "symfony/property-info": {
         "version": "v4.1.7"
+    },
+    "symfony/proxy-manager-bridge": {
+        "version": "v4.4.18"
     },
     "symfony/routing": {
         "version": "4.0",
