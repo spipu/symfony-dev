@@ -41,6 +41,7 @@ class GridSubscriber implements EventSubscriberInterface
                     ->setIcon('edit')
                     ->setNeededRole('ROLE_ADMIN_MANAGE_USER_EDIT')
                     ->setCssClass('success')
-            );
+            )
+        ;
     }
 }
