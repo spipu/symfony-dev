@@ -15,7 +15,6 @@
         "predis/predis": "^1.1",
         "sensio/framework-extra-bundle": "*",
         "sensiolabs-de/deptrac-shim": "^0.8.2",
-        "sensiolabs/security-checker": "*",
         "symfony/asset": "*",
         "symfony/console": "*",
         "symfony/expression-language": "*",
@@ -107,8 +106,7 @@
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
             "assets:install %PUBLIC_DIR%": "symfony-cmd",
-            "spipu:assets:install %PUBLIC_DIR%": "symfony-cmd",
-            "security-checker security:check": "script"
+            "spipu:assets:install %PUBLIC_DIR%": "symfony-cmd"
         },
         "post-install-cmd": [
             "@auto-scripts"
