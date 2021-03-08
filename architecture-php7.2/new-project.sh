@@ -44,7 +44,6 @@ chmod +x ${PROJECT_FOLDER}/bin/*
 echo ""
 
 echo "Add useful Packages"
-composer require       sensiolabs/security-checker      -d ${PROJECT_FOLDER} --no-update
 composer remove        symfony/dotenv                   -d ${PROJECT_FOLDER} --no-update
 composer remove  --dev symfony/test-pack                -d ${PROJECT_FOLDER} --no-update
 composer remove  --dev symfony/web-server-bundle        -d ${PROJECT_FOLDER} --no-update
