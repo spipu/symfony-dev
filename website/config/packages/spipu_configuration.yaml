@@ -16,6 +16,7 @@ spipu_configuration:
         type: file
         required: false
         file_type: ['jpeg', 'png']
+        help: "Only JPEG and PNG files are allowed"
 
     test.type.password:
         type:     password
