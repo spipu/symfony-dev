@@ -40,6 +40,9 @@ spipu_process:
         parameters:
             my_firstname: "Foo"
             my_lastname:  "Bar"
+            my_array:
+                - "First Value"
+                - "Second Value"
 
         steps:
             name_from:
