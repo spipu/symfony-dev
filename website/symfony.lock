@@ -110,9 +110,6 @@
     "grasmash/yaml-expander": {
         "version": "1.4.0"
     },
-    "jakub-onderka/php-parallel-lint": {
-        "version": "v1.0.0"
-    },
     "laminas/laminas-code": {
         "version": "3.4.1"
     },
@@ -143,6 +140,9 @@
     "php": {
         "version": "7.2.24"
     },
+    "php-parallel-lint/php-parallel-lint": {
+        "version": "v1.3.0"
+    },
     "phpdocumentor/reflection-common": {
         "version": "1.0.1"
     },
@@ -160,6 +160,9 @@
     },
     "phpmetrics/phpmetrics": {
         "version": "v2.4.1"
+    },
+    "phpunit/php-file-iterator": {
+        "version": "3.0.5"
     },
     "phpunit/php-timer": {
         "version": "2.0.0"
@@ -179,8 +182,20 @@
     "psr/log": {
         "version": "1.0.2"
     },
-    "sebastian/finder-facade": {
-        "version": "1.2.2"
+    "qossmic/deptrac-shim": {
+        "version": "0.7",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "0.7",
+            "ref": "2d7d934257e33fd83c72f5da5b5b1393efa7e0c6"
+        },
+        "files": [
+            "depfile.yaml"
+        ]
+    },
+    "sebastian/cli-parser": {
+        "version": "1.0.1"
     },
     "sebastian/phpcpd": {
         "version": "4.1.0"
@@ -196,18 +211,6 @@
             "version": "5.2",
             "ref": "fb7e19da7f013d0d422fa9bce16f5c510e27609b"
         }
-    },
-    "sensiolabs-de/deptrac-shim": {
-        "version": "0.7",
-        "recipe": {
-            "repo": "github.com/symfony/recipes-contrib",
-            "branch": "master",
-            "version": "0.7",
-            "ref": "1f7e6648916732a736466ccf2caa5b4b4e7f4968"
-        },
-        "files": [
-            "depfile.yaml"
-        ]
     },
     "squizlabs/php_codesniffer": {
         "version": "3.0",
@@ -521,9 +524,6 @@
     },
     "symfony/yaml": {
         "version": "v4.1.7"
-    },
-    "theseer/fdomdocument": {
-        "version": "1.6.6"
     },
     "twbs/bootstrap": {
         "version": "v4.2.1"
