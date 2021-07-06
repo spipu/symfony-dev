@@ -7,7 +7,6 @@ spipu_process:
             can_be_rerun_automatically: false
             process_lock:
                 - "test_sleep"
-                - "test_hello"
 
         steps:
             sleep_1:
