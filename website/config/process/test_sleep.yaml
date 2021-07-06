@@ -5,6 +5,9 @@ spipu_process:
         options:
             can_be_put_in_queue: true
             can_be_rerun_automatically: false
+            process_lock:
+                - "test_sleep"
+                - "test_hello"
 
         steps:
             sleep_1:
