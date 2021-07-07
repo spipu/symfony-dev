@@ -16,11 +16,13 @@ spipu_process:
 
             sleep_2:
                 class: Spipu\ProcessBundle\Step\Generic\Sleep
+                ignore_in_progress: true
                 parameters:
                     seconds: 90
 
             sleep_3:
                 class: Spipu\ProcessBundle\Step\Generic\Sleep
+                ignore_in_progress: true
                 parameters:
                     seconds: 180
 
@@ -39,12 +41,3 @@ spipu_process:
                 parameters:
                     seconds: 300
 
-            sleep_7:
-                class: Spipu\ProcessBundle\Step\Generic\Sleep
-                parameters:
-                    seconds: 300
-
-            sleep_8:
-                class: Spipu\ProcessBundle\Step\Generic\Sleep
-                parameters:
-                    seconds: 300
