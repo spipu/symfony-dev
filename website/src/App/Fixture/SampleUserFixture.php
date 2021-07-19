@@ -10,7 +10,7 @@ use Spipu\UserBundle\Repository\UserRepository;
 use Spipu\UserBundle\Service\ModuleConfigurationInterface;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 /**
  * Users Creation
@@ -23,7 +23,7 @@ class SampleUserFixture implements FixtureInterface
     private $objectManager;
 
     /**
-     * @var UserPasswordEncoderInterface
+     * @var UserPasswordHasherInterface
      */
     private $encoder;
 
@@ -51,14 +51,14 @@ class SampleUserFixture implements FixtureInterface
      * PHP constructor.
      *
      * @param ObjectManager $objectManager
-     * @param UserPasswordEncoderInterface $encoder
+     * @param UserPasswordHasherInterface $encoder
      * @param ModuleConfigurationInterface $moduleConfiguration
      * @param Connection $connection
      * @param UserRepository $userRepository
      */
     public function __construct(
         ObjectManager $objectManager,
-        UserPasswordEncoderInterface $encoder,
+        UserPasswordHasherInterface $encoder,
         ModuleConfigurationInterface $moduleConfiguration,
         Connection $connection,
         UserRepository $userRepository
@@ -96,7 +96,7 @@ class SampleUserFixture implements FixtureInterface
         $object
             ->setUsername($data['username'])
             ->setEmail($data['email'])
-            ->setPassword($this->encoder->encodePassword($object, $data['password']));
+            ->setPassword($this->encoder->hashPassword($object, $data['password']));
         $password = $object->getPassword();
         unset($object);
 

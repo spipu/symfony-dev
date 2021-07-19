@@ -20,6 +20,9 @@
     "consolidation/self-update": {
         "version": "1.1.5"
     },
+    "container-interop/container-interop": {
+        "version": "1.2.0"
+    },
     "dflydev/dot-access-data": {
         "version": "v1.1.0"
     },
@@ -167,6 +170,9 @@
     "psr/container": {
         "version": "1.0.0"
     },
+    "psr/event-dispatcher": {
+        "version": "1.0.0"
+    },
     "psr/link": {
         "version": "1.0.0"
     },
@@ -238,9 +244,6 @@
     },
     "symfony/css-selector": {
         "version": "v4.2.3"
-    },
-    "symfony/debug": {
-        "version": "v4.1.7"
     },
     "symfony/debug-bundle": {
         "version": "4.1",
@@ -320,9 +323,6 @@
     "symfony/http-kernel": {
         "version": "v4.1.7"
     },
-    "symfony/inflector": {
-        "version": "v4.1.7"
-    },
     "symfony/intl": {
         "version": "v4.1.7"
     },
@@ -368,6 +368,9 @@
     "symfony/orm-pack": {
         "version": "v1.0.5"
     },
+    "symfony/password-hasher": {
+        "version": "v5.3.3"
+    },
     "symfony/phpunit-bridge": {
         "version": "4.3",
         "recipe": {
@@ -383,6 +386,9 @@
             "phpunit.xml.dist",
             "tests/.gitignore"
         ]
+    },
+    "symfony/polyfill-intl-grapheme": {
+        "version": "v1.23.0"
     },
     "symfony/polyfill-intl-icu": {
         "version": "v1.10.0"
@@ -461,6 +467,9 @@
     },
     "symfony/stopwatch": {
         "version": "v4.1.7"
+    },
+    "symfony/string": {
+        "version": "v5.3.3"
     },
     "symfony/translation": {
         "version": "3.3",

@@ -37,7 +37,7 @@ services:
         tags: ['spipu.fixture']
         arguments:
             - '@doctrine.orm.default_entity_manager'
-            - '@security.user_password_encoder.generic'
+            - '@Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface'
             - '@Spipu\UserBundle\Service\ModuleConfigurationInterface'
 
     # Menu Definition
@@ -54,3 +54,5 @@ services:
             - '\App\Entity\User'
             - '%env(APP_ACCOUNT_CREATION)%'
             - '%env(APP_ACCOUNT_RECOVERY)%'
+
+    Symfony\Component\DependencyInjection\ContainerInterface: '@service_container'
