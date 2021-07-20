@@ -3,22 +3,22 @@
         "version": "1.4.0"
     },
     "consolidation/annotated-command": {
-        "version": "2.11.2"
+        "version": "4.2.3"
     },
     "consolidation/config": {
-        "version": "1.1.1"
+        "version": "2.0.1"
     },
     "consolidation/log": {
-        "version": "1.1.1"
+        "version": "2.0.2"
     },
     "consolidation/output-formatters": {
-        "version": "3.4.0"
+        "version": "4.1.2"
     },
     "consolidation/robo": {
-        "version": "1.4.3"
+        "version": "2.2.2"
     },
     "consolidation/self-update": {
-        "version": "1.1.5"
+        "version": "1.2.0"
     },
     "container-interop/container-interop": {
         "version": "1.2.0"
@@ -96,7 +96,7 @@
         "version": "1.1.0"
     },
     "edgedesign/phpqa": {
-        "version": "v1.20.0"
+        "version": "v1.25.0"
     },
     "egulias/email-validator": {
         "version": "2.1.6"
@@ -114,7 +114,7 @@
         "version": "3.4.1"
     },
     "league/container": {
-        "version": "2.4.1"
+        "version": "2.5.0"
     },
     "monolog/monolog": {
         "version": "1.23.0"
@@ -147,7 +147,7 @@
         "version": "0.4.0"
     },
     "phploc/phploc": {
-        "version": "4.0.1"
+        "version": "7.0.2"
     },
     "phpmd/phpmd": {
         "version": "2.6.0"

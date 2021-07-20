@@ -35,16 +35,12 @@ services:
     App\Fixture\SampleUserFixture:
         class: App\Fixture\SampleUserFixture
         tags: ['spipu.fixture']
-        arguments:
-            - '@doctrine.orm.default_entity_manager'
-            - '@Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface'
-            - '@Spipu\UserBundle\Service\ModuleConfigurationInterface'
+        autowire: true
 
     # Menu Definition
     spipu.ui.service.menu_definition:
         class: 'App\Service\MenuDefinition'
-        arguments:
-          - '@Spipu\ConfigurationBundle\Service\Manager'
+        autowire: true
 
     Spipu\UserBundle\Service\ModuleConfigurationInterface:
         class: Spipu\UserBundle\Service\ModuleConfiguration
@@ -54,5 +50,3 @@ services:
             - '\App\Entity\User'
             - '%env(APP_ACCOUNT_CREATION)%'
             - '%env(APP_ACCOUNT_RECOVERY)%'
-
-    Symfony\Component\DependencyInjection\ContainerInterface: '@service_container'

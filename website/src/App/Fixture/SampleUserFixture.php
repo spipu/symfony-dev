@@ -2,7 +2,6 @@
 
 namespace App\Fixture;
 
-use Doctrine\Persistence\ObjectManager;
 use Doctrine\DBAL\Connection;
 use Spipu\CoreBundle\Fixture\FixtureInterface;
 use Spipu\UserBundle\Entity\UserInterface;
@@ -17,15 +16,10 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
  */
 class SampleUserFixture implements FixtureInterface
 {
-        /**
-     * @var ObjectManager
-     */
-    private $objectManager;
-
     /**
      * @var UserPasswordHasherInterface
      */
-    private $encoder;
+    private $hasher;
 
     /**
      * @var ModuleConfigurationInterface
@@ -50,22 +44,19 @@ class SampleUserFixture implements FixtureInterface
     /**
      * PHP constructor.
      *
-     * @param ObjectManager $objectManager
-     * @param UserPasswordHasherInterface $encoder
+     * @param UserPasswordHasherInterface $hasher
      * @param ModuleConfigurationInterface $moduleConfiguration
      * @param Connection $connection
      * @param UserRepository $userRepository
      */
     public function __construct(
-        ObjectManager $objectManager,
-        UserPasswordHasherInterface $encoder,
+        UserPasswordHasherInterface $hasher,
         ModuleConfigurationInterface $moduleConfiguration,
         Connection $connection,
         UserRepository $userRepository
     ) {
-        $this->objectManager = $objectManager;
+        $this->hasher = $hasher;
         $this->moduleConfiguration = $moduleConfiguration;
-        $this->encoder = $encoder;
         $this->connection = $connection;
         $this->userRepository = $userRepository;
     }
@@ -96,7 +87,7 @@ class SampleUserFixture implements FixtureInterface
         $object
             ->setUsername($data['username'])
             ->setEmail($data['email'])
-            ->setPassword($this->encoder->hashPassword($object, $data['password']));
+            ->setPassword($this->hasher->hashPassword($object, $data['password']));
         $password = $object->getPassword();
         unset($object);
 
@@ -141,10 +132,7 @@ class SampleUserFixture implements FixtureInterface
      */
     private function findObject(string $identifier): ?UserInterface
     {
-        /** @var UserInterface $object */
-        $object = $this->userRepository->findOneBy(['username' => $identifier]);
-
-        return $object;
+        return $this->userRepository->findOneBy(['username' => $identifier]);
     }
 
     /**
