@@ -1,4 +1,5 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 
 namespace App\Fixture;
 
@@ -73,7 +74,7 @@ class SampleUserFixture implements FixtureInterface
      * @param OutputInterface $output
      * @return void
      */
-    public function load(OutputInterface $output) : void
+    public function load(OutputInterface $output): void
     {
         $output->writeln("Add Sample Users");
 
@@ -97,7 +98,7 @@ class SampleUserFixture implements FixtureInterface
         $progressBar->minSecondsBetweenRedraws(5);
         $progressBar->start();
 
-        for ($step = 0; $step < $this->maxSteps; $step ++) {
+        for ($step = 0; $step < $this->maxSteps; $step++) {
             $progressBar->advance();
             $list = [];
             for ($key = 1; $key <= $maxPerStep; $key++) {
@@ -113,7 +114,7 @@ class SampleUserFixture implements FixtureInterface
      * @param OutputInterface $output
      * @return void
      */
-    public function remove(OutputInterface $output) : void
+    public function remove(OutputInterface $output): void
     {
         $output->writeln("Remove Sample Users");
 
@@ -143,11 +144,11 @@ class SampleUserFixture implements FixtureInterface
     protected function getData(int $key, string $password): array
     {
         return [
-            'email'        => 'user_'.$key.'@test.fr',
-            'username'     => 'user_'.$key,
+            'email'        => 'user_' . $key . '@test.fr',
+            'username'     => 'user_' . $key,
             'password'     => $password,
-            'first_name'   => 'User '.$key,
-            'last_name'    => 'User '.$key,
+            'first_name'   => 'User ' . $key,
+            'last_name'    => 'User ' . $key,
             'roles'        => json_encode(['ROLE_USER']),
             'nb_login'     => 0,
             'nb_try_login' => 0,
