@@ -1,10 +1,21 @@
 <?php
+
+/**
+ * This file is a demo file for Spipu Bundles
+ *
+ * (c) Laurent Minguet
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace App\Event;
 
 use Spipu\UiBundle\Entity\Grid;
 use Spipu\UiBundle\Event\GridDefinitionEvent;
+use Spipu\UiBundle\Exception\GridException;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
@@ -25,7 +36,7 @@ class GridSubscriber implements EventSubscriberInterface
     /**
      * @param GridDefinitionEvent $event
      * @return void
-     * @throws \Spipu\UiBundle\Exception\GridException
+     * @throws GridException
      */
     public function onGrid(GridDefinitionEvent $event): void
     {

@@ -1,4 +1,14 @@
 <?php
+
+/**
+ * This file is a demo file for Spipu Bundles
+ *
+ * (c) Laurent Minguet
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace App\Event;
@@ -6,6 +16,7 @@ namespace App\Event;
 use App\Entity\User;
 use Spipu\UiBundle\Entity\Form\Field;
 use Spipu\UiBundle\Event\FormDefinitionEvent;
+use Spipu\UiBundle\Exception\FormException;
 use Symfony\Component\Form\Extension\Core\Type;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
@@ -40,7 +51,7 @@ class FormSubscriber implements EventSubscriberInterface
     /**
      * @param FormDefinitionEvent $event
      * @return void
-     * @throws \Spipu\UiBundle\Exception\FormException
+     * @throws FormException
      */
     public function onUser(FormDefinitionEvent $event): void
     {

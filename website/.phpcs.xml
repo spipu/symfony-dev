@@ -4,7 +4,6 @@
          name="Spipu">
     <description>Spipu coding standard.</description>
     <rule ref="PSR12">
-        <exclude name="PSR12.Files.FileHeader.SpacingAfterBlock" />
         <exclude name="PSR12.Operators.OperatorSpacing.NoSpaceBefore" />
         <exclude name="PSR12.Operators.OperatorSpacing.NoSpaceAfter" />
     </rule>
