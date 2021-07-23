@@ -1,6 +1,5 @@
 doctrine:
     dbal:
-        # configure these for your database server
         driver: 'pdo_mysql'
         server_version: 'mariadb-10.4.17'
         url: '%APP_SETTINGS_DATABASE_URL%'
