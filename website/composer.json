@@ -15,12 +15,12 @@
         "ext-sodium": "*",
         "ext-zip": "*",
         "composer/package-versions-deprecated": "*",
-        "doctrine/annotations": "^1.0",
+        "doctrine/annotations": "*",
         "doctrine/doctrine-bundle": "*",
         "doctrine/doctrine-migrations-bundle": "*",
         "doctrine/orm": "*",
         "phpdocumentor/reflection-docblock": "*",
-        "predis/predis": "^1.1",
+        "predis/predis": "*",
         "sensio/framework-extra-bundle": "*",
         "qossmic/deptrac-shim": "*",
         "symfony/asset": "*",
@@ -49,11 +49,11 @@
         "symfony/web-link": "*",
         "symfony/yaml": "*",
         "twbs/bootstrap": "^4.0",
-        "twig/extra-bundle": "^2.12|^3.0",
-        "twig/twig": "^2.12|^3.0"
+        "twig/extra-bundle": "^3.0",
+        "twig/twig": "^3.0"
     },
     "require-dev": {
-        "edgedesign/phpqa": "^1.25",
+        "edgedesign/phpqa": "*",
         "php-parallel-lint/php-parallel-lint": "*",
         "pdepend/pdepend": "*",
         "phpmd/phpmd": "*",
@@ -97,6 +97,11 @@
             "ext-pdo_mysql": "1",
             "ext-soap": "1",
             "lib-libxml": "1"
+        },
+        "allow-plugins": {
+            "composer/package-versions-deprecated": true,
+            "symfony/flex": true,
+            "symfony/runtime": true
         }
     },
     "autoload": {
