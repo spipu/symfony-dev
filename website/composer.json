@@ -12,9 +12,15 @@
         "ext-posix": "*",
         "ext-sodium": "*",
         "ext-zip": "*",
-        "predis/predis": "^1.1",
-        "sensio/framework-extra-bundle": "*",
+        "composer/package-versions-deprecated": "*",
+        "doctrine/annotations": "^1.0",
+        "doctrine/doctrine-bundle": "^2.5",
+        "doctrine/doctrine-migrations-bundle": "^3.2",
+        "doctrine/orm": "^2.10",
+        "phpdocumentor/reflection-docblock": "*",
+        "predis/predis": "*",
         "qossmic/deptrac-shim": "*",
+        "sensio/framework-extra-bundle": "*",
         "symfony/asset": "*",
         "symfony/console": "*",
         "symfony/expression-language": "*",
@@ -26,32 +32,37 @@
         "symfony/mailer": "*",
         "symfony/mime": "*",
         "symfony/monolog-bundle": "*",
-        "symfony/orm-pack": "*",
         "symfony/process": "*",
+        "symfony/property-access": "*",
+        "symfony/property-info": "*",
+        "symfony/proxy-manager-bridge": "*",
         "symfony/security-bundle": "*",
-        "symfony/serializer-pack": "*",
+        "symfony/serializer": "*",
         "symfony/translation": "*",
-        "symfony/twig-pack": "*",
+        "symfony/twig-bundle": "*",
         "symfony/validator": "*",
         "symfony/web-link": "*",
         "symfony/yaml": "*",
-        "twbs/bootstrap": "^4.0"
+        "twbs/bootstrap": "^4.0",
+        "twig/extra-bundle": "^3.0",
+        "twig/twig": "^3.0"
     },
     "require-dev": {
-        "edgedesign/phpqa": "^1.23",
-        "php-parallel-lint/php-parallel-lint": "*",
+        "edgedesign/phpqa": "*",
         "pdepend/pdepend": "*",
+        "php-parallel-lint/php-parallel-lint": "*",
         "phpmd/phpmd": "*",
         "phpmetrics/phpmetrics": "*",
         "sebastian/phpcpd": "*",
         "squizlabs/php_codesniffer": "*",
         "symfony/browser-kit": "*",
         "symfony/css-selector": "*",
-        "symfony/debug-pack": "*",
+        "symfony/debug-bundle": "*",
         "symfony/dotenv": "*",
         "symfony/maker-bundle": "*",
         "symfony/phpunit-bridge": "*",
-        "symfony/profiler-pack": "*"
+        "symfony/stopwatch": "*",
+        "symfony/web-profiler-bundle": "*"
     },
     "config": {
         "preferred-install": {
@@ -78,6 +89,10 @@
             "ext-pdo_mysql": "1",
             "ext-soap": "1",
             "lib-libxml": "1"
+        },
+        "allow-plugins": {
+            "composer/package-versions-deprecated": true,
+            "symfony/flex": true
         }
     },
     "autoload": {
