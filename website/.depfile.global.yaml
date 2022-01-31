@@ -1,25 +1,26 @@
-paths:
-    - ./src
-exclude_files: ~
-layers:
-  # APP Layer
-  - name: App
-    collectors:
-      - type: className
-        regex: App\\.*
+parameters:
+  paths:
+      - ./src
+  exclude_files: ~
+  layers:
+    # APP Layer
+    - name: App
+      collectors:
+        - type: className
+          regex: App\\.*
 
-  # Spipu Layer
-  - name: Spipu
-    collectors:
-      - type: className
-        regex: Spipu\\.*
+    # Spipu Layer
+    - name: Spipu
+      collectors:
+        - type: className
+          regex: Spipu\\.*
 
-ruleset:
-  # Global
-  App:
-    - Spipu
-  Spipu: ~
+  ruleset:
+    # Global
+    App:
+      - Spipu
+    Spipu: ~
 
-skip_violations:
-  Spipu\CoreBundle\Tests\Kernel:
-    - App\Kernel
+  skip_violations:
+    Spipu\CoreBundle\Tests\Kernel:
+      - App\Kernel
