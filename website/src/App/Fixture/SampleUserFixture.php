@@ -203,7 +203,7 @@ class SampleUserFixture implements FixtureInterface
             implode(',', $list)
         );
 
-        $this->connection->getWrappedConnection()->exec($query);
+        $this->connection->executeQuery($query);
     }
 
     /**
