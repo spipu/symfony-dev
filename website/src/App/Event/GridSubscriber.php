@@ -15,7 +15,6 @@ namespace App\Event;
 
 use Spipu\UiBundle\Entity\Grid;
 use Spipu\UiBundle\Event\GridDefinitionEvent;
-use Spipu\UiBundle\Exception\GridException;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
@@ -36,13 +35,13 @@ class GridSubscriber implements EventSubscriberInterface
     /**
      * @param GridDefinitionEvent $event
      * @return void
-     * @throws GridException
      */
     public function onGrid(GridDefinitionEvent $event): void
     {
         $grid = $event->getGridDefinition();
 
         $grid
+            ->setPersonalize(true)
             ->addColumn(
                 (new Grid\Column('middle_name', 'spipu.user.field.middle_name', 'middleName', 35))
                         ->setType((new Grid\ColumnType(Grid\ColumnType::TYPE_TEXT)))
