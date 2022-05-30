@@ -1,7 +1,6 @@
 parameters:
   paths:
     - ./src
-  exclude_files: ~
   layers:
     # MVC Layers
     - name: MVC_Controller
