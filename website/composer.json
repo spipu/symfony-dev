@@ -112,6 +112,7 @@
         "symfony/polyfill-php71": "*",
         "symfony/polyfill-php70": "*",
         "symfony/polyfill-php56": "*",
+        "spipu/core-bundle": "*",
         "spipu/ui-bundle": "*",
         "spipu/configuration-bundle": "*",
         "spipu/user-bundle": "*",
