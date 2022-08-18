@@ -1,7 +1,7 @@
 parameters:
   paths:
       - ./src
-  exclude_files: ~
+
   layers:
     # Bundle Layers
     - name: Spipu_Configuration
