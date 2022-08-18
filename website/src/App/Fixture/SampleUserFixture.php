@@ -1,8 +1,18 @@
-<?php declare(strict_types=1);
+<?php
+
+/**
+ * This file is a demo file for Spipu Bundles
+ *
+ * (c) Laurent Minguet
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+declare(strict_types=1);
 
 namespace App\Fixture;
 
-use Doctrine\Persistence\ObjectManager;
 use Doctrine\DBAL\Connection;
 use Spipu\CoreBundle\Fixture\FixtureInterface;
 use Spipu\UserBundle\Entity\UserInterface;
@@ -10,22 +20,17 @@ use Spipu\UserBundle\Repository\UserRepository;
 use Spipu\UserBundle\Service\ModuleConfigurationInterface;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 /**
  * Users Creation
  */
 class SampleUserFixture implements FixtureInterface
 {
-        /**
-     * @var ObjectManager
-     */
-    private $objectManager;
-
     /**
-     * @var UserPasswordEncoderInterface
+     * @var UserPasswordHasherInterface
      */
-    private $encoder;
+    private $hasher;
 
     /**
      * @var ModuleConfigurationInterface
@@ -50,22 +55,19 @@ class SampleUserFixture implements FixtureInterface
     /**
      * PHP constructor.
      *
-     * @param ObjectManager $objectManager
-     * @param UserPasswordEncoderInterface $encoder
+     * @param UserPasswordHasherInterface $hasher
      * @param ModuleConfigurationInterface $moduleConfiguration
      * @param Connection $connection
      * @param UserRepository $userRepository
      */
     public function __construct(
-        ObjectManager $objectManager,
-        UserPasswordEncoderInterface $encoder,
+        UserPasswordHasherInterface $hasher,
         ModuleConfigurationInterface $moduleConfiguration,
         Connection $connection,
         UserRepository $userRepository
     ) {
-        $this->objectManager = $objectManager;
+        $this->hasher = $hasher;
         $this->moduleConfiguration = $moduleConfiguration;
-        $this->encoder = $encoder;
         $this->connection = $connection;
         $this->userRepository = $userRepository;
     }
@@ -82,7 +84,7 @@ class SampleUserFixture implements FixtureInterface
      * @param OutputInterface $output
      * @return void
      */
-    public function load(OutputInterface $output) : void
+    public function load(OutputInterface $output): void
     {
         $output->writeln("Add Sample Users");
 
@@ -96,7 +98,7 @@ class SampleUserFixture implements FixtureInterface
         $object
             ->setUsername($data['username'])
             ->setEmail($data['email'])
-            ->setPassword($this->encoder->encodePassword($object, $data['password']));
+            ->setPassword($this->hasher->hashPassword($object, $data['password']));
         $password = $object->getPassword();
         unset($object);
 
@@ -106,7 +108,7 @@ class SampleUserFixture implements FixtureInterface
         $progressBar->minSecondsBetweenRedraws(5);
         $progressBar->start();
 
-        for ($step = 0; $step < $this->maxSteps; $step ++) {
+        for ($step = 0; $step < $this->maxSteps; $step++) {
             $progressBar->advance();
             $list = [];
             for ($key = 1; $key <= $maxPerStep; $key++) {
@@ -122,7 +124,7 @@ class SampleUserFixture implements FixtureInterface
      * @param OutputInterface $output
      * @return void
      */
-    public function remove(OutputInterface $output) : void
+    public function remove(OutputInterface $output): void
     {
         $output->writeln("Remove Sample Users");
 
@@ -141,10 +143,7 @@ class SampleUserFixture implements FixtureInterface
      */
     private function findObject(string $identifier): ?UserInterface
     {
-        /** @var UserInterface $object */
-        $object = $this->userRepository->findOneBy(['username' => $identifier]);
-
-        return $object;
+        return $this->userRepository->findOneBy(['username' => $identifier]);
     }
 
     /**
@@ -155,11 +154,11 @@ class SampleUserFixture implements FixtureInterface
     protected function getData(int $key, string $password): array
     {
         return [
-            'email'        => 'user_'.$key.'@test.fr',
-            'username'     => 'user_'.$key,
+            'email'        => 'user_' . $key . '@test.fr',
+            'username'     => 'user_' . $key,
             'password'     => $password,
-            'first_name'   => 'User '.$key,
-            'last_name'    => 'User '.$key,
+            'first_name'   => 'User ' . $key,
+            'last_name'    => 'User ' . $key,
             'roles'        => json_encode(['ROLE_USER']),
             'nb_login'     => 0,
             'nb_try_login' => 0,
@@ -204,7 +203,7 @@ class SampleUserFixture implements FixtureInterface
             implode(',', $list)
         );
 
-        $this->connection->getWrappedConnection()->exec($query);
+        $this->connection->executeQuery($query);
     }
 
     /**

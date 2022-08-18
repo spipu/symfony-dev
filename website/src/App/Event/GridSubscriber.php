@@ -1,4 +1,15 @@
-<?php declare(strict_types=1);
+<?php
+
+/**
+ * This file is a demo file for Spipu Bundles
+ *
+ * (c) Laurent Minguet
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+declare(strict_types=1);
 
 namespace App\Event;
 
@@ -24,17 +35,19 @@ class GridSubscriber implements EventSubscriberInterface
     /**
      * @param GridDefinitionEvent $event
      * @return void
-     * @throws \Spipu\UiBundle\Exception\GridException
      */
     public function onGrid(GridDefinitionEvent $event): void
     {
         $grid = $event->getGridDefinition();
 
         $grid
+            ->setPersonalize(true)
             ->addColumn(
                 (new Grid\Column('middle_name', 'spipu.user.field.middle_name', 'middleName', 35))
                         ->setType((new Grid\ColumnType(Grid\ColumnType::TYPE_TEXT)))
                         ->useSortable()
+                        ->setFilter((new Grid\ColumnFilter(true, false)))
+                        ->setDisplayed(false)
             )
             ->addGlobalAction(
                 (new Grid\Action('create', 'spipu.ui.action.create', 10, 'spipu_user_admin_create'))

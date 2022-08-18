@@ -1,7 +1,6 @@
 parameters:
   paths:
       - ./src
-  exclude_files: ~
   layers:
     # APP Layer
     - name: App
