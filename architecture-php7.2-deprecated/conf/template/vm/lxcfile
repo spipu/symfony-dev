@@ -1,3 +1,0 @@
-name={{ENV_NAME}}
-template=ubuntu-1804-bionic
-mount=./../../:/var/www/{{ENV_NAME}}
