@@ -17,6 +17,9 @@ cd ${ENV_FOLDER}/${WEB_FOLDER}
 showMessage "Composer"
 composer install
 
+showMessage "Security Check"
+symfony security:check
+
 if [[ "$APP_USE_YARN" = "yes" ]]; then
     showMessage "YARN"
     yarn install
@@ -33,9 +36,16 @@ showMessage "Assets"
 ./bin/console assets:install --symlink --relative
 ./bin/console spipu:assets:install
 
-showMessage "Symfony Cache"
+showMessage "Clean PhpUnit Cache"
+set +e
+rm -rf ./bin/.phpunit > /dev/null 2>&1
+set -e
+
+showMessage "Clean Symfony Cache"
+set +e
 rm -rf ./var/* > /dev/null 2>&1
 sudo -u www-data rm -rf ./var/* > /dev/null 2>&1
+set -e
 
 showMessage "Fixtures"
 sudo -u www-data ./bin/console spipu:fixtures:load
