@@ -169,9 +169,6 @@
     "phpmetrics/phpmetrics": {
         "version": "v2.4.1"
     },
-    "phpspec/prophecy": {
-        "version": "1.13.0"
-    },
     "phpunit/php-code-coverage": {
         "version": "9.2.6"
     },

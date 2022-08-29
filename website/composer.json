@@ -22,7 +22,6 @@
         "phpdocumentor/reflection-docblock": "*",
         "predis/predis": "*",
         "sensio/framework-extra-bundle": "*",
-        "qossmic/deptrac-shim": "*",
         "symfony/asset": "*",
         "symfony/console": "*",
         "symfony/expression-language": "*",
@@ -53,6 +52,7 @@
         "twig/twig": "^3.0"
     },
     "require-dev": {
+        "qossmic/deptrac-shim": "0.23.0",
         "edgedesign/phpqa": "*",
         "php-parallel-lint/php-parallel-lint": "*",
         "pdepend/pdepend": "*",
