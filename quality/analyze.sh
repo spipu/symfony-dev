@@ -8,6 +8,9 @@ cd ../website/
 LOG_FOLDER="../quality/build/"
 mkdir -p $LOG_FOLDER
 
+# Configure PHPCS
+./vendor/bin/phpcs --config-set php_version 70403
+
 # Tests - PHPQA
 ./vendor/bin/phpqa \
     --analyzedDirs "src" \
