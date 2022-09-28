@@ -1,17 +1,11 @@
 <?php
 
-/**
- * This file is a demo file for Spipu Bundles
- *
- * (c) Laurent Minguet
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 namespace App;
 
+use App\DependencyInjection\AppExtension;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
+use Symfony\Component\Config\Loader\LoaderInterface;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;
 use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
@@ -41,11 +35,19 @@ class Kernel extends BaseKernel
 
     /**
      * @param ContainerConfigurator $container
+     * @param LoaderInterface $loader
+     * @param ContainerBuilder $builder
      * @return void
      * @SuppressWarnings(PMD.ElseExpression)
+     * @SuppressWarnings(PMD.UnusedFormalParameter)
      */
-    protected function configureContainer(ContainerConfigurator $container): void
-    {
+    protected function configureContainer(
+        ContainerConfigurator $container,
+        LoaderInterface $loader,
+        ContainerBuilder $builder
+    ): void {
+        $builder->registerExtension(new AppExtension());
+
         $confDir = $this->getProjectDir() . '/config';
 
         $container->import($confDir . '/{packages}/*.yaml');

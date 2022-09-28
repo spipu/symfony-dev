@@ -26,7 +26,7 @@ parameters:
     - name: MVC_Service
       collectors:
         - type: className
-          regex: Spipu\\[^\\]*\\Service\\.*
+          regex: Spipu\\[^\\]*\\(Service|Assets|Twig)\\.*
     - name: MVC_Ui
       collectors:
         - type: className

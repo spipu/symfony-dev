@@ -38,6 +38,12 @@ services:
         class: 'App\Service\MenuDefinition'
         autowire: true
 
+    # App Role Definition
+    App\Service\RoleDefinition:
+        public: true
+        tags: ['spipu.user.role']
+
+    # Spipu User bundle configuration
     Spipu\UserBundle\Service\ModuleConfigurationInterface:
         class: Spipu\UserBundle\Service\ModuleConfiguration
         public: true

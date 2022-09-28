@@ -2,3 +2,8 @@ spipu:
     user:
         field:
             middle_name:   "MiddleName"
+app:
+    role:
+        available_processes: "Available processes to execute"
+        process_sleep:       "Process \"Sleep\""
+        process_big_name:    "Process \"Big Name\""

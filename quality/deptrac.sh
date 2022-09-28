@@ -10,6 +10,10 @@ cd ../website/
 LOG_FOLDER="../quality/build/"
 mkdir -p $LOG_FOLDER
 
+./vendor/bin/deptrac analyse --config-file=./.depfile.global.yaml  --no-cache
+./vendor/bin/deptrac analyse --config-file=./.depfile.mvc.yaml     --no-cache
+./vendor/bin/deptrac analyse --config-file=./.depfile.bundles.yaml --no-cache
+
 ./vendor/bin/deptrac analyse --config-file=./.depfile.global.yaml  --no-cache --formatter=graphviz-image --output="${LOG_FOLDER}deptrac-global.png"
 ./vendor/bin/deptrac analyse --config-file=./.depfile.mvc.yaml     --no-cache --formatter=graphviz-image --output="${LOG_FOLDER}deptrac-mvc.png"
 ./vendor/bin/deptrac analyse --config-file=./.depfile.bundles.yaml --no-cache --formatter=graphviz-image --output="${LOG_FOLDER}deptrac-bundles.png"

@@ -1,6 +1,8 @@
 parameters:
   paths:
       - ./src
+  exclude_files:
+    - '#.*/Spipu/CoreBundle/Tests/Kernel.php$#'
   layers:
     # APP Layer
     - name: App
@@ -20,6 +22,3 @@ parameters:
       - Spipu
     Spipu: ~
 
-  skip_violations:
-    Spipu\CoreBundle\Tests\Kernel:
-      - App\Kernel
