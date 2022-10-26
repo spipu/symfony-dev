@@ -52,3 +52,8 @@ services:
             - '\App\Entity\User'
             - '%env(APP_ACCOUNT_CREATION)%'
             - '%env(APP_ACCOUNT_RECOVERY)%'
+
+    # Scope management
+    spipu.configuration.service.scope_list:
+        class: App\Service\ScopeList
+        autowire: true

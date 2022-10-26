@@ -21,3 +21,8 @@ spipu_configuration:
     test.type.password:
         type:     password
         required: true
+
+    test.type.text:
+        type:      string
+        required:  true
+        per_scope: true

@@ -14,6 +14,7 @@ rm -rf ./var-test
 # Create temporary Key Pair
 APP_ENCRYPTOR_KEY_PAIR=$(php -r "echo sodium_bin2base64(sodium_crypto_box_keypair(), SODIUM_BASE64_VARIANT_ORIGINAL);")
 export APP_ENCRYPTOR_KEY_PAIR
+export XDEBUG_MODE=coverage
 
 # Tests - PhpUnit
 ./bin/phpunit -c ./.phpunit.xml
