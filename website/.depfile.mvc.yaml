@@ -47,7 +47,6 @@ parameters:
       - MVC_FormOptions
       - MVC_Validator
     MVC_Entity:
-      - MVC_Repository
       - MVC_Validator
       - MVC_FormOptions
     MVC_Form:
