@@ -26,3 +26,4 @@ spipu_configuration:
         type:     string
         required: true
         scoped:   true
+        default:  "My text"
