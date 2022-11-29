@@ -27,3 +27,9 @@ spipu_configuration:
         required: true
         scoped:   true
         default:  "My text"
+
+    test.type.select:
+        type:     select
+        options:  Spipu\UiBundle\Form\Options\YesNo
+        required: true
+        default:  "1"
