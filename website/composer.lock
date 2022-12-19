@@ -81,31 +81,34 @@
         },
         {
             "name": "doctrine/annotations",
-            "version": "1.13.3",
+            "version": "1.14.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/annotations.git",
-                "reference": "648b0343343565c4a056bfc8392201385e8d89f0"
+                "reference": "9e034d7a70032d422169f27d8759e8d84abb4f51"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/annotations/zipball/648b0343343565c4a056bfc8392201385e8d89f0",
-                "reference": "648b0343343565c4a056bfc8392201385e8d89f0",
+                "url": "https://api.github.com/repos/doctrine/annotations/zipball/9e034d7a70032d422169f27d8759e8d84abb4f51",
+                "reference": "9e034d7a70032d422169f27d8759e8d84abb4f51",
                 "shasum": ""
             },
             "require": {
-                "doctrine/lexer": "1.*",
+                "doctrine/lexer": "^1 || ^2",
                 "ext-tokenizer": "*",
                 "php": "^7.1 || ^8.0",
                 "psr/cache": "^1 || ^2 || ^3"
             },
             "require-dev": {
                 "doctrine/cache": "^1.11 || ^2.0",
-                "doctrine/coding-standard": "^6.0 || ^8.1",
-                "phpstan/phpstan": "^1.4.10 || ^1.8.0",
-                "phpunit/phpunit": "^7.5 || ^8.0 || ^9.1.5",
-                "symfony/cache": "^4.4 || ^5.2",
+                "doctrine/coding-standard": "^9 || ^10",
+                "phpstan/phpstan": "~1.4.10 || ^1.8.0",
+                "phpunit/phpunit": "^7.5 || ^8.5 || ^9.5",
+                "symfony/cache": "^4.4 || ^5.4 || ^6",
                 "vimeo/psalm": "^4.10"
+            },
+            "suggest": {
+                "php": "PHP 8.0 or higher comes with attributes, a native replacement for annotations"
             },
             "type": "library",
             "autoload": {
@@ -148,9 +151,9 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/annotations/issues",
-                "source": "https://github.com/doctrine/annotations/tree/1.13.3"
+                "source": "https://github.com/doctrine/annotations/tree/1.14.1"
             },
-            "time": "2022-07-02T10:48:51+00:00"
+            "time": "2022-12-12T12:46:12+00:00"
         },
         {
             "name": "doctrine/cache",
@@ -562,16 +565,16 @@
         },
         {
             "name": "doctrine/doctrine-bundle",
-            "version": "2.7.1",
+            "version": "2.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/DoctrineBundle.git",
-                "reference": "a2dcad48741c9d12fd6040398cf075025030096e"
+                "reference": "22d53b2c5ad03929628fb4a928b01135585b7179"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineBundle/zipball/a2dcad48741c9d12fd6040398cf075025030096e",
-                "reference": "a2dcad48741c9d12fd6040398cf075025030096e",
+                "url": "https://api.github.com/repos/doctrine/DoctrineBundle/zipball/22d53b2c5ad03929628fb4a928b01135585b7179",
+                "reference": "22d53b2c5ad03929628fb4a928b01135585b7179",
                 "shasum": ""
             },
             "require": {
@@ -656,7 +659,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/DoctrineBundle/issues",
-                "source": "https://github.com/doctrine/DoctrineBundle/tree/2.7.1"
+                "source": "https://github.com/doctrine/DoctrineBundle/tree/2.7.2"
             },
             "funding": [
                 {
@@ -672,7 +675,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-10-23T09:47:06+00:00"
+            "time": "2022-12-07T12:07:11+00:00"
         },
         {
             "name": "doctrine/doctrine-migrations-bundle",
@@ -1299,16 +1302,16 @@
         },
         {
             "name": "doctrine/persistence",
-            "version": "3.1.0",
+            "version": "3.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/persistence.git",
-                "reference": "2a9c70a5e21f8968c5a46b79f819ea52f322080b"
+                "reference": "d87426f07dd66f97cfdcf5210925e483b6c993b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/persistence/zipball/2a9c70a5e21f8968c5a46b79f819ea52f322080b",
-                "reference": "2a9c70a5e21f8968c5a46b79f819ea52f322080b",
+                "url": "https://api.github.com/repos/doctrine/persistence/zipball/d87426f07dd66f97cfdcf5210925e483b6c993b5",
+                "reference": "d87426f07dd66f97cfdcf5210925e483b6c993b5",
                 "shasum": ""
             },
             "require": {
@@ -1379,7 +1382,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/persistence/issues",
-                "source": "https://github.com/doctrine/persistence/tree/3.1.0"
+                "source": "https://github.com/doctrine/persistence/tree/3.1.1"
             },
             "funding": [
                 {
@@ -1395,7 +1398,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-11-18T14:10:19+00:00"
+            "time": "2022-12-13T21:21:05+00:00"
         },
         {
             "name": "doctrine/sql-formatter",
@@ -7975,16 +7978,16 @@
         },
         {
             "name": "consolidation/annotated-command",
-            "version": "4.7.0",
+            "version": "4.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/consolidation/annotated-command.git",
-                "reference": "423715c6c5156d007e6d3357f7793d9dad510cd4"
+                "reference": "fd263e3e9341d29758025b1a9b2878e3247525be"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/consolidation/annotated-command/zipball/423715c6c5156d007e6d3357f7793d9dad510cd4",
-                "reference": "423715c6c5156d007e6d3357f7793d9dad510cd4",
+                "url": "https://api.github.com/repos/consolidation/annotated-command/zipball/fd263e3e9341d29758025b1a9b2878e3247525be",
+                "reference": "fd263e3e9341d29758025b1a9b2878e3247525be",
                 "shasum": ""
             },
             "require": {
@@ -8025,9 +8028,9 @@
             "description": "Initialize Symfony Console commands from annotated command class methods.",
             "support": {
                 "issues": "https://github.com/consolidation/annotated-command/issues",
-                "source": "https://github.com/consolidation/annotated-command/tree/4.7.0"
+                "source": "https://github.com/consolidation/annotated-command/tree/4.7.1"
             },
-            "time": "2022-11-22T21:28:39+00:00"
+            "time": "2022-12-06T22:57:25+00:00"
         },
         {
             "name": "consolidation/config",
@@ -8202,16 +8205,16 @@
         },
         {
             "name": "consolidation/robo",
-            "version": "3.0.10",
+            "version": "4.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/consolidation/robo.git",
-                "reference": "206bbe23b34081a36bfefc4de2abbc1abcd29ef4"
+                "reference": "ccf80963abf11bdb8e90659aa99a7449b21e9452"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/consolidation/robo/zipball/206bbe23b34081a36bfefc4de2abbc1abcd29ef4",
-                "reference": "206bbe23b34081a36bfefc4de2abbc1abcd29ef4",
+                "url": "https://api.github.com/repos/consolidation/robo/zipball/ccf80963abf11bdb8e90659aa99a7449b21e9452",
+                "reference": "ccf80963abf11bdb8e90659aa99a7449b21e9452",
                 "shasum": ""
             },
             "require": {
@@ -8295,9 +8298,9 @@
             "description": "Modern task runner",
             "support": {
                 "issues": "https://github.com/consolidation/robo/issues",
-                "source": "https://github.com/consolidation/robo/tree/3.0.10"
+                "source": "https://github.com/consolidation/robo/tree/4.0.2"
             },
-            "time": "2022-02-21T17:19:14+00:00"
+            "time": "2022-04-21T09:29:58+00:00"
         },
         {
             "name": "consolidation/self-update",
@@ -9197,16 +9200,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "9.2.19",
+            "version": "9.2.22",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "c77b56b63e3d2031bd8997fcec43c1925ae46559"
+                "reference": "e4bf60d2220b4baaa0572986b5d69870226b06df"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/c77b56b63e3d2031bd8997fcec43c1925ae46559",
-                "reference": "c77b56b63e3d2031bd8997fcec43c1925ae46559",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/e4bf60d2220b4baaa0572986b5d69870226b06df",
+                "reference": "e4bf60d2220b4baaa0572986b5d69870226b06df",
                 "shasum": ""
             },
             "require": {
@@ -9262,7 +9265,7 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/php-code-coverage/issues",
-                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/9.2.19"
+                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/9.2.22"
             },
             "funding": [
                 {
@@ -9270,7 +9273,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-11-18T07:47:47+00:00"
+            "time": "2022-12-18T16:40:55+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -9515,16 +9518,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "9.5.26",
+            "version": "9.5.27",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "851867efcbb6a1b992ec515c71cdcf20d895e9d2"
+                "reference": "a2bc7ffdca99f92d959b3f2270529334030bba38"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/851867efcbb6a1b992ec515c71cdcf20d895e9d2",
-                "reference": "851867efcbb6a1b992ec515c71cdcf20d895e9d2",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/a2bc7ffdca99f92d959b3f2270529334030bba38",
+                "reference": "a2bc7ffdca99f92d959b3f2270529334030bba38",
                 "shasum": ""
             },
             "require": {
@@ -9597,7 +9600,7 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.5.26"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.5.27"
             },
             "funding": [
                 {
@@ -9613,7 +9616,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-10-28T06:00:21+00:00"
+            "time": "2022-12-09T07:31:23+00:00"
         },
         {
             "name": "qossmic/deptrac-shim",
