@@ -48,7 +48,7 @@ class MenuDefinition implements DefinitionInterface
         $this->mainItem = new Item($this->configurationManager->get('app.website.name'), '', 'app_home');
 
         $this->mainItem
-            ->setIcon('code', 'dark')
+            ->setIcon('code', 'dark', 'Dev environment')
             ->addChild('spipu.ui.page.home', 'home', 'app_home')
                 ->getParentItem()
             ->addChild('spipu.ui.page.admin')
