@@ -7,13 +7,14 @@ spipu_process:
             can_be_rerun_automatically: true
 
         inputs:
-            firstname:         "string"
-            lastname:          "string"
-            current_user_name: "string"
-            test_int:          "int"
-            test_float:        "float"
-            test_bool:         "bool"
-            test_array:        "array"
+            firstname:          "string"
+            lastname:           "string"
+            current_user_name:  "string"
+            current_user_email: "string"
+            test_int:           "int"
+            test_float:         "float"
+            test_bool:          "bool"
+            test_array:         "array"
             test_optional_string:
                 type:     "string"
                 required: false
