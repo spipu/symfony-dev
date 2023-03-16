@@ -7,3 +7,5 @@ app:
         available_processes: "Available processes to execute"
         process_sleep:       "Process \"Sleep\""
         process_big_name:    "Process \"Big Name\""
+    page:
+        test: "Test"

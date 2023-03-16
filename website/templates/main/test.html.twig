@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% set menuCurrentItem="test" %}
+
+{% block header_title %}{{  parent() }} - Test{% endblock %}
+
+{% block main_title %}HomePage Test{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-3">
+                <div class="card-header">
+                    Test
+                </div>
+                <div class="card-body">
+                    <button type="button" class="m-4 btn btn-success" onclick="window.AlertInfo.displaySuccess('Test success');">Test Alert Success</button><br />
+                    <button type="button" class="m-4 btn btn-info" onclick="window.AlertInfo.displayInfo('Test info');">Test Alert Info</button><br />
+                    <button type="button" class="m-4 btn btn-danger" onclick="window.AlertInfo.displayError('Test error');">Test Alert Error</button><br />
+                    <button type="button" class="m-4 btn btn-primary loading-popup">Test Loading Default</button><br />
+                    <button type="button" class="m-4 btn btn-primary loading-popup" data-loading-message="It is loading...">Test Loading Specific</button><br />
+                    <a type="button" href="{{ path('app_test') }}" class="m-4 btn btn-primary confirm-action">Test Confirm auto</a><br />
+                    <button type="button" class="m-4 btn btn-primary confirm-modal-link"
+                        data-action-message="Do you really want to do this?"
+                        data-action-label="Delete"
+                        data-action-icon="trash"
+                        data-action-level="danger"
+                        data-action-url="{{ path('app_test') }}"
+                    >
+                        Test Confirm Specific
+                    </button><br />
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock body %}

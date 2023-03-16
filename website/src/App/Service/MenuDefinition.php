@@ -51,6 +51,9 @@ class MenuDefinition implements DefinitionInterface
             ->setIcon('code', 'dark', 'Dev environment')
             ->addChild('spipu.ui.page.home', 'home', 'app_home')
                 ->getParentItem()
+            ->addChild('app.page.test', 'test', 'app_test')
+                ->setACL(true)
+                ->getParentItem()
             ->addChild('spipu.ui.page.admin')
                 ->addChild(
                     'spipu.configuration.page.admin.list',

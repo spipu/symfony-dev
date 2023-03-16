@@ -22,7 +22,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class MainController
- * @Route("/")
  */
 class MainController extends AbstractController
 {
@@ -56,5 +55,14 @@ class MainController extends AbstractController
                 ],
             ]
         );
+    }
+
+    /**
+     * @Route("/test", name="app_test", methods="GET")
+     * @return Response
+     */
+    public function test(): Response
+    {
+        return $this->render('main/test.html.twig');
     }
 }
