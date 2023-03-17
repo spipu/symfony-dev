@@ -19,7 +19,8 @@
                     <button type="button" class="m-4 btn btn-danger" onclick="window.AlertInfo.displayError('Test error');">Test Alert Error</button><br />
                     <button type="button" class="m-4 btn btn-primary loading-popup">Test Loading Default</button><br />
                     <button type="button" class="m-4 btn btn-primary loading-popup" data-loading-message="It is loading...">Test Loading Specific</button><br />
-                    <a type="button" href="{{ path('app_test') }}" class="m-4 btn btn-primary confirm-action">Test Confirm auto</a><br />
+                    <a type="button" href="{{ path('app_test') }}" class="m-4 btn btn-primary confirm-action">Test Confirm auto default</a><br />
+                    <a type="button" href="{{ path('app_test') }}" class="m-4 btn btn-primary confirm-action" data-action-role="delete">Test Confirm auto specific</a><br />
                     <button type="button" class="m-4 btn btn-primary confirm-modal-link"
                         data-action-message="Do you really want to do this?"
                         data-action-label="Delete"
@@ -27,7 +28,7 @@
                         data-action-level="danger"
                         data-action-url="{{ path('app_test') }}"
                     >
-                        Test Confirm Specific
+                        Test Confirm Manual
                     </button><br />
                 </div>
             </div>
