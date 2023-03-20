@@ -42,6 +42,58 @@ class AdminDashboard implements DashboardDefinitionInterface
      */
     public function getDefaultConfig(): array
     {
-        return [];
+        return [
+            "rows" => [
+                [
+                    "title" => "",
+                    "nbCol" => 4,
+                    "cols" => [
+                        [
+                            "widgets" => [
+                                [
+                                    "source" => "user-count",
+                                    "type" => "value_single",
+                                    "period" => null,
+                                    "width" => 1,
+                                    "height" => 2,
+                                ]
+                            ]
+                        ],
+                        [
+                            "widgets" => [
+                                [
+                                    "source" => "task-count",
+                                    "type" => "graph",
+                                    "period" => "week",
+                                    "width" => 2,
+                                    "height" => 2,
+                                ]
+                            ]
+                        ],
+                        [
+                            "widgets" => []
+                        ],
+                        [
+                            "widgets" => [
+                                [
+                                    "source" => "task-count",
+                                    "type" => "value_compare",
+                                    "period" => "day-current",
+                                    "width" => 1,
+                                    "height" => 1,
+                                ],
+                                [
+                                    "source" => "task-count",
+                                    "type" => "value_compare",
+                                    "period" => "month",
+                                    "width" => 1,
+                                    "height" => 1,
+                                ]
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+        ];
     }
 }
