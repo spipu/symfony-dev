@@ -33,5 +33,6 @@ setBundle "core"          "CoreBundle"
 setBundle "process"       "ProcessBundle"
 setBundle "ui"            "UiBundle"
 setBundle "user"          "UserBundle"
+setBundle "dashboard"     "DashboardBundle"
 
 Set-Location $CURRENT_FOLDER
