@@ -57,3 +57,8 @@ services:
     spipu.configuration.service.scope_list:
         class: App\Service\ScopeList
         autowire: true
+
+    App\WidgetSource\:
+        resource: '../src/App/WidgetSource/*'
+        tags: [ 'spipu.widget.source' ]
+        autowire: true

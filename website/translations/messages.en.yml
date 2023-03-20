@@ -2,6 +2,16 @@ spipu:
     user:
         field:
             middle_name:   "MiddleName"
+
+    dashboard:
+        source:
+            user-count:
+                label: "User - count (nb)"
+                title: "User - count (nb)"
+            task-count:
+                label: "Tasks - count(nb)"
+                title: "Tasks - count(nb) %period"
+
 app:
     role:
         available_processes: "Available processes to execute"
