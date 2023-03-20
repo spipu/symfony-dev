@@ -11,6 +11,10 @@ parameters:
       collectors:
         - type: className
           regex: Spipu\\CoreBundle\\.*
+    - name: Spipu_Dashboard
+      collectors:
+        - type: className
+          regex: Spipu\\DashboardBundle\\.*
     - name: Spipu_Process
       collectors:
         - type: className
@@ -38,3 +42,6 @@ parameters:
       - Spipu_Core
       - Spipu_Ui
       - Spipu_Configuration
+    Spipu_Dashboard:
+      - Spipu_Core
+      - Spipu_Ui
