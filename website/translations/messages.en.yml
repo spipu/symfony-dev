@@ -11,6 +11,8 @@ spipu:
             task-count:
                 label: "Tasks - count(nb)"
                 title: "Tasks - count(nb) %period"
+            test:
+                title: "Test of specific display"
 
 app:
     role:
