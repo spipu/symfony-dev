@@ -29,7 +29,7 @@ chmod +x "${BIN_FOLDER}/phploc.phar"
 ln -fs "${BIN_FOLDER}/phploc.phar" "${MAIN_FOLDER}/website/vendor/bin/phploc"
 
 # Configure PHPCS
-./vendor/bin/phpcs --config-set php_version 70403
+./vendor/bin/phpcs --config-set php_version 80102
 
 # Tests - PHPQA
 ./vendor/bin/phpqa \
