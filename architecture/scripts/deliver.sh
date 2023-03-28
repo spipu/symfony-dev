@@ -124,7 +124,7 @@ rm -f "$ENV_FOLDER/current"
 ln -s "$FULL_FOLDER/website" "$ENV_FOLDER/current"
 
 echo " => Clean PHP-FPM cache"
-sudo systemctl reload php7.2-fpm.service
+sudo systemctl reload php8.1-fpm.service
 
 CRONTAB_FILE="$FULL_FOLDER/website/config/crontab"
 if [[ -f "$CRONTAB_FILE" ]]; then

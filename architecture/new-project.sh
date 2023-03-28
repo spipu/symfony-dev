@@ -13,11 +13,11 @@ PROJECT_NAME="${ENV_NAME}"
 PROJECT_FOLDER="./${WEB_FOLDER}"
 
 echo "Create the project"
-composer create-project symfony/website-skeleton=v4.4.99    ${PROJECT_FOLDER} --ignore-platform-reqs --no-install
+composer create-project symfony/website-skeleton    ${PROJECT_FOLDER} --ignore-platform-reqs --no-install
 echo ""
 
 echo "Configure Composer"
-composer config platform.php            "7.2.24" -d ${PROJECT_FOLDER}
+composer config platform.php            "8.1.2" -d ${PROJECT_FOLDER}
 composer config platform.ext-bcmath     "1"      -d ${PROJECT_FOLDER}
 composer config platform.ext-ctype      "1"      -d ${PROJECT_FOLDER}
 composer config platform.ext-gd         "1"      -d ${PROJECT_FOLDER}
@@ -87,7 +87,7 @@ echo "parameters:
     APP_SETTINGS_APP_CODE:            'prod'
     APP_SETTINGS_APP_SECRET:          'TEMPORARY_SECRET'
     APP_SETTINGS_DATABASE_URL:        ''
-    APP_SETTINGS_MAILER_URL:          ''
+    APP_SETTINGS_MAILER_DSN:          ''
     APP_SETTINGS_CACHE_APP:           'cache.adapter.filesystem'
     APP_SETTINGS_REDIS_CACHE_DB:      ''
     APP_SETTINGS_REDIS_CACHE_HOST:    ''

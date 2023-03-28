@@ -2,13 +2,13 @@
 
 showMessage " > Packages - SourceList"
 
-echo "# Ubuntu Focal SourceList
-deb http://archive.ubuntu.com/ubuntu/ focal main restricted
-deb http://archive.ubuntu.com/ubuntu/ focal universe
-deb http://archive.ubuntu.com/ubuntu/ focal multiverse
-deb http://archive.ubuntu.com/ubuntu/ focal-updates main restricted
-deb http://archive.ubuntu.com/ubuntu/ focal-updates universe
-deb http://archive.ubuntu.com/ubuntu/ focal-updates multiverse
-deb http://security.ubuntu.com/ubuntu focal-security main restricted
-deb http://security.ubuntu.com/ubuntu focal-security universe
-deb http://security.ubuntu.com/ubuntu focal-security multiverse" > /etc/apt/sources.list
+echo "# Ubuntu Jammy SourceList
+deb http://archive.ubuntu.com/ubuntu/ jammy main restricted
+deb http://archive.ubuntu.com/ubuntu/ jammy universe
+deb http://archive.ubuntu.com/ubuntu/ jammy multiverse
+deb http://archive.ubuntu.com/ubuntu/ jammy-updates main restricted
+deb http://archive.ubuntu.com/ubuntu/ jammy-updates universe
+deb http://archive.ubuntu.com/ubuntu/ jammy-updates multiverse
+deb http://security.ubuntu.com/ubuntu jammy-security main restricted
+deb http://security.ubuntu.com/ubuntu jammy-security universe
+deb http://security.ubuntu.com/ubuntu jammy-security multiverse" > /etc/apt/sources.list

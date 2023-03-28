@@ -18,7 +18,6 @@ if ! grep "APP_ENV" /etc/environment > /dev/null; then
     echo "export APP_ENV=$ENV_MODE" >> /etc/environment
 fi
 
-
 # Create the etc folder
 ETC_FOLDER="/etc/$ENV_NAME"
 mkdir -p "$ETC_FOLDER"

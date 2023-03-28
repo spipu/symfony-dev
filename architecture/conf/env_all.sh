@@ -10,6 +10,10 @@ ENV_USER="delivery"
 ENV_FOLDER="/var/www/$ENV_NAME"
 WEB_FOLDER="website"
 
+# Hosts
+ENV_HOST_SUB_HOSTS=(
+)
+
 # Delivery
 GIT_PROJECT="git@github.com:spipu/symfony-dev.git"
 GIT_BRANCH="master"
@@ -36,6 +40,4 @@ EXPORT_FOLDER="$ENV_FOLDER/$WEB_FOLDER/var/export/"
 # Symfony
 APP_SECRET="ce96b39e4a36d3541ec8b232186267ee"
 APP_MAILER="smtp://127.0.0.1:1025"
-
-# Yarn
-APP_USE_YARN="no"
+APP_SESSION_HANDLER="app.session.handler"

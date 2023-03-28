@@ -21,8 +21,8 @@ ssh-keygen -R "${ENV_IP}"   > /dev/null
 
 echo " => Prepare /etc/hosts file"
 sudo sed "/${ENV_HOST}/d" -i /etc/hosts
-echo "# Added for docker ${ENV_HOST}" | sudo tee -a /etc/hosts > /dev/null
-echo "${ENV_IP} ${ENV_HOST}"          | sudo tee -a /etc/hosts > /dev/null
+echo "# Added for docker ${ENV_HOST}"              | sudo tee -a /etc/hosts > /dev/null
+echo "${ENV_IP} ${ENV_HOST} ${ENV_HOST_SUB_HOSTS}" | sudo tee -a /etc/hosts > /dev/null
 
 echo " => Docker"
 sudo docker-compose down -v
