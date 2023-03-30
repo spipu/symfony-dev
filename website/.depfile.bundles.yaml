@@ -45,3 +45,9 @@ parameters:
     Spipu_Dashboard:
       - Spipu_Core
       - Spipu_Ui
+
+  formatters:
+    graphviz:
+      point_to_groups: true
+      groups: []
+      hidden_layers: []

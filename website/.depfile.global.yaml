@@ -22,3 +22,8 @@ parameters:
       - Spipu
     Spipu: ~
 
+  formatters:
+    graphviz:
+      point_to_groups: true
+      groups: []
+      hidden_layers: []

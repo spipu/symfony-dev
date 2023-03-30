@@ -73,3 +73,9 @@ parameters:
       - MVC_Service
     MVC_Validator:
       - MVC_Repository
+
+  formatters:
+    graphviz:
+      point_to_groups: true
+      groups: []
+      hidden_layers: []
