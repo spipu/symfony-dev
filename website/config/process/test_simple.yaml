@@ -3,7 +3,7 @@ spipu_process:
         name: "Test Simple"
 
         options:
-            can_be_put_in_queue: false
+            can_be_put_in_queue: true
             can_be_rerun_automatically: false
 
         inputs:
