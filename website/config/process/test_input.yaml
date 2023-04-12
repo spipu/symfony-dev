@@ -37,6 +37,7 @@ spipu_process:
             test_file:
                 type:    "file"
                 allowed_mime_types: "application/pdf"
+                required: false
 
         parameters:
             my_firstname: "Foo"
