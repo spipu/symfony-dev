@@ -1,0 +1,18 @@
+spipu_process:
+    test_simple:
+        name: "Test Simple"
+
+        options:
+            can_be_put_in_queue: false
+            can_be_rerun_automatically: false
+
+        inputs:
+            name_from: "string"
+            name_to:   "string"
+
+        steps:
+            hello_world:
+                class: Spipu\ProcessBundle\Step\Test\HelloWorld
+                parameters:
+                    name_from: "{{ input.name_from }}"
+                    name_to:   "{{ input.name_to }}"
