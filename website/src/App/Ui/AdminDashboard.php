@@ -92,6 +92,45 @@ class AdminDashboard implements DashboardDefinitionInterface
                             ]
                         ]
                     ]
+                ],
+                [
+                    "title" => "Test of Title",
+                    "nbCol" => 3,
+                    "cols" => [
+                        [
+                            "widgets" => [
+                                [
+                                    "source" => "test-error",
+                                    "type" => "value_single",
+                                    "period" => "week",
+                                    "width" => 1,
+                                    "height" => 2,
+                                ]
+                            ]
+                        ],
+                        [
+                            "widgets" => [
+                                [
+                                    "source" => "test",
+                                    "type" => "specific",
+                                    "period" => null,
+                                    "width" => 1,
+                                    "height" => 2,
+                                ]
+                            ]
+                        ],
+                        [
+                            "widgets" => [
+                                [
+                                    "source" => "test-error",
+                                    "type" => "value_single",
+                                    "period" => "week",
+                                    "width" => 1,
+                                    "height" => 2,
+                                ]
+                            ]
+                        ],
+                    ]
                 ]
             ]
         ];

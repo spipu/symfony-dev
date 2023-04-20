@@ -1,5 +1,6 @@
 {% block widget_content %}
     <div class="widget-content value-graph card-body w-100 h-100">
-        Welcome to <b>Symfony</b>
+        Welcome to <b>Symfony</b><br />
+        Configuration: {{ 'test.type.text'|get_config(manager.request.getFilterValueString('scope')) }}
     </div>
 {% endblock %}

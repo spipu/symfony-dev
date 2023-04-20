@@ -13,6 +13,8 @@ spipu:
                 title: "Tasks - count(nb) %period"
             test:
                 title: "Test of specific display"
+            test-error:
+                title: "Test of error"
 
 app:
     role:
