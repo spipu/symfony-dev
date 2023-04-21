@@ -19,7 +19,7 @@ spipu_process:
                 type:     "string"
                 required: false
                 help:     "It must be a ISO2 country code"
-                regexp:   "^[A-Z]{2}$"
+                regexp:   "/^[A-Z]{2}$/"
             test_option:
                 type:     "string"
                 options:  Spipu\ProcessBundle\Form\Options\Status
