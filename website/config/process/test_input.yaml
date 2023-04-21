@@ -20,6 +20,12 @@ spipu_process:
                 required: false
                 help:     "It must be a ISO2 country code"
                 regexp:   "/^[A-Z]{2}$/"
+            test_date:
+                type: "date"
+                required: false
+            test_datetime:
+                type: "datetime"
+                required: false
             test_option:
                 type:     "string"
                 options:  Spipu\ProcessBundle\Form\Options\Status
