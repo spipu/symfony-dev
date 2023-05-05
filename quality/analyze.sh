@@ -21,12 +21,12 @@ mkdir -p $BIN_FOLDER
 # Install PHPCPD
 wget https://phar.phpunit.de/phpcpd.phar -O "${BIN_FOLDER}/phpcpd.phar" -q
 chmod +x "${BIN_FOLDER}/phpcpd.phar"
-ln -s "${BIN_FOLDER}/phpcpd.phar" "${MAIN_FOLDER}/website/vendor/bin/phpcpd"
+ln -fs "${BIN_FOLDER}/phpcpd.phar" "${MAIN_FOLDER}/website/vendor/bin/phpcpd"
 
 # Install PHPLOC
 wget https://phar.phpunit.de/phploc.phar -O "${BIN_FOLDER}/phploc.phar" -q
 chmod +x "${BIN_FOLDER}/phploc.phar"
-ln -s "${BIN_FOLDER}/phploc.phar" "${MAIN_FOLDER}/website/vendor/bin/phploc"
+ln -fs "${BIN_FOLDER}/phploc.phar" "${MAIN_FOLDER}/website/vendor/bin/phploc"
 
 # Configure PHPCS
 ./vendor/bin/phpcs --config-set php_version 70403
