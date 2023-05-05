@@ -160,9 +160,6 @@
     "phpdocumentor/type-resolver": {
         "version": "0.4.0"
     },
-    "phploc/phploc": {
-        "version": "7.0.2"
-    },
     "phpmd/phpmd": {
         "version": "2.6.0"
     },
@@ -263,9 +260,6 @@
     },
     "sebastian/object-reflector": {
         "version": "2.0.4"
-    },
-    "sebastian/phpcpd": {
-        "version": "4.1.0"
     },
     "sebastian/recursion-context": {
         "version": "4.0.4"

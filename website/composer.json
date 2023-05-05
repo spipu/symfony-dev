@@ -58,8 +58,7 @@
         "pdepend/pdepend": "*",
         "phpmd/phpmd": "*",
         "phpmetrics/phpmetrics": "*",
-        "phpunit/phpunit": "*",
-        "sebastian/phpcpd": "*",
+        "phpunit/phpunit": "^9.0.0",
         "squizlabs/php_codesniffer": "*",
         "symfony/browser-kit": "*",
         "symfony/css-selector": "*",
@@ -120,7 +119,9 @@
         "spipu/process-bundle": "*",
         "symfony/polyfill-ctype": "*",
         "symfony/polyfill-iconv": "*",
-        "symfony/polyfill-php72": "*"
+        "symfony/polyfill-php72": "*",
+        "sebastian/phpcpd": "*",
+        "phploc/phploc": "*"
     },
     "scripts": {
         "auto-scripts": {
