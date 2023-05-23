@@ -13,6 +13,7 @@ WEB_FOLDER="website"
 # Hosts
 ENV_HOST_SUB_HOSTS=(
 )
+ENV_HOST_SUB_HOSTS_TXT=""
 
 # Delivery
 GIT_PROJECT="git@github.com:spipu/symfony-dev.git"

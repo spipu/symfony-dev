@@ -28,7 +28,7 @@ showMessage "Redis"
 redis-cli -p 6379 flushall
 
 showMessage "Doctrine Schema"
-./bin/console doctrine:schema:update --force --dump-sql --complete
+./bin/console doctrine:schema:update --force --dump-sql
 
 #showMessage "Run migrations"
 #./bin/console doctrine:migrations:migrate --no-interaction
