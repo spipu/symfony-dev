@@ -1,0 +1,11 @@
+spipu_process:
+    test_error:
+        name: "Test Error"
+
+        options:
+            can_be_put_in_queue: true
+            can_be_rerun_automatically: false
+            automatic_report: true
+        steps:
+            hello_world:
+                class: Spipu\ProcessBundle\Step\Test\GenerateError

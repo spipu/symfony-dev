@@ -28,8 +28,8 @@ services:
             - '../src/App/Kernel.php'
             - '../src/App/Tests/'
 
-    App\Fixture\SampleUserFixture:
-        class: App\Fixture\SampleUserFixture
+    App\Fixture\:
+        resource: '../src/App/Fixture/*'
         tags: ['spipu.fixture']
         autowire: true
 
