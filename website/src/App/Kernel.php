@@ -14,17 +14,14 @@ class Kernel extends BaseKernel
 {
     use MicroKernelTrait;
 
-    /**
-     * @var string
-     */
-    private $projectDir;
+    private ?string $projectDir = null;
 
     /**
      * Gets the application root dir (path of the project's composer file).
      *
      * @return string The project root dir
      */
-    public function getProjectDir()
+    public function getProjectDir(): string
     {
         if (null === $this->projectDir) {
             $this->projectDir = dirname(dirname(__DIR__));
