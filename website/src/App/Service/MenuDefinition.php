@@ -36,7 +36,7 @@ class MenuDefinition implements DefinitionInterface
             ->addChild('spipu.ui.page.home', 'home', 'app_home')
                 ->getParentItem()
             ->addChild('spipu.dashboard.page.home.title', 'spipu-dashboard', 'app_dashboard')
-                ->setACL(true)
+                ->setAcl(true, 'ROLE_ADMIN')
                 ->getParentItem()
             ->addChild('app.page.test', 'test', 'app_test')
                 ->setACL(true)
