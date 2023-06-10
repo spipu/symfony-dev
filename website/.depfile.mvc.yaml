@@ -3,6 +3,10 @@ parameters:
     - ./src
   layers:
     # MVC Layers
+    - name: MVC_Command
+      collectors:
+        - type: className
+          regex: Spipu\\[^\\]*\\Command\\.*
     - name: MVC_Controller
       collectors:
         - type: className
@@ -26,7 +30,11 @@ parameters:
     - name: MVC_Service
       collectors:
         - type: className
-          regex: Spipu\\[^\\]*\\(Service|Assets|Twig)\\.*
+          regex: Spipu\\[^\\]*\\(Service|Assets|Fixtures|Twig)\\.*
+    - name: MVC_Step
+      collectors:
+        - type: className
+          regex: Spipu\\[^\\]*\\Step\\.*
     - name: MVC_Ui
       collectors:
         - type: className
@@ -38,6 +46,11 @@ parameters:
 
   ruleset:
     # MVC
+    MVC_Command:
+      - MVC_Entity
+      - MVC_Repository
+      - MVC_Service
+      - MVC_FormOptions
     MVC_Controller:
       - MVC_Entity
       - MVC_Repository
@@ -60,12 +73,16 @@ parameters:
       - MVC_Service
     MVC_Repository:
       - MVC_Entity
-      - MVC_Service
     MVC_Service:
       - MVC_Entity
       - MVC_Repository
       - MVC_FormOptions
       - MVC_Form
+    MVC_Step:
+      - MVC_Service
+      - MVC_Entity
+      - MVC_Repository
+      - MVC_FormOptions
     MVC_Ui:
       - MVC_Entity
       - MVC_FormOptions
@@ -73,6 +90,21 @@ parameters:
       - MVC_Service
     MVC_Validator:
       - MVC_Repository
+
+  skip_violations:
+    Spipu\ProcessBundle\Entity\Process\Step:
+      - Spipu\ProcessBundle\Step\StepInterface
+    Spipu\ProcessBundle\Service\ConfigReader:
+      - Spipu\ProcessBundle\Step\StepInterface
+    Spipu\ProcessBundle\Service\ReportManager:
+      - Spipu\ProcessBundle\Step\StepInterface
+      - Spipu\ProcessBundle\Step\StepReportInterface
+    Spipu\UserBundle\Repository\UserRepository:
+      - Spipu\UserBundle\Service\ModuleConfigurationInterface
+    Spipu\ProcessBundle\Repository\LogRepository:
+      - Spipu\ProcessBundle\Service\Status
+    Spipu\ProcessBundle\Repository\TaskRepository:
+      - Spipu\ProcessBundle\Service\Status
 
   formatters:
     graphviz:
