@@ -11,7 +11,7 @@ Dev environment for Spipu Bundles
 Needed for Unit tests / Analyze the code without having to create LXC / LXD container
 
 ```bash
-sudo apt-get -y install php7.2-cli php-xdebug php-common php-soap php-pdo php-sqlite3
+sudo apt-get -y install php8.1-cli php-xdebug php-common php-soap php-pdo php-sqlite3
 ```
 
 Adding the external spipu bundles (we do not use composer because it is for dev only)
