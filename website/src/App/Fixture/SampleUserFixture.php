@@ -27,39 +27,12 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
  */
 class SampleUserFixture implements FixtureInterface
 {
-    /**
-     * @var UserPasswordHasherInterface
-     */
-    private $hasher;
+    private UserPasswordHasherInterface $hasher;
+    private ModuleConfigurationInterface $moduleConfiguration;
+    private Connection $connection;
+    private UserRepository $userRepository;
+    private int $maxSteps = 500;
 
-    /**
-     * @var ModuleConfigurationInterface
-     */
-    private $moduleConfiguration;
-
-    /**
-     * @var Connection
-     */
-    private $connection;
-
-    /**
-     * @var UserRepository
-     */
-    private $userRepository;
-
-    /**
-     * @var int
-     */
-    private $maxSteps = 500;
-
-    /**
-     * PHP constructor.
-     *
-     * @param UserPasswordHasherInterface $hasher
-     * @param ModuleConfigurationInterface $moduleConfiguration
-     * @param Connection $connection
-     * @param UserRepository $userRepository
-     */
     public function __construct(
         UserPasswordHasherInterface $hasher,
         ModuleConfigurationInterface $moduleConfiguration,
@@ -72,18 +45,11 @@ class SampleUserFixture implements FixtureInterface
         $this->userRepository = $userRepository;
     }
 
-    /**
-     * @return string
-     */
     public function getCode(): string
     {
         return 'sample-user';
     }
 
-    /**
-     * @param OutputInterface $output
-     * @return void
-     */
     public function load(OutputInterface $output): void
     {
         $output->writeln("Add Sample Users");
@@ -120,10 +86,6 @@ class SampleUserFixture implements FixtureInterface
         $output->writeln('');
     }
 
-    /**
-     * @param OutputInterface $output
-     * @return void
-     */
     public function remove(OutputInterface $output): void
     {
         $output->writeln("Remove Sample Users");
@@ -137,20 +99,11 @@ class SampleUserFixture implements FixtureInterface
         $queryBuilder->getQuery()->execute();
     }
 
-    /**
-     * @param string $identifier
-     * @return UserInterface|null
-     */
     private function findObject(string $identifier): ?UserInterface
     {
         return $this->userRepository->findOneBy(['username' => $identifier]);
     }
 
-    /**
-     * @param int $key
-     * @param string $password
-     * @return array
-     */
     protected function getData(int $key, string $password): array
     {
         return [
@@ -168,18 +121,11 @@ class SampleUserFixture implements FixtureInterface
         ];
     }
 
-    /**
-     * @return int
-     */
     public function getOrder(): int
     {
         return 9999;
     }
 
-    /**
-     * @param array $list
-     * @return void
-     */
     private function insertUsers(array $list): void
     {
         $keys = array_keys($list[0]);
@@ -206,10 +152,6 @@ class SampleUserFixture implements FixtureInterface
         $this->connection->executeQuery($query);
     }
 
-    /**
-     * @param int $maxSteps
-     * @return self
-     */
     public function setMaxSteps(int $maxSteps): self
     {
         $this->maxSteps = $maxSteps;

@@ -13,25 +13,15 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use Spipu\ConfigurationBundle\Exception\ConfigurationException;
 use Spipu\ConfigurationBundle\Service\ConfigurationManager;
 use Spipu\CoreBundle\Service\EncryptorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * Class MainController
- */
 class MainController extends AbstractController
 {
-    /**
-     * @Route("/", name="app_home", methods="GET")
-     * @param ConfigurationManager $configurationManager
-     * @param EncryptorInterface $encryptor
-     * @return Response
-     * @throws ConfigurationException
-     */
+    #[Route(path: '/', name: 'app_home', methods: 'GET')]
     public function home(
         ConfigurationManager $configurationManager,
         EncryptorInterface $encryptor
@@ -57,10 +47,7 @@ class MainController extends AbstractController
         );
     }
 
-    /**
-     * @Route("/test", name="app_test", methods="GET")
-     * @return Response
-     */
+    #[Route(path: '/test', name: 'app_test', methods: 'GET')]
     public function test(): Response
     {
         return $this->render('main/test.html.twig');

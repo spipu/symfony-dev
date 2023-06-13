@@ -20,21 +20,18 @@ composer install
 showMessage "Security Check"
 symfony security:check
 
-if [[ "$APP_USE_YARN" = "yes" ]]; then
-    showMessage "YARN"
-    yarn install
-    yarn run encore dev
-fi
+showMessage "Assets"
+./bin/console assets:install --symlink --relative
+./bin/console spipu:assets:install
 
 showMessage "Redis"
 redis-cli -p 6379 flushall
 
 showMessage "Doctrine Schema"
-./bin/console doctrine:schema:update --force --dump-sql --complete
+./bin/console doctrine:schema:update --force --dump-sql
 
-showMessage "Assets"
-./bin/console assets:install --symlink --relative
-./bin/console spipu:assets:install
+#showMessage "Run migrations"
+#./bin/console doctrine:migrations:migrate --no-interaction
 
 showMessage "Clean PhpUnit Cache"
 set +e

@@ -16,18 +16,11 @@ namespace App\Event;
 use App\Entity\User;
 use Spipu\UiBundle\Entity\Form\Field;
 use Spipu\UiBundle\Event\FormDefinitionEvent;
-use Spipu\UiBundle\Exception\FormException;
 use Symfony\Component\Form\Extension\Core\Type;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
-/**
- * Form Listener
- */
 class FormSubscriber implements EventSubscriberInterface
 {
-    /**
-     * @return array
-     */
     public static function getSubscribedEvents(): array
     {
         return [
@@ -39,20 +32,11 @@ class FormSubscriber implements EventSubscriberInterface
         ];
     }
 
-    /**
-     * @param FormDefinitionEvent $event
-     * @return void
-     */
     public function onOther(FormDefinitionEvent $event): void
     {
         $event->getFormDefinition()->setEntityClassName(User::class);
     }
 
-    /**
-     * @param FormDefinitionEvent $event
-     * @return void
-     * @throws FormException
-     */
     public function onUser(FormDefinitionEvent $event): void
     {
         $this->onOther($event);

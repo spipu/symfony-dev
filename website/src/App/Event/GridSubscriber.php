@@ -17,14 +17,8 @@ use Spipu\UiBundle\Entity\Grid;
 use Spipu\UiBundle\Event\GridDefinitionEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
-/**
- * Form Listener
- */
 class GridSubscriber implements EventSubscriberInterface
 {
-    /**
-     * @return array
-     */
     public static function getSubscribedEvents(): array
     {
         return [
@@ -32,10 +26,6 @@ class GridSubscriber implements EventSubscriberInterface
         ];
     }
 
-    /**
-     * @param GridDefinitionEvent $event
-     * @return void
-     */
     public function onGrid(GridDefinitionEvent $event): void
     {
         $grid = $event->getGridDefinition();

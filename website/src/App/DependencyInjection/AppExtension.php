@@ -22,9 +22,6 @@ final class AppExtension extends Extension implements RolesHierarchyExtensionExt
     {
     }
 
-    /**
-     * @return RoleDefinitionInterface
-     */
     public function getRolesHierarchy(): RoleDefinitionInterface
     {
         return new RoleDefinition();

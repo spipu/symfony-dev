@@ -18,19 +18,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/mock")
- */
+#[Route(path: '/mock')]
 class MockController extends AbstractController
 {
-    /**
-     * @Route(
-     *     "/stock/",
-     *     methods="POST"
-     * )
-     * @param Request $request
-     * @return Response
-     */
+    #[Route(path: '/stock/', name: 'app_mock_stock', methods: 'POST')]
     public function stock(Request $request): Response
     {
         sleep(1);

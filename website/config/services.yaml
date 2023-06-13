@@ -28,6 +28,20 @@ services:
             - '../src/App/Kernel.php'
             - '../src/App/Tests/'
 
+    # Redis Client - Session
+    app.session.redis.client:
+        class: 'Predis\Client'
+        public: true
+        arguments:
+            - "%APP_SETTINGS_REDIS_SESSION_URL%"
+
+    # Redis Session Configuration
+    app.session.handler:
+        class: Symfony\Component\HttpFoundation\Session\Storage\Handler\RedisSessionHandler
+        arguments:
+            - '@app.session.redis.client'
+            - prefix: 'smp_'
+
     App\Fixture\:
         resource: '../src/App/Fixture/*'
         tags: ['spipu.fixture']

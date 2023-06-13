@@ -9,22 +9,13 @@ use Spipu\DashboardBundle\Entity\Source as Source;
 
 class Test extends AbstractSource
 {
-    /**
-     * @var ScopeOptions
-     */
     private ScopeOptions $scopeOptions;
 
-    /**
-     * @param ScopeOptions $scopeOptions
-     */
     public function __construct(ScopeOptions $scopeOptions)
     {
         $this->scopeOptions = $scopeOptions;
     }
 
-    /**
-     * @return Source\SourceSql
-     */
     public function getDefinition(): Source\SourceSql
     {
         return (new Source\SourceSql("test", ''))

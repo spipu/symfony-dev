@@ -11,45 +11,24 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class ConfigurationsFixture implements FixtureInterface
 {
-    /**
-     * @var ConfigurationManager
-     */
     private ConfigurationManager $manager;
-
-    /**
-     * @var bool
-     */
     private bool $isDisabled = false;
 
-    /**
-     * @param ConfigurationManager $manager
-     */
     public function __construct(ConfigurationManager $manager)
     {
         $this->manager = $manager;
     }
 
-    /**
-     * @return void
-     */
     public function disable(): void
     {
         $this->isDisabled = true;
     }
 
-    /**
-     * @return string
-     */
     public function getCode(): string
     {
         return 'sample-configuration';
     }
 
-    /**
-     * @param OutputInterface $output
-     * @return void
-     * @throws ConfigurationException
-     */
     public function load(OutputInterface $output): void
     {
         if ($this->isDisabled) {
@@ -65,26 +44,16 @@ class ConfigurationsFixture implements FixtureInterface
         }
     }
 
-    /**
-     * @param OutputInterface $output
-     * @return void
-     */
     public function remove(OutputInterface $output): void
     {
         $output->writeln("Remove Configuration is disabled");
     }
 
-    /**
-     * @return int
-     */
     public function getOrder(): int
     {
         return 1;
     }
 
-    /**
-     * @return array
-     */
     private function getConfiguration(): array
     {
         return [

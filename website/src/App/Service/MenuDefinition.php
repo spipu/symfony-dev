@@ -13,36 +13,20 @@ declare(strict_types=1);
 
 namespace App\Service;
 
-use Spipu\ConfigurationBundle\Exception\ConfigurationException;
 use Spipu\ConfigurationBundle\Service\ConfigurationManager;
 use Spipu\UiBundle\Entity\Menu\Item;
 use Spipu\UiBundle\Service\Menu\DefinitionInterface;
 
 class MenuDefinition implements DefinitionInterface
 {
-    /**
-     * @var Item
-     */
-    private $mainItem;
+    private ?Item $mainItem = null;
+    private ConfigurationManager $configurationManager;
 
-    /**
-     * @var ConfigurationManager
-     */
-    private $configurationManager;
-
-    /**
-     * MenuDefinition constructor.
-     * @param ConfigurationManager $configurationManager
-     */
     public function __construct(ConfigurationManager $configurationManager)
     {
         $this->configurationManager = $configurationManager;
     }
 
-    /**
-     * @return void
-     * @throws ConfigurationException
-     */
     private function build(): void
     {
         $this->mainItem = new Item($this->configurationManager->get('app.website.name'), '', 'app_home');
@@ -52,7 +36,7 @@ class MenuDefinition implements DefinitionInterface
             ->addChild('spipu.ui.page.home', 'home', 'app_home')
                 ->getParentItem()
             ->addChild('spipu.dashboard.page.home.title', 'spipu-dashboard', 'app_dashboard')
-                ->setACL(true)
+                ->setAcl(true, 'ROLE_ADMIN')
                 ->getParentItem()
             ->addChild('app.page.test', 'test', 'app_test')
                 ->setACL(true)
@@ -98,10 +82,6 @@ class MenuDefinition implements DefinitionInterface
         ;
     }
 
-    /**
-     * @return Item
-     * @throws ConfigurationException
-     */
     public function getDefinition(): Item
     {
         if (!$this->mainItem) {

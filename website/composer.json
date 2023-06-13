@@ -5,7 +5,7 @@
     "description": "A project to develop bundles",
     "prefer-stable": true,
     "require": {
-        "php": "^7.4",
+        "php": "^8.1",
         "ext-ctype": "*",
         "ext-curl": "*",
         "ext-iconv": "*",
@@ -52,7 +52,7 @@
         "twig/twig": "^3.0"
     },
     "require-dev": {
-        "qossmic/deptrac-shim": "0.23.0",
+        "qossmic/deptrac-shim": "*",
         "edgedesign/phpqa": "*",
         "php-parallel-lint/php-parallel-lint": "*",
         "pdepend/pdepend": "*",
@@ -77,7 +77,7 @@
         },
         "sort-packages": true,
         "platform": {
-            "php": "7.4.3",
+            "php": "8.1.2",
             "ext-bcmath": "1",
             "ext-ctype": "1",
             "ext-gd": "1",
