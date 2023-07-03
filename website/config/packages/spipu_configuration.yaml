@@ -33,3 +33,8 @@ spipu_configuration:
         options:  Spipu\UiBundle\Form\Options\YesNo
         required: true
         default:  "1"
+
+    test.type.boolean:
+        type:     boolean
+        required: true
+        default:  "0"
