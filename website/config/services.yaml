@@ -72,7 +72,15 @@ services:
         class: App\Service\ScopeList
         autowire: true
 
+    # Dashboard Widgets
     App\WidgetSource\:
         resource: '../src/App/WidgetSource/*'
         tags: [ 'spipu.widget.source' ]
+        autowire: true
+
+    # Process Steps
+    App\Step\:
+        resource: '../src/App/Step/*'
+        tags: ['spipu.process.step']
+        public: true
         autowire: true

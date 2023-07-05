@@ -15,6 +15,16 @@ spipu_process:
                     file_code:      "users"
                     file_extension: "csv"
 
+            export_data:
+                class: App\Step\ExportUsers
+                parameters:
+                    file_export: "{{ result.prepare_export }}"
+
+            file_info:
+                class: Spipu\ProcessBundle\Step\File\DisplayFileInfo
+                parameters:
+                    filename: "{{ result.export_data }}"
+
             finalize_export:
                 class: Spipu\ProcessBundle\Step\ExportFile\FinalizeExportFile
                 parameters:
