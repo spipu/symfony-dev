@@ -1,0 +1,28 @@
+spipu_process:
+    test_export:
+        name: "Test Export"
+
+        options:
+            can_be_put_in_queue: true
+            can_be_rerun_automatically: false
+            automatic_report: true
+
+        steps:
+            prepare_export:
+                class: Spipu\ProcessBundle\Step\ExportFile\PrepareExportFile
+                parameters:
+                    folder_code:    "user_export"
+                    file_code:      "users"
+                    file_extension: "csv"
+
+            finalize_export:
+                class: Spipu\ProcessBundle\Step\ExportFile\FinalizeExportFile
+                parameters:
+                    file_export: "{{ result.prepare_export }}"
+
+            clean_files:
+                class: Spipu\ProcessBundle\Step\ExportFile\CleanExportFiles
+                ignore_in_progress: true
+                parameters:
+                    file_export: "{{ result.prepare_export }}"
+                    keep_number: "{{ configuration(process.archive.keep_number) }}"
