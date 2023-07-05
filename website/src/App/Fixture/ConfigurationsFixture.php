@@ -59,8 +59,6 @@ class ConfigurationsFixture implements FixtureInterface
         return [
             'app.email.sender'             => 'no-reply@symfonydev.lxc',
             'app.website.url'              => 'https://symfonydev.lxc',
-            'process.folder.export'        => '/var/www/symfonydev/website/var/export/',
-            'process.folder.import'        => '/var/www/symfonydev/website/var/import/',
             'process.task.can_kill'        => 1,
         ];
     }

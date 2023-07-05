@@ -81,3 +81,8 @@ spipu_process:
                 parameters:
                     name_from: "{{ result.name_from }}"
                     name_to:   "{{ result.name_to }}"
+
+            file_info:
+                class: Spipu\ProcessBundle\Step\File\DisplayFileInfo
+                parameters:
+                    filename: "{{ input.test_file }}"
