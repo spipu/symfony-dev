@@ -13,6 +13,6 @@ abstract class AbstractSource implements SourceDefinitionInterface
      */
     public function getRolesNeeded(): array
     {
-        return ['ROLE_ADMIN'];
+        return [];
     }
 }
