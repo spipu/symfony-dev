@@ -17,4 +17,12 @@ class TestError extends AbstractSource
             ->setDateField('fake_field')
         ;
     }
+
+    /**
+     * @return string[]
+     */
+    public function getRolesNeeded(): array
+    {
+        return ['ROLE_ADMIN'];
+    }
 }
