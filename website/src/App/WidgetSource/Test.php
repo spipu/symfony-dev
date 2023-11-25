@@ -7,7 +7,7 @@ namespace App\WidgetSource;
 use Spipu\ConfigurationBundle\Form\Options\ScopeOptions;
 use Spipu\ConfigurationBundle\Service\ConfigurationManager;
 use Spipu\DashboardBundle\Entity\Source as Source;
-use Spipu\DashboardBundle\Service\Ui\Widget\WidgetRequest;
+use Spipu\DashboardBundle\Service\Ui\WidgetRequest;
 use Spipu\DashboardBundle\Source\SourceDataDefinitionInterface;
 
 class Test extends AbstractSource implements SourceDataDefinitionInterface
