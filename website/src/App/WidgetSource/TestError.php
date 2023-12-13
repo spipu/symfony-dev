@@ -10,7 +10,7 @@ class TestError extends AbstractSource
 {
     public function getDefinition(): Source\SourceDql
     {
-        return (new Source\SourceDql("test-error", 'App:User'))
+        return (new Source\SourceDql("test-error", '\App\Entity\User'))
             ->setDateField('fake_field')
         ;
     }

@@ -12,10 +12,6 @@
 /vendor/
 ###< symfony/framework-bundle ###
 
-###> sensiolabs-de/deptrac-shim ###
-/.deptrac.cache
-###< sensiolabs-de/deptrac-shim ###
-
 ###> squizlabs/php_codesniffer ###
 /.phpcs-cache
 /phpcs.xml
@@ -23,7 +19,6 @@
 
 ###> phpunit/phpunit ###
 /phpunit.xml
-/bin/.phpunit
 .phpunit.result.cache
 ###< phpunit/phpunit ###
 

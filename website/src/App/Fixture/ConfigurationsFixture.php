@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Fixture;
 
-use Spipu\ConfigurationBundle\Exception\ConfigurationException;
 use Spipu\ConfigurationBundle\Service\ConfigurationManager;
 use Spipu\CoreBundle\Fixture\FixtureInterface;
 use Symfony\Component\Console\Output\OutputInterface;

@@ -1,3 +1,9 @@
+controllers:
+    resource:
+        path: ../src/App/Controller/
+        namespace: App\Controller
+    type: attribute
+
 spipu_user:
     resource: '@SpipuUserBundle/Resources/config/routes.yaml'
 
