@@ -34,7 +34,7 @@ ln -fs "${BIN_FOLDER}/phploc.phar" "${MAIN_FOLDER}/website/vendor/bin/phploc"
 # Tests - PHPQA
 ./vendor/bin/phpqa \
     --analyzedDirs "src" \
-    --ignoredDirs "vendor,Tests,src/Spipu/*/Tests" \
+    --ignoredDirs "vendor,Tests,src/Spipu/*/tests" \
     --tools "phpmetrics,phploc,pdepend,phpcs:0,phpmd:0,phpcpd:0,parallel-lint:0" \
     --config "./" \
     --buildDir "${LOG_FOLDER}/" \

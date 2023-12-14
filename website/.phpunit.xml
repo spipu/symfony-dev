@@ -20,20 +20,17 @@
 
     <testsuites>
         <testsuite name="Unit Tests">
-            <directory>./src/Spipu/*/Tests/Unit</directory>
+            <directory>./src/Spipu/*/tests/Unit</directory>
         </testsuite>
         <testsuite name="Functional Tests">
-            <directory>./src/Spipu/*/Tests/Functional</directory>
+            <directory>./src/Spipu/*/tests/Functional</directory>
         </testsuite>
     </testsuites>
 
     <coverage processUncoveredFiles="true">
         <include>
-            <directory>./src/Spipu</directory>
+            <directory>./src/Spipu/*/src</directory>
         </include>
-        <exclude>
-            <directory suffix=".php">./src/Spipu/*/Tests</directory>
-        </exclude>
         <report>
             <clover outputFile="../quality/build/clover.xml"/>
             <html outputDirectory="../quality/build/coverage"/>

@@ -2,7 +2,7 @@ parameters:
   paths:
       - ./src
   exclude_files:
-    - '#.*/Spipu/CoreBundle/Tests/Kernel.php$#'
+    - '#.*/Spipu/CoreBundle/tests/Kernel.php$#'
   layers:
     # APP Layer
     - name: App
