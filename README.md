@@ -6,6 +6,14 @@ Dev environment for Spipu Bundles
 
 [Usage](/doc/usage.md)
 
+## Requirements
+
+It works with:
+
+* PHP >= 8.1
+* Composer
+* Symfony >= 6.4
+
 ## Others
 
 Needed for Unit tests / Analyze the code without having to create LXC / LXD container
