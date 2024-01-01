@@ -82,3 +82,9 @@ services:
         tags: ['spipu.process.step']
         public: true
         autowire: true
+
+    # Env definition
+    Spipu\CoreBundle\Service\Environment:
+        autowire: true
+        arguments:
+            $currentCode: '%APP_SETTINGS_APP_CODE%'
