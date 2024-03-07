@@ -16,7 +16,7 @@
         "ext-zip": "*",
         "doctrine/doctrine-bundle": "*",
         "doctrine/doctrine-migrations-bundle": "*",
-        "doctrine/orm": "*",
+        "doctrine/orm": "^3.0",
         "phpdocumentor/reflection-docblock": "*",
         "predis/predis": "*",
         "symfony/asset": "*",

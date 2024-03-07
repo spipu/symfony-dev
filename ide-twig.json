@@ -1,0 +1,28 @@
+{
+  "namespaces": [
+    {
+      "namespace": "SpipuConfiguration",
+      "path": "website/src/Spipu/ConfigurationBundle/templates"
+    },
+    {
+      "namespace": "SpipuCore",
+      "path": "website/src/Spipu/CoreBundle/templates"
+    },
+    {
+      "namespace": "SpipuDashboard",
+      "path": "website/src/Spipu/DashboardBundle/templates"
+    },
+    {
+      "namespace": "SpipuProcess",
+      "path": "website/src/Spipu/ProcessBundle/templates"
+    },
+    {
+      "namespace": "SpipuUi",
+      "path": "website/src/Spipu/UiBundle/templates"
+    },
+    {
+      "namespace": "SpipuUser",
+      "path": "website/src/Spipu/UserBundle/templates"
+    }
+  ]
+}

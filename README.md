@@ -12,7 +12,8 @@ It works with:
 
 * PHP >= 8.1
 * Composer
-* Symfony >= 6.4
+* Symfony = 6.4.*
+* Doctrine ORM = 3.*.*
 
 ## Others
 
