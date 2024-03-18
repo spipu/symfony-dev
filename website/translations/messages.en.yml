@@ -10,7 +10,7 @@ spipu:
                 title: "User - count (nb)"
             task-count:
                 label: "Tasks - count(nb)"
-                title: "Tasks - count(nb) %period"
+                title: "%filter.status Tasks - count(nb) %period"
             test:
                 label: "Test of specific display"
                 title: "Test of specific display"
