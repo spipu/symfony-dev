@@ -34,5 +34,6 @@ setBundle "process"       "ProcessBundle"
 setBundle "ui"            "UiBundle"
 setBundle "user"          "UserBundle"
 setBundle "dashboard"     "DashboardBundle"
+setBundle "api-partner"   "ApiPartnerBundle"
 
 Set-Location $CURRENT_FOLDER
