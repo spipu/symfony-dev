@@ -117,6 +117,8 @@
         "spipu/configuration-bundle": "*",
         "spipu/user-bundle": "*",
         "spipu/process-bundle": "*",
+        "spipu/dashboard-bundle": "*",
+        "spipu/api-partner-bundle": "*",
         "symfony/polyfill-ctype": "*",
         "symfony/polyfill-iconv": "*",
         "symfony/polyfill-php72": "*",

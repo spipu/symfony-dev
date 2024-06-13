@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% set menuCurrentItem="api_partner_swagger" %}
+
+{% block header_title %}{{  parent() }} - Home{% endblock %}
+
+{% block main_title %}{{ 'spipu.api_partner.label.api_swagger'|trans }}{% endblock %}
+
+{% block body %}
+    {% include '@SpipuApiPartner/swagger/main.html.twig' with {'show_route_path':   'app_api_partner_swagger' } %}
+{% endblock body %}

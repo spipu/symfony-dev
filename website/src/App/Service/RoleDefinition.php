@@ -45,5 +45,15 @@ class RoleDefinition implements RoleDefinitionInterface
         Item::load('ROLE_ADMIN_MANAGE_PROCESS')
             ->addChild('ROLE_ADMIN_AVAILABLE_PROCESSES')
         ;
+
+        Item::load('ROLE_SUPER_ADMIN')
+            ->addChild('ROLE_ADMIN_API_PARTNER')
+        ;
+
+        Item::load('ROLE_ADMIN_API_PARTNER')
+            ->setLabel('app.role.api_partner')
+            ->setWeight(1)
+            ->addChild('ROLE_ADMIN')
+        ;
     }
 }

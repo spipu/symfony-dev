@@ -56,6 +56,16 @@ class MenuDefinition implements DefinitionInterface
             ->addChild('app.page.test', 'test', 'app_test')
                 ->setACL(true)
                 ->getParentItem()
+
+            ->addChild('spipu.api_partner.label.api_partner')
+                ->addChild('spipu.api_partner.label.api_swagger', 'api_partner_swagger', 'app_api_partner_swagger')
+                    ->setACL(true, 'ROLE_ADMIN_API_PARTNER')
+                    ->getParentItem()
+                ->addChild('spipu.api_partner.label.api_logs', 'api_partner_log', 'app_api_partner_log_list')
+                    ->setACL(true, 'ROLE_ADMIN_API_PARTNER')
+                    ->getParentItem()
+                ->getParentItem()
+
             ->addChild('spipu.ui.page.admin')
                 ->addChild(
                     'spipu.configuration.page.admin.list',

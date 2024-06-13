@@ -1,5 +1,6 @@
 parameters:
     APP_SETTINGS_APP_ENV:                'prod'
+    APP_SETTINGS_APP_CODE:               'prod'
     APP_SETTINGS_APP_SECRET:             'TEMPORARY_SECRET'
     APP_SETTINGS_DATABASE_URL:           ''
     APP_SETTINGS_MAILER_URL:             ''

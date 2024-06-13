@@ -3,6 +3,10 @@ parameters:
       - ./src
   layers:
     # Bundle Layers
+    - name: Spipu_ApiPartner
+      collectors:
+        - type: className
+          regex: Spipu\\ApiPartnerBundle\\.*
     - name: Spipu_Configuration
       collectors:
         - type: className
@@ -45,3 +49,7 @@ parameters:
     Spipu_Dashboard:
       - Spipu_Core
       - Spipu_Ui
+    Spipu_ApiPartner:
+      - Spipu_Core
+      - Spipu_Ui
+      - Spipu_Configuration
