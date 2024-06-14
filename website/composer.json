@@ -113,6 +113,7 @@
             "Spipu\\ApiPartnerBundle\\Tests\\": "src/Spipu/ApiPartnerBundle/tests/",
             "Spipu\\ConfigurationBundle\\Tests\\": "src/Spipu/ConfigurationBundle/tests/",
             "Spipu\\CoreBundle\\Tests\\": "src/Spipu/CoreBundle/tests/",
+            "Spipu\\DashboardBundle\\Tests\\": "src/Spipu/DashboardBundle/tests/",
             "Spipu\\ProcessBundle\\Tests\\": "src/Spipu/ProcessBundle/tests/",
             "Spipu\\UiBundle\\Tests\\": "src/Spipu/UiBundle/tests/",
             "Spipu\\UserBundle\\Tests\\": "src/Spipu/UserBundle/tests/"
@@ -121,6 +122,7 @@
     "replace": {
         "spipu/ui-bundle": "*",
         "spipu/configuration-bundle": "*",
+        "spipu/core-bundle": "*",
         "spipu/user-bundle": "*",
         "spipu/process-bundle": "*",
         "spipu/dashboard-bundle": "*",

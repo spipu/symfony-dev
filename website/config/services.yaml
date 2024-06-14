@@ -26,7 +26,6 @@ services:
             - '../src/App/DependencyInjection/'
             - '../src/App/Entity/'
             - '../src/App/Kernel.php'
-            - '../src/App/Tests/'
 
     # Redis Client - Session
     app.session.redis.client:

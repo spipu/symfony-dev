@@ -1,7 +1,4 @@
 {
-    "composer/package-versions-deprecated": {
-        "version": "1.11.99.5"
-    },
     "composer/pcre": {
         "version": "1.0.0"
     },
@@ -32,26 +29,11 @@
     "dflydev/dot-access-data": {
         "version": "v1.1.0"
     },
-    "doctrine/annotations": {
-        "version": "1.0",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "master",
-            "version": "1.0",
-            "ref": "a2759dd6123694c8d901d0ec80006e044c2e6457"
-        },
-        "files": [
-            "config/routes/annotations.yaml"
-        ]
-    },
     "doctrine/cache": {
         "version": "v1.8.0"
     },
     "doctrine/collections": {
         "version": "v1.5.0"
-    },
-    "doctrine/common": {
-        "version": "v2.9.0"
     },
     "doctrine/dbal": {
         "version": "v2.8.0"
@@ -118,14 +100,8 @@
     "egulias/email-validator": {
         "version": "2.1.6"
     },
-    "friendsofphp/proxy-manager-lts": {
-        "version": "v1.0.0"
-    },
     "grasmash/expander": {
         "version": "1.0.0"
-    },
-    "laminas/laminas-code": {
-        "version": "3.4.1"
     },
     "league/container": {
         "version": "2.5.0"
@@ -272,15 +248,6 @@
     },
     "sebastian/version": {
         "version": "2.0.1"
-    },
-    "sensio/framework-extra-bundle": {
-        "version": "5.2",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "master",
-            "version": "5.2",
-            "ref": "fb7e19da7f013d0d422fa9bce16f5c510e27609b"
-        }
     },
     "squizlabs/php_codesniffer": {
         "version": "3.6",
@@ -508,15 +475,6 @@
     "symfony/polyfill-mbstring": {
         "version": "v1.10.0"
     },
-    "symfony/polyfill-php73": {
-        "version": "v1.11.0"
-    },
-    "symfony/polyfill-php80": {
-        "version": "v1.17.0"
-    },
-    "symfony/polyfill-php81": {
-        "version": "v1.23.0"
-    },
     "symfony/process": {
         "version": "v4.1.7"
     },
@@ -525,9 +483,6 @@
     },
     "symfony/property-info": {
         "version": "v4.1.7"
-    },
-    "symfony/proxy-manager-bridge": {
-        "version": "v4.4.18"
     },
     "symfony/routing": {
         "version": "5.3",
@@ -561,9 +516,6 @@
         "version": "v4.2.1"
     },
     "symfony/security-csrf": {
-        "version": "v4.2.1"
-    },
-    "symfony/security-guard": {
         "version": "v4.2.1"
     },
     "symfony/security-http": {
