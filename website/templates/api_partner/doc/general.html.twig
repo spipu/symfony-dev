@@ -1,0 +1,110 @@
+<p>Version: <b>{{ version }}</b></p>
+
+<h3>Backward compatibility information</h3>
+<p>This platform is updated through a continuous delivery mechanism, to provide bug fixes, security fixes and new features.</p>
+<p>The new versions that are deployed are backward compatible so that your integration will not break after an update.</p>
+<p>Here are some guidelines that will allow you to have a robust integration:</p>
+<ul>
+    <li>Your integration should allow for new fields to be added in API responses. From time to time, we may add new fields as part of new features.</li>
+    <li>You should not expect the order of the fields in API requests and responses to be constant. The order may change as fields are added to the API.</li>
+    <li>You should avoid storing String values returned by APIs in enumerated types.</li>
+</ul>
+
+<h3>Request Content-Type</h3>
+<p>The APIs can consume only:</p>
+<ul>
+    <li>JSON format (application/json)</li>
+</ul>
+<p>The header <code>Content-Type</code> will be ignored.</p>
+<p>When an API ask for files, the binary content of the file will be directly included in the JSON.</p>
+
+<h3>Response Content-Type</h3>
+<p>The API can produce only:</p>
+<ul>
+    <li>JSON format (application/json)</li>
+    <li>CSV file (application/csv)</li>
+    <li>TEXT format (application/text)</li>
+</ul>
+<p>The header <code>Accept</code> will be ignored. The format is depending on the called API.</p>
+
+<h3>UTF-8 Encoding</h3>
+<p>All textual data except binary content is encoded in UTF-8.</p>
+
+<h3>Date</h3>
+<p>The <code>date-time</code> has the following format: <code>YYYY-MM-DD hh:mm:ss</code> in UTC.</p>
+<p>All APIs will always provide date-times in UTC.</p>
+<p>In the patterns:</p>
+<ul>
+    <li><code>YYYY</code> refers to a four-digit year</li>
+    <li><code>MM</code> refers to a two-digit month, 01 through 12</li>
+    <li><code>DD</code> refers to a two-digit day, 01 through 31</li>
+    <li><code>hh</code> refers to a two-digit hour, 00 through 23</li>
+    <li><code>mm</code> refers to a two-digit minute, 00 through 59</li>
+    <li><code>ss</code> refers to a two-digit second, 00 through 59</li>
+</ul>
+
+<p><b>Examples</b></p>
+<pre>"time": "2021-01-20 12:25:00"</pre>
+
+<p>For GET requests, encode the dates as URL. Example:</p>
+<ul>
+    <li>"2019-08-29 02:34:00" gives <code>2019-08-29+02%3A34%3A00</code></li>
+</ul>
+
+<h3>Offset pagination and Sort</h3>
+<p>Some APIs supports offset pagination. In this case, you can use the <code>max</code> and <code>offset</code> parameters:</p>
+<ul>
+    <li>The <code>max</code> parameter is used to indicate the maximum number of items returned per page. This parameter is optional. The default value of this parameter is 10. The maximum value of this parameter is 1000.</li>
+    <li>The <code>offset</code> parameter is used to indicate the index of the first item (among all the results) in the returned page. This parameter is optional. The default value of this parameter is 0, which means that no offset is applied.</li>
+</ul>
+<p>When a <code>sort</code> parameter is available on such an API, it can be used to sort the results.</p>
+<ul>
+    <li>The parameter <code>sort</code> is used to indicate how the results should be sorted. This parameter is optional. The possible values for this parameter are defined in resources. The default value of this parameter is defined in resources.</li>
+    <li>The parameter <code>order</code> is used to indicate the sort direction. This parameter is optional. The possible values for this parameter are <code>asc</code> (default) or <code>desc</code>.</li>
+</ul>
+
+<p><b>Examples</b></p>
+<ul>
+    <li>
+        Returns the first 10 orders:
+        <pre>_/api/orders?max=10&offset=0</pre>
+    </li>
+    <li>
+        Returns 10 orders starting from the 20th:
+        <pre>_/api/orders?max=10&offset=20</pre>
+    </li>
+    <li>
+        Get orders sorted by price
+        <pre>_/api/orders?sort=price</pre>
+    </li>
+    <li>
+        Get orders sorted by price in descending order
+        <pre>_/api/orders?sort=price&order=desc</pre>
+    </li>
+</ul>
+
+<h3>Parameters</h3>
+
+<h4>Path Parameters</h4>
+<p>Those parameters are coming directly from the called URL.</p>
+<p>They are always required.</p>
+
+<p><b>Examples</b></p>
+
+<pre>/api/orders/{order_id}/ship</pre>
+
+<h4>Query Parameters</h4>
+<p>Those parameters are added in the GET request and must be URL encoded.</p>
+<p>They can be required or optional. Their types will be specified in each API description.</p>
+
+<p><b>Examples</b></p>
+
+<pre>/api/orders?start_date=2020-01-01T00%3A00%3A00Z&end_date=2020-01-01T00%3A00%3A00Z</pre>
+
+<h2>API Return Codes</h2>
+<p>This API uses standard HTTP codes.</p>
+
+<h2>Others</h2>
+<p>Some APIs may return more data than documented. Do not rely on this undocumented data, there is no guarantee about them.</p>
+<p>Some APIs outputs return media URLs. Those media can be retrieved via the provided URLs: add the hostname to the returned URLs.</p>
+

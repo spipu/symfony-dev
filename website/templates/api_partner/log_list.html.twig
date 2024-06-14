@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% set menuCurrentItem="api_partner_log" %}
+
+{% block header_title %}{{  parent() }} - Home{% endblock %}
+
+{% block main_title %}{{ 'spipu.api_partner.label.api_logs'|trans }}{% endblock %}
+
+{% block main_class %}container-fluid{% endblock %}
+
+{% block body %}{{ renderManager(manager) }}{% endblock %}
+

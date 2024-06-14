@@ -40,6 +40,10 @@ class ConfigurationsFixture implements FixtureInterface
         $configuration = $this->getConfiguration();
 
         foreach ($configuration as $key => $value) {
+            if ($this->manager->getDefinition($key)->getType() === 'encrypted') {
+                $this->manager->setEncrypted($key, $value);
+                continue;
+            }
             $this->manager->set($key, $value);
         }
     }
@@ -60,6 +64,9 @@ class ConfigurationsFixture implements FixtureInterface
             'app.email.sender'             => 'no-reply@symfonydev.lxc',
             'app.website.url'              => 'https://symfonydev.lxc',
             'process.task.can_kill'        => 1,
+            'api.partner.enabled'          => 1,
+            'api.partner.api_key'          => "b45dbcb30ceb5e7b82ab589334833762472e5ff53ba68cbfc67cd0047934fc77",
+            'api.partner.api_secret'       => "c3c4980cee649badabc215b43a1e880b55136591b0fa0b6454b1b112be1ba456",
         ];
     }
 }

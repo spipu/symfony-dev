@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+{% import '@SpipuUi/macro/buttons.html.twig' as buttons %}
+
+{% set menuCurrentItem="api_partner_log" %}
+
+{% block header_title %}{{  parent() }} - Home{% endblock %}
+
+{% block main_title %}{{ 'spipu.api_partner.label.api_logs'|trans }}{% endblock %}
+
+{% block main_actions %}
+    {{ buttons.back(path('app_api_partner_log_list')) }}
+{% endblock %}
+
+{% block body %}
+    {% include '@SpipuApiPartner/log/show.html.twig' %}
+{% endblock %}

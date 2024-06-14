@@ -84,3 +84,30 @@ services:
         tags: ['spipu.process.step']
         public: true
         autowire: true
+
+
+    # Environment
+    Spipu\CoreBundle\Service\EnvironmentInterface:
+        autowire: true
+        class: Spipu\CoreBundle\Service\Environment
+        arguments:
+            $currentCode: '%APP_SETTINGS_APP_CODE%'
+
+    # ApiPartner
+    App\Api\Action\:
+        resource: '../src/App/Api/Action/*'
+        autowire: true
+        public: true
+
+    App\Api\Route\:
+        resource: '../src/App/Api/Route/*'
+        tags: [ 'spipu.api-partner.route' ]
+        autowire: true
+
+    Spipu\ApiPartnerBundle\Repository\PartnerRepositoryInterface:
+        class: App\Repository\PartnerRepository
+        autowire: true
+
+    Spipu\ApiPartnerBundle\Service\RequestSecurityServiceInterface:
+        class: App\Service\ApiPartner\RequestSecurityService
+        autowire: true
