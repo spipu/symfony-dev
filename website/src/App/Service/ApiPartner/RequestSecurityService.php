@@ -67,7 +67,7 @@ class RequestSecurityService implements RequestSecurityServiceInterface
 
     private function validateRequest(Request $request): void
     {
-        $partner = $this->partnerRepository->findByApiKey($request->getApiKey());
+        $partner = $this->partnerRepository->getPartnerByApiKey($request->getApiKey());
         if ($partner === null) {
             throw new SecurityException(
                 'API Key header is invalid',

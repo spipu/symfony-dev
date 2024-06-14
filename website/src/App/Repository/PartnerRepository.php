@@ -40,12 +40,12 @@ class PartnerRepository implements PartnerRepositoryInterface
         );
     }
 
-    public function findAll(): array
+    public function getAllPartners(): array
     {
         return [$this->partner];
     }
 
-    public function findByApiKey(string $apiKey): ?PartnerInterface
+    public function getPartnerByApiKey(string $apiKey): ?PartnerInterface
     {
         if ($apiKey !== $this->partner->getApiKey()) {
             return null;
@@ -54,7 +54,7 @@ class PartnerRepository implements PartnerRepositoryInterface
         return $this->partner;
     }
 
-    public function findById(int $id): ?PartnerInterface
+    public function getPartnerById(int $id): ?PartnerInterface
     {
         if ($id !== $this->partner->getId()) {
             return null;

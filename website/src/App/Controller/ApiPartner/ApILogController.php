@@ -76,7 +76,7 @@ class ApILogController extends AbstractController
         if (!$log) {
             throw $this->createNotFoundException();
         }
-        $partner = $partnerRepository->findById($log->getPartnerId());
+        $partner = $partnerRepository->getPartnerById($log->getPartnerId());
 
         return $this->render(
             'api_partner/log_show.html.twig',
