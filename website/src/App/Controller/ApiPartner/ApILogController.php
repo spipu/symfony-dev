@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 namespace App\Controller\ApiPartner;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Spipu\ApiPartnerBundle\Repository\ApiLogPartnerRepository;
 use Spipu\ApiPartnerBundle\Repository\PartnerRepositoryInterface;
 use Spipu\ApiPartnerBundle\Ui\ApiPartnerLogGrid;
@@ -21,21 +20,14 @@ use Spipu\UiBundle\Entity\Grid\Action;
 use Spipu\UiBundle\Service\Ui\GridFactory;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
-/**
- * @Route("/api_partner/log")
- */
+#[Route(path: '/api_partner/log')]
 class ApILogController extends AbstractController
 {
-    /**
-     * @Route(
-     *     "/",
-     *     name="app_api_partner_log_list",
-     *     methods="GET"
-     * )
-     * @Security("is_granted('ROLE_ADMIN_API_PARTNER')")
-     */
+    #[Route(path: '/', name: 'app_api_partner_log_list', methods: 'GET')]
+    #[IsGranted('ROLE_ADMIN_API_PARTNER')]
     public function index(
         GridFactory $gridFactory,
         ApiPartnerLogGrid $apiPartnerLogGrid
@@ -60,13 +52,9 @@ class ApILogController extends AbstractController
     }
 
     /**
-     * @Route(
-     *     "/show/{id}",
-     *     name="app_api_partner_log_show",
-     *     methods="GET"
-     * )
      * @Security("is_granted('ROLE_ADMIN_API_PARTNER')")
      */
+    #[Route(path: '/show/{id}', name: 'app_api_partner_log_show', methods: 'GET')]
     public function show(
         ApiLogPartnerRepository $apiLogPartnerRepository,
         PartnerRepositoryInterface $partnerRepository,

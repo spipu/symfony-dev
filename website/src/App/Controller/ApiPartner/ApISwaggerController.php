@@ -14,25 +14,17 @@ declare(strict_types=1);
 namespace App\Controller\ApiPartner;
 
 use App\Service\ApiPartner\ApiDocumentationService;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Spipu\ApiPartnerBundle\Service\ApiSwagger;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
-/**
- * @Route("/api_partner/swagger")
- */
+#[Route(path: '/api_partner/swagger')]
 class ApISwaggerController extends AbstractController
 {
-    /**
-     * @Route(
-     *     "/{type}/{code}",
-     *     name="app_api_partner_swagger",
-     *     methods="GET"
-     * )
-     * @Security("is_granted('ROLE_ADMIN_API_PARTNER')")
-     */
+    #[Route(path: '/{type}/{code}', name: 'app_api_partner_swagger', methods: 'GET')]
+    #[IsGranted('ROLE_ADMIN_API_PARTNER')]
     public function index(
         ApiSwagger $apiSwagger,
         ApiDocumentationService $apiDocumentationService,
