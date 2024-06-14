@@ -3,6 +3,8 @@ parameters:
       - ./src
   exclude_files:
     - '#.*/Spipu/CoreBundle/Tests/Kernel.php$#'
+    - '#.*/Spipu/ApiPartnerBundle/Tests/Unit/Model/ContextTest.php$#'
+    - '#.*/Spipu/ApiPartnerBundle/Tests/Unit/Model/RequestTest.php$#'
   layers:
     # APP Layer
     - name: App
