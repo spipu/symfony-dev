@@ -28,7 +28,7 @@ class ApiEntryPointController extends AbstractController
     /**
      * @Route(
      *     "{route<.*>}",
-     *     name="api-partner-entrypoint"
+     *     name="api_partner_entrypoint"
      * )
      * @param ApiControllerService $apiControllerService
      * @param SymfonyRequest $symfonyRequest
