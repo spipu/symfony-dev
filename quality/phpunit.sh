@@ -25,12 +25,12 @@ if [[ "$1" == "--coverage" ]]; then
   XDEBUG_MODE="coverage"
   export XDEBUG_MODE
   echo "PHPUnit - With Coverage"
-  php7.4 ./bin/phpunit -c ./.phpunit.xml $2
+  php8.1 ./bin/phpunit -c ./.phpunit.xml $2
   XDEBUG_MODE=""
   export XDEBUG_MODE
 else
   echo "PHPUnit - Without Coverage"
-  php7.4 ./bin/phpunit -c ./.phpunit.xml --no-coverage $1
+  php8.1 ./bin/phpunit -c ./.phpunit.xml --no-coverage $1
 fi
 
 # Clean bad cache
