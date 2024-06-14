@@ -99,6 +99,7 @@
     "autoload": {
         "psr-4": {
             "App\\": "src/App/",
+            "Spipu\\ApiPartnerBundle\\": "src/Spipu/ApiPartnerBundle/src/",
             "Spipu\\ConfigurationBundle\\": "src/Spipu/ConfigurationBundle/src/",
             "Spipu\\CoreBundle\\": "src/Spipu/CoreBundle/src/",
             "Spipu\\DashboardBundle\\": "src/Spipu/DashboardBundle/src/",
@@ -109,6 +110,7 @@
     },
     "autoload-dev": {
         "psr-4": {
+            "Spipu\\ApiPartnerBundle\\Tests\\": "src/Spipu/ApiPartnerBundle/tests/",
             "Spipu\\ConfigurationBundle\\Tests\\": "src/Spipu/ConfigurationBundle/tests/",
             "Spipu\\CoreBundle\\Tests\\": "src/Spipu/CoreBundle/tests/",
             "Spipu\\ProcessBundle\\Tests\\": "src/Spipu/ProcessBundle/tests/",
@@ -122,6 +124,7 @@
         "spipu/user-bundle": "*",
         "spipu/process-bundle": "*",
         "spipu/dashboard-bundle": "*",
+        "spipu/api-partner-bundle": "*",
         "symfony/polyfill-ctype": "*",
         "symfony/polyfill-iconv": "*",
         "symfony/polyfill-php72": "*",

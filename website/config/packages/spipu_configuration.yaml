@@ -1,12 +1,27 @@
 imports:
 - { resource: "@SpipuConfigurationBundle/config/spipu_configuration.yaml" }
 - { resource: "@SpipuProcessBundle/config/spipu_configuration.yaml" }
+- { resource: "@SpipuApiPartnerBundle/config/spipu_configuration.yaml" }
 
 spipu_configuration:
     app.website.name:
         type:     string
         required: true
         default:  "Symfony Dev"
+
+    api.partner.enabled:
+        type:     "boolean"
+        required: true
+        default:  false
+
+    api.partner.api_key:
+        type:     "string"
+        required: true
+        default:  ""
+
+    api.partner.api_secret:
+        type:     "encrypted"
+        required: true
 
     test.type.encrypted:
         type:     encrypted

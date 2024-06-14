@@ -16,6 +16,7 @@ services:
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+        public: false       # Allows optimizing the container by removing unused services
 
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
@@ -25,6 +26,7 @@ services:
             - '../src/App/DependencyInjection/'
             - '../src/App/Entity/'
             - '../src/App/Kernel.php'
+            - '../src/App/Tests/'
 
     # Redis Client - Session
     app.session.redis.client:
@@ -83,8 +85,29 @@ services:
         public: true
         autowire: true
 
-    # Env definition
-    Spipu\CoreBundle\Service\Environment:
+
+    # Environment
+    Spipu\CoreBundle\Service\EnvironmentInterface:
         autowire: true
+        class: Spipu\CoreBundle\Service\Environment
         arguments:
             $currentCode: '%APP_SETTINGS_APP_CODE%'
+
+    # ApiPartner
+    App\Api\Action\:
+        resource: '../src/App/Api/Action/*'
+        autowire: true
+        public: true
+
+    App\Api\Route\:
+        resource: '../src/App/Api/Route/*'
+        tags: [ 'spipu.api-partner.route' ]
+        autowire: true
+
+    Spipu\ApiPartnerBundle\Repository\PartnerRepositoryInterface:
+        class: App\Repository\PartnerRepository
+        autowire: true
+
+    Spipu\ApiPartnerBundle\Service\RequestSecurityServiceInterface:
+        class: App\Service\ApiPartner\RequestSecurityService
+        autowire: true
