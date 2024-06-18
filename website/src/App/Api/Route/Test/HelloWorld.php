@@ -14,8 +14,9 @@ declare(strict_types=1);
 namespace App\Api\Route\Test;
 
 use App\Api\Route\AbstractRoute;
-use Spipu\ApiPartnerBundle\Model\Parameter\StringParameter;
+use Spipu\ApiPartnerBundle\Model\Parameter as SpipuParameter;
 use Spipu\ApiPartnerBundle\Model\ParameterInterface;
+use Spipu\ApiPartnerBundle\Model\ResponseFormat;
 use Symfony\Component\HttpFoundation\Request;
 
 // phpcs:disable Generic.Files.LineLength.TooLong
@@ -44,7 +45,12 @@ class HelloWorld extends AbstractRoute
     public function getQueryParameters(): array
     {
         return [
-            'name' => (new StringParameter())->setRequired(true)->setMinLength(1),
+            'name' => (new SpipuParameter\StringParameter())->setRequired(true)->setMinLength(1)->setMaxLength(100),
         ];
+    }
+
+    public function getResponseFormat(): ?ResponseFormat
+    {
+        return new ResponseFormat('text');
     }
 }

@@ -28,13 +28,16 @@ class HelloWorld implements ActionInterface
     public function execute(Context $context): Response
     {
         $response = new Response();
-        $response->setCode(200)->setContentText(
-            sprintf(
-                'Hello World [%s] from [%s]',
-                $context->getQueryParameter('name'),
-                $context->getPartner()->getApiName()
+        $response
+            ->setCode(200)
+            ->setContentText(
+                sprintf(
+                    'Hello World [%s] from [%s]',
+                    $context->getQueryParameter('name'),
+                    $context->getPartner()->getApiName()
+                )
             )
-        );
+        ;
 
         return $response;
     }

@@ -27,18 +27,33 @@ class Test implements ActionInterface
      */
     public function execute(Context $context): Response
     {
+        $data = [
+            'test'   => 'ok',
+            'params' => [
+                'test_id'       => $context->getPathParameter('test_id'),
+                'name'          => $context->getQueryParameter('name'),
+                'required_rows' => $context->getBodyParameter('required_rows'),
+                'optional_rows' => $context->getBodyParameter('optional_rows'),
+            ],
+        ];
+
+        foreach ($data['params']['required_rows'] as &$requiredRow) {
+            $requiredRow['test_datetime'] = $requiredRow['test_datetime']->format('Y-m-d H:i:s');
+        }
+
+        if (!empty($data['params']['optional_rows'])) {
+            foreach ($data['params']['optional_rows'] as &$optionalRow) {
+                if (!empty($optionalRow['test_datetime'])) {
+                    $optionalRow['test_datetime'] = $optionalRow['test_datetime']->format('Y-m-d H:i:s');
+                }
+            }
+        }
+
         $response = new Response();
-        $response->setCode(200)->setContentJson(
-            [
-                'test'          => 'ok',
-                'params' => [
-                    'test_id'       => $context->getPathParameter('test_id'),
-                    'name'          => $context->getQueryParameter('name'),
-                    'required_rows' => $context->getBodyParameter('required_rows'),
-                    'optional_rows' => $context->getBodyParameter('optional_rows'),
-                ],
-            ]
-        );
+        $response
+            ->setCode(200)
+            ->setContentJson($data)
+        ;
 
         return $response;
     }

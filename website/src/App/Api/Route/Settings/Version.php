@@ -14,6 +14,8 @@ declare(strict_types=1);
 namespace App\Api\Route\Settings;
 
 use App\Api\Route\AbstractRoute;
+use Spipu\ApiPartnerBundle\Model\ResponseFormat;
+use Spipu\ApiPartnerBundle\Model\Parameter as SpipuParameter;
 use Symfony\Component\HttpFoundation\Request;
 
 // phpcs:disable Generic.Files.LineLength.TooLong
@@ -34,5 +36,12 @@ class Version extends AbstractRoute
     public function getHttpMethod(): string
     {
         return Request::METHOD_GET;
+    }
+
+    public function getResponseFormat(): ?ResponseFormat
+    {
+        return (new ResponseFormat('json'))->setJsonContent([
+            'version' => (new SpipuParameter\StringParameter())->setRequired(true),
+        ]);
     }
 }

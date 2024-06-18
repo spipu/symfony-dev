@@ -14,14 +14,9 @@ declare(strict_types=1);
 namespace App\Api\Route\Test;
 
 use App\Api\Route\AbstractRoute;
-use Spipu\ApiPartnerBundle\Model\Parameter\ArrayParameter;
-use Spipu\ApiPartnerBundle\Model\Parameter\BooleanParameter;
-use Spipu\ApiPartnerBundle\Model\Parameter\DateTimeParameter;
-use Spipu\ApiPartnerBundle\Model\Parameter\IntegerParameter;
-use Spipu\ApiPartnerBundle\Model\Parameter\NumberParameter;
-use Spipu\ApiPartnerBundle\Model\Parameter\ObjectParameter;
-use Spipu\ApiPartnerBundle\Model\Parameter\StringParameter;
+use Spipu\ApiPartnerBundle\Model\Parameter as SpipuParameter;
 use Spipu\ApiPartnerBundle\Model\ParameterInterface;
+use Spipu\ApiPartnerBundle\Model\ResponseFormat;
 use Symfony\Component\HttpFoundation\Request;
 
 // phpcs:disable Generic.Files.LineLength.TooLong
@@ -50,7 +45,7 @@ class Test extends AbstractRoute
     public function getPathParameters(): array
     {
         return [
-            'test_id' => (new IntegerParameter())->setMinValue(0, true),
+            'test_id' => (new SpipuParameter\IntegerParameter())->setMinValue(0, true),
         ];
     }
 
@@ -60,7 +55,7 @@ class Test extends AbstractRoute
     public function getQueryParameters(): array
     {
         return [
-            'name' => (new StringParameter())->setRequired(true)->setMinLength(1),
+            'name' => (new SpipuParameter\StringParameter())->setRequired(true)->setMinLength(1),
         ];
     }
 
@@ -70,22 +65,37 @@ class Test extends AbstractRoute
     public function getBodyParameters(): array
     {
         return [
-            'required_rows' => (new ArrayParameter())->setRequired(true)->setMinItems(1)->setItemParameter(
-                (new ObjectParameter())
-                    ->addProperty('test_boolean', (new BooleanParameter())->setRequired(true))
-                    ->addProperty('test_datetime', (new DateTimeParameter())->setRequired(true))
-                    ->addProperty('test_integer', (new IntegerParameter())->setRequired(true)->setMinValue(2))
-                    ->addProperty('test_number', (new NumberParameter())->setRequired(true)->setMinValue(3))
-                    ->addProperty('test_string', (new StringParameter())->setRequired(true)->setMinLength(4))
-            ),
-            'optional_rows' => (new ArrayParameter())->setRequired(false)->setMinItems(0)->setItemParameter(
-                (new ObjectParameter())
-                    ->addProperty('test_boolean', (new BooleanParameter())->setRequired(false))
-                    ->addProperty('test_datetime', (new DateTimeParameter())->setRequired(false))
-                    ->addProperty('test_integer', (new IntegerParameter())->setRequired(false))
-                    ->addProperty('test_number', (new NumberParameter())->setRequired(false))
-                    ->addProperty('test_string', (new StringParameter())->setRequired(false))
-            ),
+            'required_rows' => $this->getTestParameters(true),
+            'optional_rows' => $this->getTestParameters(false),
         ];
+    }
+
+    public function getResponseFormat(): ?ResponseFormat
+    {
+        return (new ResponseFormat('json'))->setJsonContent([
+            'test'   => (new SpipuParameter\StringParameter())->setRequired(true),
+            'params' => (new SpipuParameter\ObjectParameter())
+                ->addProperty('test_id', (new SpipuParameter\IntegerParameter())->setMinValue(0, true))
+                ->addProperty('name', (new SpipuParameter\StringParameter())->setRequired(true)->setMinLength(1))
+                ->addProperty('required_rows', $this->getTestParameters(true))
+                ->addProperty('optional_rows', $this->getTestParameters(false))
+            ,
+        ]);
+    }
+
+    private function getTestParameters(bool $required): ParameterInterface
+    {
+        return (new SpipuParameter\ArrayParameter())
+            ->setRequired($required)
+            ->setMinItems($required ? 1 : 0)
+            ->setItemParameter(
+                (new SpipuParameter\ObjectParameter())
+                    ->addProperty('test_boolean', (new SpipuParameter\BooleanParameter())->setRequired($required))
+                    ->addProperty('test_datetime', (new SpipuParameter\DateTimeParameter())->setRequired($required))
+                    ->addProperty('test_integer', (new SpipuParameter\IntegerParameter())->setRequired($required))
+                    ->addProperty('test_number', (new SpipuParameter\NumberParameter())->setRequired($required))
+                    ->addProperty('test_string', (new SpipuParameter\StringParameter())->setRequired($required))
+            )
+        ;
     }
 }
