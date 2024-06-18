@@ -6,5 +6,5 @@
 
 ## Screenshots
 
-![configuration-edit](./configuration/configuration-edit.png)
 ![configuration-list](./configuration/configuration-list.png)
+![configuration-edit](./configuration/configuration-edit.png)
