@@ -13,6 +13,8 @@ declare(strict_types=1);
 
 namespace App\Service\ApiPartner;
 
+use Spipu\ApiPartnerBundle\Api\RouteInterface;
+use Spipu\ApiPartnerBundle\Entity\PartnerInterface;
 use Spipu\ApiPartnerBundle\Exception\SecurityException;
 use Spipu\ApiPartnerBundle\Model\Request;
 use Spipu\ApiPartnerBundle\Repository\PartnerRepositoryInterface;
@@ -27,6 +29,17 @@ class RequestSecurityService implements RequestSecurityServiceInterface
     public function __construct(PartnerRepositoryInterface $partnerRepository)
     {
         $this->partnerRepository = $partnerRepository;
+    }
+
+    public function isRouteAllowed(RouteInterface $route, ?PartnerInterface $partner): bool
+    {
+        if ($partner !== null) {
+            if ($route->getCode() === 'Test-Test') {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     public function validate(Request $request, SymfonyRequest $symfonyRequest): void
