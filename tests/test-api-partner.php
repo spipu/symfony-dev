@@ -10,3 +10,4 @@ $api = new EngineApiPartner(
 
 $api->get('/hello_world', ['name' => 'Foo']);
 $api->get('/version');
+$api->post('/test/1', [], json_encode([]));
