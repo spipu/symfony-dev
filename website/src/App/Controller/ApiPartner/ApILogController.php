@@ -83,6 +83,7 @@ class ApILogController extends AbstractController
             [
                 'log'      => $log,
                 'partner'  => $partner,
+                'hideSensitiveData' => false,
             ]
         );
     }
