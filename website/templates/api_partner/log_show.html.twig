@@ -11,6 +11,8 @@
     {{ buttons.back(path('app_api_partner_log_list')) }}
 {% endblock %}
 
+{% block main_class %}container-fluid{% endblock %}
+
 {% block body %}
     {% include '@SpipuApiPartner/log/show.html.twig' %}
 {% endblock %}
