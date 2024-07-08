@@ -34,6 +34,7 @@ class Test implements ActionInterface
                 'name'          => $context->getQueryParameter('name'),
                 'required_rows' => $context->getBodyParameter('required_rows'),
                 'optional_rows' => $context->getBodyParameter('optional_rows'),
+                'default_rows'  => $context->getBodyParameter('default_rows'),
             ],
         ];
 
@@ -45,6 +46,14 @@ class Test implements ActionInterface
             foreach ($data['params']['optional_rows'] as &$optionalRow) {
                 if (!empty($optionalRow['test_datetime'])) {
                     $optionalRow['test_datetime'] = $optionalRow['test_datetime']->format('Y-m-d H:i:s');
+                }
+            }
+        }
+
+        if (!empty($data['params']['default_rows'])) {
+            foreach ($data['params']['default_rows'] as &$defaultRow) {
+                if (!empty($defaultRow['test_datetime'])) {
+                    $defaultRow['test_datetime'] = $defaultRow['test_datetime']->format('Y-m-d H:i:s');
                 }
             }
         }

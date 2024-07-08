@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace App\Api\Route\Test;
 
 use App\Api\Route\AbstractRoute;
+use DateTime;
 use Spipu\ApiPartnerBundle\Model\Parameter as SpipuParameter;
 use Spipu\ApiPartnerBundle\Model\ParameterInterface;
 use Spipu\ApiPartnerBundle\Model\ResponseFormat;
@@ -67,6 +68,7 @@ class Test extends AbstractRoute
         return [
             'required_rows' => $this->getTestParameters(true),
             'optional_rows' => $this->getTestParameters(false),
+            'default_rows'  => $this->getTestParameters(false),
         ];
     }
 
@@ -79,6 +81,7 @@ class Test extends AbstractRoute
                 ->addProperty('name', (new SpipuParameter\StringParameter())->setRequired(true)->setMinLength(1))
                 ->addProperty('required_rows', $this->getTestParameters(true))
                 ->addProperty('optional_rows', $this->getTestParameters(false))
+                ->addProperty('default_rows', $this->getTestParameters(false))
             ,
         ]);
     }
