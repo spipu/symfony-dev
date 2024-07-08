@@ -36,6 +36,7 @@ class Test implements ActionInterface
                     'name'          => $context->getQueryParameter('name'),
                     'required_rows' => $context->getBodyParameter('required_rows'),
                     'optional_rows' => $context->getBodyParameter('optional_rows'),
+                    'default_rows'  => $context->getBodyParameter('default_rows'),
                 ],
             ]
         );
