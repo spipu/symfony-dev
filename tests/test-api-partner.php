@@ -10,4 +10,21 @@ $api = new EngineApiPartner(
 
 $api->get('/hello_world', ['name' => 'Foo']);
 $api->get('/version');
-$api->post('/test/1', [], json_encode([]));
+$api->post(
+    '/test/1',
+    ['name' => 'Foo'],
+    json_encode([
+        'required_rows' => [
+            [
+                'test_boolean'  => 0,
+                'test_datetime' => date('Y-m-d H:i:s'),
+                'test_integer'  => 45,
+                'test_number'   => 201,
+                'test_string'   => 'spipu',
+            ]
+        ],
+        'default_rows'=> [
+            []
+        ]
+    ])
+);

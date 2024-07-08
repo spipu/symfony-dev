@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace App\Api\Route\Test;
 
 use App\Api\Route\AbstractRoute;
+use DateTime;
 use Spipu\ApiPartnerBundle\Model\Parameter\ArrayParameter;
 use Spipu\ApiPartnerBundle\Model\Parameter\BooleanParameter;
 use Spipu\ApiPartnerBundle\Model\Parameter\DateTimeParameter;
@@ -85,6 +86,14 @@ class Test extends AbstractRoute
                     ->addProperty('test_integer', (new IntegerParameter())->setRequired(false))
                     ->addProperty('test_number', (new NumberParameter())->setRequired(false))
                     ->addProperty('test_string', (new StringParameter())->setRequired(false))
+            ),
+            'default_rows' => (new ArrayParameter())->setRequired(false)->setMinItems(0)->setItemParameter(
+                (new ObjectParameter())
+                    ->addProperty('test_boolean', (new BooleanParameter())->setRequired(false)->setDefaultValue(false))
+                    ->addProperty('test_datetime', (new DateTimeParameter())->setRequired(false)->setDefaultValue(new DateTime()))
+                    ->addProperty('test_integer', (new IntegerParameter())->setRequired(false)->setDefaultValue(42))
+                    ->addProperty('test_number', (new NumberParameter())->setRequired(false)->setDefaultValue(42.42))
+                    ->addProperty('test_string', (new StringParameter())->setRequired(false)->setDefaultValue('spipu'))
             ),
         ];
     }
