@@ -65,10 +65,17 @@ class Test extends AbstractRoute
      */
     public function getBodyParameters(): array
     {
+        $defaultParameter = $this->getTestParameters(false);
+        $defaultParameter->getItemParameter()->getProperties()['test_boolean']->setDefaultValue(false);
+        $defaultParameter->getItemParameter()->getProperties()['test_datetime']->setDefaultValue(new DateTime());
+        $defaultParameter->getItemParameter()->getProperties()['test_integer']->setDefaultValue(42);
+        $defaultParameter->getItemParameter()->getProperties()['test_number']->setDefaultValue(42.42);
+        $defaultParameter->getItemParameter()->getProperties()['test_string']->setDefaultValue('spipu');
+
         return [
             'required_rows' => $this->getTestParameters(true),
             'optional_rows' => $this->getTestParameters(false),
-            'default_rows'  => $this->getTestParameters(false),
+            'default_rows'  => $defaultParameter,
         ];
     }
 
@@ -86,7 +93,7 @@ class Test extends AbstractRoute
         ]);
     }
 
-    private function getTestParameters(bool $required): ParameterInterface
+    private function getTestParameters(bool $required): SpipuParameter\ArrayParameter
     {
         return (new SpipuParameter\ArrayParameter())
             ->setRequired($required)
