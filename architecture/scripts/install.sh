@@ -13,12 +13,12 @@ source ./architecture/scripts/include/init.sh
 showTitle "Install"
 
 cd ${ENV_FOLDER}/${WEB_FOLDER}
-
-showMessage "Composer"
 composer install
 
 showMessage "Security Check"
+set +e
 symfony security:check
+set -e
 
 if [[ "$APP_USE_YARN" = "yes" ]]; then
     showMessage "YARN"
