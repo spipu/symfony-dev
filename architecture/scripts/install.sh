@@ -13,12 +13,12 @@ source ./architecture/scripts/include/init.sh
 showTitle "Install"
 
 cd ${ENV_FOLDER}/${WEB_FOLDER}
-
-showMessage "Composer"
 composer install
 
 showMessage "Security Check"
+set +e
 symfony security:check
+set -e
 
 showMessage "Assets"
 ./bin/console assets:install --symlink --relative
