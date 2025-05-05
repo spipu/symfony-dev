@@ -18,7 +18,7 @@
         "doctrine/doctrine-migrations-bundle": "*",
         "doctrine/orm": "^3.0",
         "phpdocumentor/reflection-docblock": "*",
-        "predis/predis": "*",
+        "predis/predis": "^2.0",
         "symfony/asset": "*",
         "symfony/console": "*",
         "symfony/dotenv": "*",
