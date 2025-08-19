@@ -73,7 +73,7 @@ spipu_configuration:
         type: string
         required: true
         scoped: true
-        default: "My global text"
+        default: "My text"
 
     test.type.url:
       type: url
