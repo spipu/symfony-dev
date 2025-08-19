@@ -25,7 +25,8 @@ spipu_configuration:
 
     test.type.boolean:
         type:     boolean
-        required: false
+        required: true
+        unit:     "0"
 
     test.type.color:
         type:     color
