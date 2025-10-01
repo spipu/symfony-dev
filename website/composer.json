@@ -59,7 +59,7 @@
         "phpmd/phpmd": "*",
         "phpmetrics/phpmetrics": "*",
         "phpunit/phpunit": "^9.0.0",
-        "squizlabs/php_codesniffer": "*",
+        "squizlabs/php_codesniffer": "^3.0",
         "symfony/browser-kit": "*",
         "symfony/css-selector": "*",
         "symfony/debug-bundle": "*",
