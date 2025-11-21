@@ -17,7 +17,7 @@ use Spipu\UiBundle\Entity\Grid;
 use Spipu\UiBundle\Event\GridDefinitionEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
-class GridSubscriber implements EventSubscriberInterface
+class UserGridSubscriber implements EventSubscriberInterface
 {
     public static function getSubscribedEvents(): array
     {
