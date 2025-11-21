@@ -20,7 +20,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 /**
  * Form Listener
  */
-class GridSubscriber implements EventSubscriberInterface
+class UserGridSubscriber implements EventSubscriberInterface
 {
     /**
      * @return array

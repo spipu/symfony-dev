@@ -23,7 +23,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 /**
  * Form Listener
  */
-class FormSubscriber implements EventSubscriberInterface
+class UserFormSubscriber implements EventSubscriberInterface
 {
     /**
      * @return array
