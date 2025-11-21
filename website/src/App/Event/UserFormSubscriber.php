@@ -19,7 +19,7 @@ use Spipu\UiBundle\Event\FormDefinitionEvent;
 use Symfony\Component\Form\Extension\Core\Type;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
-class FormSubscriber implements EventSubscriberInterface
+class UserFormSubscriber implements EventSubscriberInterface
 {
     public static function getSubscribedEvents(): array
     {
