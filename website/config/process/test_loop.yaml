@@ -1,0 +1,36 @@
+spipu_process:
+    test_loop:
+        name: "Test Loop"
+
+        options:
+            can_be_put_in_queue: true
+            can_be_rerun_automatically: false
+            process_lock:
+                - "test_loop"
+
+        parameters:
+            loop_source: ["Mercury", "Venus", "Mars", "Jupiter", "Saturn", "Uranus", "Earth"]
+
+        steps:
+            hello_world:
+                class: Spipu\ProcessBundle\Step\Test\HelloWorld
+                parameters:
+                    name_from: "Foo"
+                    name_to:   "Bar"
+
+            hello_loop:
+                class: Spipu\ProcessBundle\Step\LoopStep
+                parameters:
+                    iterable: "{{ loop_source }}"
+                    steps:
+                        hello_world_1:
+                            class: Spipu\ProcessBundle\Step\Test\HelloWorld
+                            parameters:
+                                name_from: "{{ loop.value }}"
+                                name_to: "The Moon"
+
+                        hello_world_2:
+                            class: Spipu\ProcessBundle\Step\Test\HelloWorld
+                            parameters:
+                                name_from: "{{ loop.result.hello_world_1 }}"
+                                name_to: "{{ loop.value }}"
