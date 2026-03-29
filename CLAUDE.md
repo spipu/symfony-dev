@@ -78,6 +78,47 @@ Seven bundles under `website/src/Spipu/`, each following a consistent internal s
 
 Processes are defined in `website/config/process/` as YAML files. Each process is a sequence of **Steps** — PHP classes implementing `StepInterface`. Custom steps for the app live in `website/src/App/Step/`. Built-in steps are in `ProcessBundle/src/Step/` (Generic/, File/, plus `LoopStep.php` for iteration).
 
+**StepInterface** requires only one method:
+```php
+public function execute(ParametersInterface $parameters, LoggerInterface $logger): mixed;
+```
+
+Steps are fetched from the DI container **by FQCN** (not instantiated directly). Any class tagged `spipu.process.step` is resolvable at runtime via `$container->get('Fully\\Qualified\\ClassName')`. When adding a new step, it must be tagged in services.yaml.
+
+**Parameter interpolation** uses a custom `{{ variable_name }}` syntax (not Twig). Full replacement (`"{{ key }}"`) returns the actual typed value; partial (`"prefix_{{ key }}"`) concatenates strings. Parameters resolve up a parent chain, so nested steps (e.g. inside LoopStep) can access outer parameters.
+
+**LoopStep** (`ProcessBundle/src/Step/LoopStep.php`) dynamically builds and runs child steps defined inline in YAML. Inside the loop body, these variables are available:
+- `loop.key` — current iteration key
+- `loop.value` — current iteration value
+- `loop.result.<step_code>` — return value from a previous step in this iteration
+
+**Minimal YAML process structure:**
+```yaml
+spipu_process:
+    my_process:
+        name: "Human-readable name"
+        options:
+            can_be_put_in_queue: true
+            can_be_rerun_automatically: false
+        steps:
+            step_one:
+                class: App\Step\MyStep
+                parameters:
+                    some_param: "value"
+```
+
+### App-Level Extension Points
+
+The `website/src/App/` directory is where application-specific implementations live:
+- `App\Step\` — custom process steps (tagged `spipu.process.step`)
+- `App\WidgetSource\` — custom dashboard widgets (tagged `spipu.dashboard.source`, implement `SourceDefinitionInterface` + `SourceDataDefinitionInterface`)
+- `App\Api\Route\` — custom API endpoints (auto-registered)
+- `App\DependencyInjection\AppExtension.php` — app-level role hierarchy via `RoleDefinitionInterface`
+
+### Role Hierarchy
+
+Each bundle can contribute RBAC roles by returning a `RoleDefinitionInterface` from `AbstractBundle::getRolesHierarchy()`. The app itself does the same via `AppExtension`. Roles from all bundles are merged at boot time.
+
 ### Service Wiring
 
 `website/config/services.yaml` wires the application:
@@ -92,4 +133,6 @@ PHPUnit discovers tests via glob patterns in `website/.phpunit.xml`:
 - Unit tests: `src/Spipu/*/tests/Unit`
 - Functional tests: `src/Spipu/*/tests/Functional`
 
-Tests run with `APP_ENV=dev` and SQLite (no database server needed).
+Tests run with `APP_ENV=test` and SQLite (no database server needed).
+
+CoreBundle provides `SymfonyMock` test helpers (`getContainerBuilder()`, `getContainerConfigurator()`) for testing bundle configuration loading. ProcessBundle provides `SpipuProcessMock` for process-related test setup.
