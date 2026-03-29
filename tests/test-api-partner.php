@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 require_once __DIR__ . '/inc/init.php';
 
 $api = new EngineApiPartner(

@@ -31,7 +31,7 @@ class PartnerRepository implements PartnerRepositoryInterface
         $this->initPartner();
     }
 
-    private function initPartner()
+    private function initPartner(): void
     {
         $this->partner = new Partner(
             (int) $this->configurationManager->get('api.partner.enabled') === 1,
