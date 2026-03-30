@@ -136,3 +136,28 @@ PHPUnit discovers tests via glob patterns in `website/.phpunit.xml`:
 Tests run with `APP_ENV=test` and SQLite (no database server needed).
 
 CoreBundle provides `SymfonyMock` test helpers (`getContainerBuilder()`, `getContainerConfigurator()`) for testing bundle configuration loading. ProcessBundle provides `SpipuProcessMock` for process-related test setup.
+
+## Coding Standards
+
+### PHP Version and Strict Types
+
+- Target: **PHP 8.1** — do not use syntax or features from later versions.
+- Every PHP file must have `declare(strict_types=1);` preceded by a blank line after `<?php`.
+- All constants must have explicit visibility (`public`, `protected`, or `private`).
+
+### Typing Rules
+
+- All parameters, return types, and properties must be typed when the type is reliably determinable.
+- Only allowed union: `?type` (nullable). No `A|B` unions unless imposed by an external contract (e.g. PSR-3 `string|Stringable`).
+- If a type is genuinely non-expressible with heterogeneous types, use `mixed`.
+- `callable`: allowed as native type on **method parameters**; forbidden on **properties** (use `@var callable|null` phpdoc instead).
+- `resource`: no native type possible — keep phpdoc `@param resource` / `@return resource`.
+- For `__construct`, `__destruct`, `__clone`: no return type.
+- Fluent methods return `self`.
+- Closures and callbacks should be typed based on the contract they fulfill.
+
+### PSR-12 and Formatting
+
+- Code must be PSR-12 compliant.
+- Function signatures exceeding 120 characters must be split across multiple lines.
+- Every PHP and YAML file must end with exactly one blank line.
