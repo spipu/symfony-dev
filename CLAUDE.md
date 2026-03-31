@@ -142,6 +142,13 @@ CoreBundle provides `SymfonyMock` test helpers (`getContainerBuilder()`, `getCon
 ### PHP Version and Strict Types
 
 - Target: **PHP 8.1** — do not use syntax or features from later versions.
+- Code must remain compatible with PHP 8.1 through 8.5. Avoid patterns deprecated or removed in later versions:
+  - Always use `?Type $param = null` (never implicit nullable `Type $param = null`).
+  - Always use `{$var}` for string interpolation (never `${var}`).
+  - Never use `get_class()` or `get_parent_class()` without arguments — use `$object::class` or `static::class`.
+  - Never use `utf8_encode()` / `utf8_decode()` — use `mb_convert_encoding()`.
+  - Never use partial callable strings (`"self::method"`, `["parent", "method"]`) — use `Closure::fromCallable()` or first-class callable syntax.
+- Do not add encoding conversion or error suppression on `mb_*` functions: warnings on invalid UTF-8 are intentional (input data must be UTF-8).
 - Every PHP file must have `declare(strict_types=1);` preceded by a blank line after `<?php`.
 - All constants must have explicit visibility (`public`, `protected`, or `private`).
 
