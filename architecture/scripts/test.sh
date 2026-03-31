@@ -16,7 +16,7 @@ php -v | grep cli
 echo ""
 
 showMessage " => MySQL"
-mysql -h localhost -u"$DB_USER" -p"$DB_PASS" "$DB_NAME" -N -e "SHOW DATABASES like \"$DB_NAME\";"
+mysql -h "$DB_HOST" -u"$DB_USER" -p"$DB_PASS" "$DB_NAME" -N -e "SHOW DATABASES like \"$DB_NAME\";"
 echo ""
 
 showMessage " => Redis - Cache"

@@ -13,6 +13,8 @@ source ./architecture/scripts/include/init.sh
 showTitle "Install"
 
 cd ${ENV_FOLDER}/${WEB_FOLDER}
+
+showMessage "Composer"
 composer install
 
 showMessage "Security Check"
@@ -49,6 +51,9 @@ sudo -u www-data ./bin/console spipu:configuration:clear-cache
 
 showMessage "Clean Spipu UI Default Grids"
 sudo -u www-data ./bin/console spipu:ui:grid-config:reset
+
+showMessage "Clean Spipu UI Dashboard Default"
+sudo -u www-data ./bin/console dbal:run-sql "DELETE FROM spipu_dashboard_config WHERE name='default';"
 
 showMessage "Fixtures"
 sudo -u www-data ./bin/console spipu:fixtures:load
