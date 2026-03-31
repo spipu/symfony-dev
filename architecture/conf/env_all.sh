@@ -2,7 +2,7 @@
 
 # Generic Parameters
 ENV_NAME="symfonydev"
-ENV_HOST="${ENV_NAME}.lxc"
+ENV_HOST="${ENV_NAME}.lxd"
 ENV_SSH_PORT="22"
 ENV_MODE="dev"
 ENV_CODE="dev"

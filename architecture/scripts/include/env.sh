@@ -88,14 +88,6 @@ if [[ "${ENV_TYPE}" != "none" ]]; then
         done
         remplaceVariableInFile "${vmFile}" "ENV_SUB_HOSTS" ""
         sed -i 's/\\n/\n/g' "${vmFile}"
-
-        # Specific - LXC Hosts
-        vmFile="./architecture/vm/lxcfile"
-        for subHost in ${ENV_HOST_SUB_HOSTS[@]}; do
-            remplaceVariableInFile "${vmFile}" "ENV_SUB_HOSTS" "$subHost {{ENV_SUB_HOSTS}}"
-        done
-        remplaceVariableInFile "${vmFile}" "ENV_SUB_HOSTS" ""
-        sed -i 's/ *$//g' "${vmFile}"
     fi
 fi
 
