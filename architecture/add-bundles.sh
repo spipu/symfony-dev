@@ -1,13 +1,16 @@
 #!/bin/bash
 
 set -e
-bashSource=$(readlink -f "${BASH_SOURCE[0]}")
-cd "$(dirname "$bashSource")"
+
+CURRENT_SCRIPT=$(readlink -f "${BASH_SOURCE[0]}")
+ARCHITECTURE_FOLDER=$(basename "$(dirname "$CURRENT_SCRIPT")")
+
+cd "$(dirname "$CURRENT_SCRIPT")"
 cd ../
 
 ENV_TYPE="none"
 ENV_DO_NOT_GENERATE="yes"
-source ./architecture/scripts/include/init.sh
+source ./$ARCHITECTURE_FOLDER/scripts/include/init.sh
 
 MAIN_FOLDER="./${WEB_FOLDER}/src/Spipu"
 BASE_GIT="git@github.com:spipu/symfony-bundle"
