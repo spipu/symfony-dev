@@ -60,8 +60,8 @@ class ConfigurationsFixture implements FixtureInterface
     private function getConfiguration(): array
     {
         return [
-            'app.email.sender'             => 'no-reply@symfonydev.lxd',
-            'app.website.url'              => 'https://symfonydev.lxd',
+            'app.email.sender'             => 'no-reply@symfonydev.lxc',
+            'app.website.url'              => 'https://symfonydev.lxc',
             'process.task.can_kill'        => 1,
             'api.partner.enabled'          => 1,
             'api.partner.api_key'          => "b45dbcb30ceb5e7b82ab589334833762472e5ff53ba68cbfc67cd0047934fc77",
