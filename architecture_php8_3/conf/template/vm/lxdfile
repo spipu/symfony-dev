@@ -1,0 +1,6 @@
+name={{ENV_NAME}}
+template=ubuntu-24_04-noble
+delivery-user={{ENV_USER}}
+mount=./../../:/var/www/{{ENV_NAME}}
+host={{ENV_HOST}}
+{{ENV_SUB_HOSTS}}
