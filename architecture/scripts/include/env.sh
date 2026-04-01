@@ -4,7 +4,7 @@
 ENVIRONMENTS=()
 for entry in ./$ARCHITECTURE_FOLDER/conf/env_*.sh
 do
-    code=$(echo $entry | cut -d '_' -f 2 | cut -d '.' -f 1)
+    code=$(basename "$entry" | cut -d '_' -f 2 | cut -d '.' -f 1)
     if [[ "$code" != "all" ]]; then
         ENVIRONMENTS+=("$code")
     fi
