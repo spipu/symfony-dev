@@ -36,7 +36,10 @@ class UserGridSubscriber implements EventSubscriberInterface
                 (new Grid\Column('middle_name', 'spipu.user.field.middle_name', 'middleName', 35))
                         ->setType((new Grid\ColumnType(Grid\ColumnType::TYPE_TEXT)))
                         ->useSortable()
-                        ->setFilter((new Grid\ColumnFilter(true, false)))
+                        ->setFilter(
+                            (new Grid\ColumnFilter(true, false))
+                                ->setValueTransformer(fn(string $v): string => mb_strtolower($v))
+                        )
                         ->setDisplayed(false)
             )
             ->addGlobalAction(

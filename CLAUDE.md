@@ -141,7 +141,7 @@ CoreBundle provides `SymfonyMock` test helpers (`getContainerBuilder()`, `getCon
 
 ### PHP Version and Strict Types
 
-- Target: **PHP 8.1** — do not use syntax or features from later versions.
+- Target: **PHP 8.1**, **Symfony 6.4**, **Doctrine ORM 3** — do not use syntax or features from later versions.
 - Code must remain compatible with PHP 8.1 through 8.5. Avoid patterns deprecated or removed in later versions:
   - Always use `?Type $param = null` (never implicit nullable `Type $param = null`).
   - Always use `{$var}` for string interpolation (never `${var}`).
@@ -162,9 +162,15 @@ CoreBundle provides `SymfonyMock` test helpers (`getContainerBuilder()`, `getCon
 - For `__construct`, `__destruct`, `__clone`: no return type.
 - Fluent methods return `self`.
 - Closures and callbacks should be typed based on the contract they fulfill.
+- Setter methods accepting a `Closure` or `callable` must have a phpdoc comment documenting the expected signature: `Format: function(Type $param, ...): ReturnType`.
 
 ### PSR-12 and Formatting
 
 - Code must be PSR-12 compliant.
+- No superfluous blank lines: no blank line before a closing `}`, no double blank lines, no trailing blank line after removing code.
 - Function signatures exceeding 120 characters must be split across multiple lines.
 - Every PHP and YAML file must end with exactly one blank line.
+
+### Database Schema
+
+- Do **not** use Symfony migrations. Use `doctrine:schema:update` to synchronize the database schema with entity definitions.
