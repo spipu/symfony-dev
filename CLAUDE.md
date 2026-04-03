@@ -69,7 +69,7 @@ Seven bundles under `website/src/Spipu/`, each following a consistent internal s
 | **CoreBundle** | Foundation: base `AbstractBundle`, shared services, utilities |
 | **UiBundle** | Grid/list/form UI framework with Twig extensions |
 | **ConfigurationBundle** | Key-value application configuration with UI management |
-| **UserBundle** | User management, authentication, roles/permissions |
+| **UserBundle** | User management, authentication, security policies, roles/permissions (depends on ConfigurationBundle) |
 | **ProcessBundle** | Background job system: process definitions (YAML), step execution, logging |
 | **DashboardBundle** | Widget-based dashboard system |
 | **ApiPartnerBundle** | REST API framework for partner integrations (scoped tokens, OAuth-style) |
@@ -107,11 +107,27 @@ spipu_process:
                     some_param: "value"
 ```
 
+### UserBundle Security System
+
+UserBundle uses ConfigurationBundle for runtime security settings stored in database (`config/spipu_configuration.yaml`):
+- `user.security.lock_enabled` / `lock_max_attempts` — automatic account lockout after N failed login attempts (disables account via `UserManager::disableUser()`)
+- `user.security.token_expiration` — activation/recovery token lifetime in hours
+- `user.security.password_min_length` — minimum password length (enforced minimum: 8)
+
+Key services:
+- **`UserManager`** — central service for `enableUser()`, `disableUser()`, `validatePassword()`, `changeEmail()`. All enable/disable operations must go through this service (not `setActive()` directly).
+- **`UserConfiguration`** — typed getters for security settings from ConfigurationBundle
+- **`UserLoginSubscriber`** — listens to Symfony login events, increments `nbTryLogin` on failure, disables account when threshold reached
+
+Events dispatched: `spipu.user.action.{enable,disable,email_change}` via `UserEvent`, `spipu.user.password.validate` via `PasswordValidationEvent` (extensible for custom password rules).
+
+CLI commands: `spipu:user:enable <username>`, `spipu:user:disable <username>`.
+
 ### App-Level Extension Points
 
 The `website/src/App/` directory is where application-specific implementations live:
 - `App\Step\` — custom process steps (tagged `spipu.process.step`)
-- `App\WidgetSource\` — custom dashboard widgets (tagged `spipu.dashboard.source`, implement `SourceDefinitionInterface` + `SourceDataDefinitionInterface`)
+- `App\WidgetSource\` — custom dashboard widgets (tagged `spipu.widget.source`, implement `SourceDefinitionInterface` + `SourceDataDefinitionInterface`)
 - `App\Api\Route\` — custom API endpoints (auto-registered)
 - `App\DependencyInjection\AppExtension.php` — app-level role hierarchy via `RoleDefinitionInterface`
 
@@ -122,7 +138,7 @@ Each bundle can contribute RBAC roles by returning a `RoleDefinitionInterface` f
 ### Service Wiring
 
 `website/config/services.yaml` wires the application:
-- Dashboard widgets tagged as `spipu.dashboard.source`
+- Dashboard widgets tagged as `spipu.widget.source`
 - Process steps tagged as `spipu.process.step`
 - API routes registered via `App\Api\Route\`
 - Sessions backed by Redis via Predis
@@ -135,7 +151,7 @@ PHPUnit discovers tests via glob patterns in `website/.phpunit.xml`:
 
 Tests run with `APP_ENV=test` and SQLite (no database server needed).
 
-CoreBundle provides `SymfonyMock` test helpers (`getContainerBuilder()`, `getContainerConfigurator()`) for testing bundle configuration loading. ProcessBundle provides `SpipuProcessMock` for process-related test setup.
+CoreBundle provides `SymfonyMock` test helpers (`getContainerBuilder()`, `getContainerConfigurator()`) for testing bundle configuration loading. ProcessBundle provides `SpipuProcessMock` for process-related test setup. ConfigurationBundle provides `SpipuConfigurationMock::getManager()` for mocking `ConfigurationManager`. UserBundle provides `SpipuUserMock` for user entity and token manager mocks, and `UserManagerTest::getService()` as a factory for creating `UserManager` instances in tests.
 
 ## Coding Standards
 
