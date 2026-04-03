@@ -39,6 +39,7 @@ parameters:
     Spipu_User:
       - Spipu_Core
       - Spipu_Ui
+      - Spipu_Configuration
     Spipu_Configuration:
       - Spipu_Core
       - Spipu_Ui
