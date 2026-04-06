@@ -20,8 +20,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
-#[Route(path: '/api_partner/swagger')]
-class ApISwaggerController extends AbstractController
+#[Route(path: '/partner_api/swagger')]
+class ApiSwaggerController extends AbstractController
 {
     #[Route(path: '/{type}/{code}', name: 'app_api_partner_swagger', methods: 'GET')]
     #[IsGranted('ROLE_ADMIN_API_PARTNER')]

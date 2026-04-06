@@ -23,8 +23,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
-#[Route(path: '/api_partner/log')]
-class ApILogController extends AbstractController
+#[Route(path: '/partner_api/log')]
+class ApiLogController extends AbstractController
 {
     #[Route(path: '/', name: 'app_api_partner_log_list', methods: 'GET')]
     #[IsGranted('ROLE_ADMIN_API_PARTNER')]
@@ -51,10 +51,8 @@ class ApILogController extends AbstractController
         return $this->render('api_partner/log_list.html.twig', ['manager' => $manager]);
     }
 
-    /**
-     * @Security("is_granted('ROLE_ADMIN_API_PARTNER')")
-     */
     #[Route(path: '/show/{id}', name: 'app_api_partner_log_show', methods: 'GET')]
+    #[IsGranted('ROLE_ADMIN_API_PARTNER')]
     public function show(
         ApiLogPartnerRepository $apiLogPartnerRepository,
         PartnerRepositoryInterface $partnerRepository,
