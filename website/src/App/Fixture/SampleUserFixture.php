@@ -130,7 +130,7 @@ class SampleUserFixture implements FixtureInterface
     {
         $keys = array_keys($list[0]);
         foreach ($keys as &$key) {
-            $key = $this->connection->quoteIdentifier($key);
+            $key = $this->connection->quoteSingleIdentifier($key);
         }
 
         foreach ($list as &$row) {
@@ -144,7 +144,7 @@ class SampleUserFixture implements FixtureInterface
 
         $query = sprintf(
             'INSERT INTO %1$s (%2$s) VALUES %3$s;',
-            $this->connection->quoteIdentifier('spipu_user'),
+            $this->connection->quoteSingleIdentifier('spipu_user'),
             implode(',', $keys),
             implode(',', $list)
         );

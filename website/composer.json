@@ -5,20 +5,21 @@
     "description": "A project to develop bundles",
     "prefer-stable": true,
     "require": {
-        "php": ">=8.1",
+        "php": ">=8.3",
         "ext-ctype": "*",
         "ext-curl": "*",
         "ext-iconv": "*",
         "ext-json": "*",
         "ext-pdo": "*",
         "ext-posix": "*",
+        "ext-redis": "*",
         "ext-sodium": "*",
         "ext-zip": "*",
         "doctrine/doctrine-bundle": "*",
         "doctrine/doctrine-migrations-bundle": "*",
-        "doctrine/orm": "^3.0",
-        "phpdocumentor/reflection-docblock": "^5.0",
-        "predis/predis": "^2.0",
+        "doctrine/orm": "^3.6",
+        "phpdocumentor/reflection-docblock": "*",
+        "predis/predis": "*",
         "symfony/asset": "*",
         "symfony/console": "*",
         "symfony/dotenv": "*",
@@ -35,7 +36,7 @@
         "symfony/process": "*",
         "symfony/property-access": "*",
         "symfony/property-info": "*",
-        "symfony/rate-limiter": "6.4.*",
+        "symfony/rate-limiter": "*",
         "symfony/runtime": "*",
         "symfony/security-bundle": "*",
         "symfony/serializer": "*",
@@ -71,24 +72,25 @@
         "optimize-autoloader": true,
         "sort-packages": true,
         "platform": {
-            "php": "8.1.2",
+            "php": "8.3.6",
             "ext-bcmath": "1",
             "ext-ctype": "1",
-            "ext-gd": "1",
-            "ext-spl": "1",
-            "ext-dom": "1",
-            "ext-simplexml": "1",
-            "ext-mcrypt": "1",
-            "ext-hash": "1",
             "ext-curl": "1",
+            "ext-dom": "1",
+            "ext-gd": "1",
+            "ext-hash": "1",
             "ext-iconv": "1",
             "ext-intl": "1",
-            "ext-xsl": "1",
             "ext-mbstring": "1",
+            "ext-mcrypt": "1",
             "ext-openssl": "1",
-            "ext-zip": "1",
             "ext-pdo_mysql": "1",
+            "ext-redis": "6.1",
+            "ext-simplexml": "1",
             "ext-soap": "1",
+            "ext-spl": "1",
+            "ext-xsl": "1",
+            "ext-zip": "1",
             "lib-libxml": "1"
         },
         "allow-plugins": {
@@ -135,6 +137,7 @@
         "symfony/polyfill-php74": "*",
         "symfony/polyfill-php80": "*",
         "symfony/polyfill-php81": "*",
+        "symfony/polyfill-php82": "*",
         "sebastian/phpcpd": "*",
         "phploc/phploc": "*"
     },
@@ -157,7 +160,7 @@
     "extra": {
         "symfony": {
             "allow-contrib": false,
-            "require": "6.4.*"
+            "require": "7.4.*"
         }
     }
 }

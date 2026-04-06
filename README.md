@@ -22,9 +22,9 @@ Dev environment for Spipu Bundles
 
 It works with:
 
-* PHP >= 8.1
+* PHP >= 8.3
 * Composer
-* Symfony = 6.4.*
+* Symfony = 7.4.*
 * Doctrine ORM = 3.*.*
 
 ## Others
@@ -32,7 +32,7 @@ It works with:
 Needed for Unit tests / Analyze the code without having to create LXC / LXD container
 
 ```bash
-sudo apt-get -y install php8.1-cli php-xdebug php-common php-soap php-pdo php-sqlite3
+sudo apt-get -y install php8.3-cli php8.3-xdebug php8.3-common php8.3-soap php8.3-pdo php8.3-sqlite3 php8.3-xml php8.3-mbstring php8.3-zip
 ```
 
 Adding the external spipu bundles (we do not use composer because it is for dev only)
@@ -63,5 +63,5 @@ Look at https://github.com/spipu/symfony-demo for a full demo
 
 This program is distributed under the MIT License. For more information see the [./LICENSE.md](./LICENSE.md) file.
 
-Copyright 2019 Laurent Minguet
+Copyright 2026 Laurent Minguet
 

@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is `spipu/symfony-dev`, a Symfony 6.4 microkernel application serving as the development and testing environment for a suite of reusable **Spipu Bundles**. The bundles are not installed via Composer — they live directly under `website/src/Spipu/` and are cloned from GitHub via `./architecture/add-bundles.sh`.
+This is `spipu/symfony-dev`, a Symfony 7.4 microkernel application serving as the development and testing environment for a suite of reusable **Spipu Bundles**. The bundles are not installed via Composer — they live directly under `website/src/Spipu/` and are cloned from GitHub via `./architecture/add-bundles.sh`.
 
 ## Common Commands
 
@@ -33,22 +33,40 @@ All commands run from the repo root unless noted.
 **Run a specific test or filter:**
 ```bash
 # From website/ directory:
-php8.1 ./bin/phpunit -c ./.phpunit.xml --no-coverage --filter TestClassName
+php8.3 ./bin/phpunit -c ./.phpunit.xml --no-coverage --filter TestClassName
 ```
 
 > The test runner requires `APP_ENCRYPTOR_KEY_PAIR` env var (sodium keypair). The `phpunit.sh` script sets this automatically. If running phpunit manually, set it: `export APP_ENCRYPTOR_KEY_PAIR=$(php -r "echo sodium_bin2base64(sodium_crypto_box_keypair(), SODIUM_BASE64_VARIANT_ORIGINAL);")`
 
+**Update Composer dependencies (on the dev server):**
+```bash
+# From website/ directory:
+composer update
+```
+
 **System requirements for running tests locally (no container):**
 ```bash
-sudo apt-get -y install php8.1-cli php-xdebug php-common php-soap php-pdo php-sqlite3
+sudo apt-get -y install php8.3-cli php-xdebug php-common php-soap php-pdo php-sqlite3 php-xml
 ```
+
+## Dev Environment
+
+The application runs on a LXC container, not locally. Access:
+- **App user:** `ssh delivery@symfonydev.lxc` — run Symfony/Composer commands here
+- **Root (provisioning):** `ssh root@symfonydev.lxc`
+
+Composer and Symfony CLI commands must be executed on the container (from `/var/www/symfonydev/website/`).
+
+### Provisioning
+
+The `architecture/scripts/provision/` scripts run in numeric order during container creation (`01-repo`, `02-upgrade`, `03-packages`, `10-php`, `11-apache`, etc.). PHP is installed via the PPA `ondrej/php` (configured in `10-php.sh`).
 
 ## Architecture
 
 ### Directory Layout
 
 ```
-website/          # Symfony 6.4 application
+website/          # Symfony 7.4 application
   src/
     App/          # Application-specific code (controllers, entities, services)
     Spipu/        # The Spipu bundles (local source, not Composer-installed)
@@ -165,8 +183,8 @@ CoreBundle provides `SymfonyMock` test helpers (`getContainerBuilder()`, `getCon
 
 ### PHP Version and Strict Types
 
-- Target: **PHP 8.1**, **Symfony 6.4**, **Doctrine ORM 3** — do not use syntax or features from later versions.
-- Code must remain compatible with PHP 8.1 through 8.5. Avoid patterns deprecated or removed in later versions:
+- Target: **PHP 8.3**, **Symfony 7.4**, **Doctrine ORM 3** — do not use syntax or features from later versions.
+- Code must remain compatible with PHP 8.3 through 8.5. Avoid patterns deprecated or removed in later versions:
   - Always use `?Type $param = null` (never implicit nullable `Type $param = null`).
   - Always use `{$var}` for string interpolation (never `${var}`).
   - Never use `get_class()` or `get_parent_class()` without arguments — use `$object::class` or `static::class`.
