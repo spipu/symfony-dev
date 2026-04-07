@@ -51,7 +51,7 @@
         "twig/twig": "^3.0"
     },
     "require-dev": {
-        "qossmic/deptrac-shim": "*",
+        "deptrac/deptrac": "*",
         "edgedesign/phpqa": "*",
         "php-parallel-lint/php-parallel-lint": "*",
         "pdepend/pdepend": "*",

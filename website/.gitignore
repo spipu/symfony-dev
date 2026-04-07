@@ -22,6 +22,6 @@
 .phpunit.result.cache
 ###< phpunit/phpunit ###
 
-###> qossmic/deptrac-shim ###
+###> deptrac/deptrac ###
 /.deptrac.cache
-###< qossmic/deptrac-shim ###
+###< deptrac/deptrac ###

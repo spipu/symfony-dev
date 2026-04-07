@@ -1,36 +1,36 @@
-parameters:
+deptrac:
   paths:
       - ./src
   layers:
     # Bundle Layers
     - name: Spipu_ApiPartner
       collectors:
-        - type: className
-          regex: Spipu\\ApiPartnerBundle\\.*
+        - type: classLike
+          value: Spipu\\ApiPartnerBundle\\.*
     - name: Spipu_Configuration
       collectors:
-        - type: className
-          regex: Spipu\\ConfigurationBundle\\.*
+        - type: classLike
+          value: Spipu\\ConfigurationBundle\\.*
     - name: Spipu_Core
       collectors:
-        - type: className
-          regex: Spipu\\CoreBundle\\.*
+        - type: classLike
+          value: Spipu\\CoreBundle\\.*
     - name: Spipu_Dashboard
       collectors:
-        - type: className
-          regex: Spipu\\DashboardBundle\\.*
+        - type: classLike
+          value: Spipu\\DashboardBundle\\.*
     - name: Spipu_Process
       collectors:
-        - type: className
-          regex: Spipu\\ProcessBundle\\.*
+        - type: classLike
+          value: Spipu\\ProcessBundle\\.*
     - name: Spipu_Ui
       collectors:
-        - type: className
-          regex: Spipu\\UiBundle\\.*
+        - type: classLike
+          value: Spipu\\UiBundle\\.*
     - name: Spipu_User
       collectors:
-        - type: className
-          regex: Spipu\\UserBundle\\.*
+        - type: classLike
+          value: Spipu\\UserBundle\\.*
 
   ruleset:
     Spipu_Core: ~

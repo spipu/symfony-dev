@@ -1,4 +1,4 @@
-parameters:
+deptrac:
   paths:
       - ./src
   exclude_files:
@@ -9,14 +9,14 @@ parameters:
     # APP Layer
     - name: App
       collectors:
-        - type: className
-          regex: App\\.*
+        - type: classLike
+          value: App\\.*
 
     # Spipu Layer
     - name: Spipu
       collectors:
-        - type: className
-          regex: Spipu\\.*
+        - type: classLike
+          value: Spipu\\.*
 
   ruleset:
     # Global

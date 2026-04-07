@@ -154,10 +154,11 @@ The `website/src/App/` directory is where application-specific implementations l
 - `App\WidgetSource\` — custom dashboard widgets (tagged `spipu.widget.source`, implement `SourceDefinitionInterface` + `SourceDataDefinitionInterface`)
 - `App\Api\Route\` — custom API endpoints (auto-registered)
 - `App\DependencyInjection\AppExtension.php` — app-level role hierarchy via `RoleDefinitionInterface`
+- `App\Kernel.php` — registers `AppExtension` manually in `build()` (Symfony 7.4 no longer auto-detects it)
 
 ### Role Hierarchy
 
-Each bundle can contribute RBAC roles by returning a `RoleDefinitionInterface` from `AbstractBundle::getRolesHierarchy()`. The app itself does the same via `AppExtension`. Roles from all bundles are merged at boot time.
+Each bundle can contribute RBAC roles by returning a `RoleDefinitionInterface` from `AbstractBundle::getRolesHierarchy()`. The app itself does the same via `AppExtension` (registered in `Kernel::build()`). Roles from all bundles are merged at boot time via `SpipuCoreBundle::prependExtension()`.
 
 ### Service Wiring
 
@@ -205,6 +206,16 @@ CoreBundle provides `SymfonyMock` test helpers (`getContainerBuilder()`, `getCon
 - Fluent methods return `self`.
 - Closures and callbacks should be typed based on the contract they fulfill.
 - Setter methods accepting a `Closure` or `callable` must have a phpdoc comment documenting the expected signature: `Format: function(Type $param, ...): ReturnType`.
+
+### Controller Conventions
+
+- Never use Symfony's automatic entity parameter binding (ParamConverter/MapEntity). Always inject the repository and `int $id`, load manually, and throw `createNotFoundException()` if not found.
+- Use `#[IsGranted('ROLE_...')]` attribute for access control (not `@Security` annotations).
+- Use `$request->query->get()` for GET parameters, `$request->request->get()` for POST parameters, `$request->query->all()` for array GET parameters. Never use `$request->get()` (deprecated in Symfony 7.4).
+
+### Console Command Conventions
+
+- All commands must use the `#[AsCommand(name: '...', description: '...')]` attribute. Do not use `setName()` or `setDescription()` in `configure()`.
 
 ### PSR-12 and Formatting
 
