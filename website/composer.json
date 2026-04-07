@@ -58,7 +58,7 @@
         "pdepend/pdepend": "*",
         "phpmd/phpmd": "*",
         "phpmetrics/phpmetrics": "*",
-        "phpunit/phpunit": "^9.5",
+        "phpunit/phpunit": "^12.0",
         "squizlabs/php_codesniffer": "*",
         "symfony/browser-kit": "*",
         "symfony/css-selector": "*",

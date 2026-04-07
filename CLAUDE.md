@@ -32,11 +32,10 @@ All commands run from the repo root unless noted.
 
 **Run a specific test or filter:**
 ```bash
-# From website/ directory:
-php8.3 ./bin/phpunit -c ./.phpunit.xml --no-coverage --filter TestClassName
+./quality/phpunit.sh "--filter=TestClassName"
 ```
 
-> The test runner requires `APP_ENCRYPTOR_KEY_PAIR` env var (sodium keypair). The `phpunit.sh` script sets this automatically. If running phpunit manually, set it: `export APP_ENCRYPTOR_KEY_PAIR=$(php -r "echo sodium_bin2base64(sodium_crypto_box_keypair(), SODIUM_BASE64_VARIANT_ORIGINAL);")`
+> Always use `./quality/phpunit.sh` to run tests — it sets required env vars (`APP_ENCRYPTOR_KEY_PAIR`, `APP_ENV`). Do not call phpunit directly.
 
 **Update Composer dependencies (on the dev server):**
 ```bash
@@ -170,15 +169,33 @@ Each bundle can contribute RBAC roles by returning a `RoleDefinitionInterface` f
 
 ### Testing Layout
 
-PHPUnit discovers tests via glob patterns in `website/.phpunit.xml`:
+**PHPUnit 12** discovers tests via glob patterns in `website/.phpunit.xml`:
 - Unit tests: `src/Spipu/*/tests/Unit`
 - Functional tests: `src/Spipu/*/tests/Functional`
 
 Tests run with `APP_ENV=test` and SQLite (no database server needed).
 
+**Each bundle is a separate git repo** under `website/src/Spipu/`. Test changes must be committed in each bundle's repo independently from the main repo.
+
+### PHPUnit 12 Conventions
+
+- Every concrete test class must have `#[CoversClass(ClassName::class)]` and `#[AllowMockObjectsWithoutExpectations]` attributes.
+- Abstract base test classes must use `#[CoversNothing]` and their filename must end with `TestCase` (not `Test`) to avoid PHPUnit scanning them (e.g. `AbstractFieldTestCase.php`).
+- Do not use deprecated PHPUnit 9 APIs:
+  - `withConsecutive()` / `willReturnOnConsecutiveCalls()` — use `willReturnCallback()` with a matcher counter pattern instead.
+  - `$this->returnArgument()` / `$this->returnCallback()` / `$this->returnValueMap()` — use `->willReturnArgument()` / `->willReturnCallback()` / `->willReturnMap()` directly on the mock builder.
+  - `TestCase::any()` is not static — always call `$testCase->any()`.
+- No `<listeners>` in phpunit.xml (removed in PHPUnit 10+). Deprecation reporting is native in PHPUnit 12.
+
+### Test Helpers
+
 All bundle controllers must extend `Spipu\CoreBundle\Controller\AbstractController` (not Symfony's directly). This base class provides `trans()`, `addFlashTrans()` with optional `$domain` parameter, and subscribes to the `translator` service. Exception: `DashboardControllerService` which injects `TranslatorInterface` directly.
 
 CoreBundle provides `SymfonyMock` test helpers (`getContainerBuilder()`, `getContainerConfigurator()`) for testing bundle configuration loading. ProcessBundle provides `SpipuProcessMock` for process-related test setup. ConfigurationBundle provides `SpipuConfigurationMock::getManager()` for mocking `ConfigurationManager`. UserBundle provides `SpipuUserMock` for user entity and token manager mocks, and `UserManagerTest::getService()` as a factory for creating `UserManager` instances in tests.
+
+### Composer Patches
+
+`cweagans/composer-patches` v2.0 is used to patch `consolidation/robo` (PHPQA dependency) for Symfony Console 7.4 compatibility. Patch file: `website/patches/robo-symfony-console-deprecation.patch`. When Robo releases a fix, the patch and dependency can be removed.
 
 ## Coding Standards
 
