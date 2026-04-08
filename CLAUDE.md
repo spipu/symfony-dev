@@ -191,6 +191,12 @@ Tests run with `APP_ENV=test` and SQLite (no database server needed).
 
 All bundle controllers must extend `Spipu\CoreBundle\Controller\AbstractController` (not Symfony's directly). This base class provides `trans()`, `addFlashTrans()` with optional `$domain` parameter, and subscribes to the `translator` service. Exception: `DashboardControllerService` which injects `TranslatorInterface` directly.
 
+### Frontend Libraries
+
+- **Bootstrap 5.3** — loaded via `bootstrap.bundle.min.js` (includes Popper). Symfony form theme: `bootstrap_5_layout.html.twig`. Use `data-bs-*` attributes, `me-/ms-/pe-/ps-*` spacing, `text-start/end`, `float-start/end`, `fw-bold`, `text-bg-*` badges, `form-select` for selects, `mb-3` instead of `form-group`, `w-100` instead of `btn-block`, `col-12` (not `col-xs-12`). Navbars require `container-fluid` wrapper and `data-bs-theme="dark"`. Active nav links: class `active` on `<a class="nav-link">` (not on `<li>`). Use native `bootstrap.Modal` API (not jQuery `.modal()`).
+- **jQuery 4.0** — `$.proxy()`, `$.grep()` and other removed utilities must not be used. Use `.bind()` and `Array.filter()` instead.
+- **FontAwesome 7** — use `fa-solid`/`fa-regular`/`fa-brands` prefixes (not `fas`/`far`/`fab`). Use modern icon names: `pen-to-square` (not `edit`), `xmark` (not `times`), `floppy-disk` (not `save`), `gear` (not `cog`), `magnifying-glass` (not `search`), `rotate-left` (not `undo-alt`), `trash-can` (not `trash-alt`), `right-to-bracket` (not `sign-in-alt`), `rotate` (not `sync-alt`), `calendar-days` (not `calendar-alt`), `triangle-exclamation` (not `exclamation-triangle`), `square-plus`/`square-minus` (not `plus-square`/`minus-square`), `left-right`/`up-down` (not `arrows-alt-h`/`arrows-alt-v`). In PHP `setIcon()` calls, icon names are passed without the `fa-` prefix.
+
 CoreBundle provides `SymfonyMock` test helpers (`getContainerBuilder()`, `getContainerConfigurator()`) for testing bundle configuration loading. ProcessBundle provides `SpipuProcessMock` for process-related test setup. ConfigurationBundle provides `SpipuConfigurationMock::getManager()` for mocking `ConfigurationManager`. UserBundle provides `SpipuUserMock` for user entity and token manager mocks, and `UserManagerTest::getService()` as a factory for creating `UserManager` instances in tests.
 
 ### Composer Patches

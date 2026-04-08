@@ -2,7 +2,7 @@
 
 ## Description
 
-The **UiBundle** provides a reusable admin UI framework built on Twig, Bootstrap 4, and Symfony Form:
+The **UiBundle** provides a reusable admin UI framework built on Twig, Bootstrap 5, and Symfony Form:
 
 - **Grid / List** — paginated, sortable, filterable data grids with configurable columns, row/mass/global actions, and per-user column personalization
 - **Form Management** — structured form definitions (`Form` / `FieldSet` / `Field`) with Symfony form type integration, lifecycle events, and automatic entity persistence
