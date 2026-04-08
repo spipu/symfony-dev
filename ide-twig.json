@@ -1,6 +1,10 @@
 {
   "namespaces": [
     {
+      "namespace": "SpipuApiPartner",
+      "path": "website/src/Spipu/ApiPartnerBundle/templates"
+    },
+    {
       "namespace": "SpipuConfiguration",
       "path": "website/src/Spipu/ConfigurationBundle/templates"
     },
