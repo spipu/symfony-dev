@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "23da114d9a24ba2f488ab9e8a673db01",
+    "content-hash": "671538dc6ddca3b515ee1bdbc7adf34e",
     "packages": [
         {
             "name": "doctrine/collections",
@@ -11564,7 +11564,6 @@
         "ext-iconv": "1",
         "ext-intl": "1",
         "ext-mbstring": "1",
-        "ext-mcrypt": "1",
         "ext-openssl": "1",
         "ext-pdo_mysql": "1",
         "ext-redis": "6.1",

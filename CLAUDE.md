@@ -30,9 +30,19 @@ All commands run from the repo root unless noted.
 ./quality/analyze.sh
 ```
 
+**Run dependency analysis (deptrac — checks bundle/layer dependency rules):**
+```bash
+./quality/deptrac.sh
+```
+
 **Run a specific test or filter:**
 ```bash
 ./quality/phpunit.sh "--filter=TestClassName"
+```
+
+**Run tests with coverage AND a filter:**
+```bash
+./quality/phpunit.sh --coverage "--filter=TestClassName"
 ```
 
 > Always use `./quality/phpunit.sh` to run tests — it sets required env vars (`APP_ENCRYPTOR_KEY_PAIR`, `APP_ENV`). Do not call phpunit directly.
@@ -90,6 +100,17 @@ Seven bundles under `website/src/Spipu/`, each following a consistent internal s
 | **ProcessBundle** | Background job system: process definitions (YAML), step execution, logging |
 | **DashboardBundle** | Widget-based dashboard system |
 | **ApiPartnerBundle** | REST API framework for partner integrations (scoped tokens, OAuth-style) |
+
+**Bundle dependency graph** (enforced by deptrac):
+```
+CoreBundle          (no bundle dependencies)
+├── UiBundle
+├── ConfigurationBundle  → Core, Ui
+├── UserBundle           → Core, Ui, Configuration
+├── ProcessBundle        → Core, Ui, Configuration
+├── DashboardBundle      → Core, Ui
+└── ApiPartnerBundle     → Core, Ui, Configuration
+```
 
 ### ProcessBundle Step System
 

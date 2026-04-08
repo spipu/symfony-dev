@@ -83,7 +83,6 @@
             "ext-iconv": "1",
             "ext-intl": "1",
             "ext-mbstring": "1",
-            "ext-mcrypt": "1",
             "ext-openssl": "1",
             "ext-pdo_mysql": "1",
             "ext-redis": "6.1",
