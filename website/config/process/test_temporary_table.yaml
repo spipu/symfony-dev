@@ -1,0 +1,40 @@
+spipu_process:
+    test_temporary_table:
+        name: "Test - Temporary Table"
+
+        options:
+            can_be_put_in_queue: true
+            can_be_rerun_automatically: false
+            process_lock_on_failed: false
+
+        parameters:
+            temporary_tablename: "test_tmp_table"
+
+        steps:
+            create_tmp_table:
+                class: Spipu\ProcessBundle\Step\Database\CreateTemporaryTable
+                parameters:
+                    tablename: "{{ temporary_tablename }}"
+                    fields:
+                        code:
+                            type: string
+                            options:
+                                length: 255
+                                notnull: true
+                        label:
+                            type: string
+                            options:
+                                length: 255
+                                notnull: true
+
+            create_index_code:
+                class: Spipu\ProcessBundle\Step\Database\AddIndexToTable
+                parameters:
+                    tablename: "{{ temporary_tablename }}"
+                    fields:
+                        - "code"
+
+            remove_tmp_table:
+                class: Spipu\ProcessBundle\Step\Database\RemoveTemporaryTable
+                parameters:
+                    tablename: "{{ temporary_tablename }}"
