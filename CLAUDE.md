@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Development environment for **Spipu Bundles** — a suite of Symfony 5.4 bundles. The main application lives in `website/` and hosts 7 bundles as git submodules under `website/src/Spipu/`. An `App` demo application in `website/src/App/` exercises the bundles.
 
-PHP 7.4 target (configured via `composer.json` platform).
+PHP 8.1 target (configured via `composer.json` platform).
 
 ## Commands
 
@@ -35,7 +35,7 @@ cd website && composer install
 ./quality/deptrac.sh
 ```
 
-PHPUnit uses `php7.4` explicitly. Tests bootstrap from `website/vendor/autoload.php` with config in `website/.phpunit.xml`. Test environment uses SQLite (`website/var-test/`); a temporary sodium keypair is generated per run.
+PHPUnit uses `php8.1` explicitly. Tests bootstrap from `website/vendor/autoload.php` with config in `website/.phpunit.xml`. Test environment uses SQLite (`website/var-test/`); a temporary sodium keypair is generated per run.
 
 ## Architecture
 
