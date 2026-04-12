@@ -60,6 +60,22 @@ composer update
 sudo apt-get -y install php8.3-cli php-xdebug php-common php-soap php-pdo php-sqlite3 php-xml
 ```
 
+## Branch Strategy
+
+All repos (main repo + every bundle) share the same branch structure. The same rule applies to all:
+
+| Branch | Role | PHP | Symfony | Bootstrap | jQuery | FontAwesome |
+|--------|------|-----|---------|-----------|--------|-------------|
+| `master` | Active development — new features and fixes | 8.3 | 7.4 | 5 | 4 | 7 |
+| `sf6` | Active support — new features, bugfixes and security patches | 8.1 | 6.4 | 4 | 3.7 | 5 |
+| `sf5_php8` | Active support — bugfixes and security patches only | 8.1 | 5.4 | 4 | 3.7 | 5 |
+| `sf5_php7` | Active support — security patches only | 7.4 | 5.4 | 4 | 3.7 | 5 |
+| `sf4` | Archived — read-only, kept for historical reference | 7.2 | 4.4 | 4 | 3.6 | 5 |
+
+- **New features:** developed on `sf6`, then merged up to `master`
+- **Bugfixes:** developed on `sf6`, then merged up to `master` and backported down to `sf5_php8`
+- **Security patches:** backported down the full chain: `master` → `sf6` → `sf5_php8` → `sf5_php7`
+
 ## Dev Environment
 
 The application runs on a LXC container, not locally. Access:
