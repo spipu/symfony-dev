@@ -29,11 +29,13 @@ All commands run from the repo root unless noted.
 ```bash
 ./quality/analyze.sh
 ```
+> `analyze.sh` downloads `phpcpd.phar` and `phploc.phar` on every run (internet required). Opens Firefox with the phpqa.html report.
 
 **Run dependency analysis (deptrac — checks bundle/layer dependency rules):**
 ```bash
 ./quality/deptrac.sh
 ```
+> `deptrac.sh` requires `graphviz` to produce PNG diagrams. It runs three rule sets: `.depfile.global.yaml` (global layers), `.depfile.mvc.yaml` (MVC layers), `.depfile.bundles.yaml` (inter-bundle dependencies).
 
 **Run a specific test or filter:**
 ```bash
@@ -101,6 +103,8 @@ Seven bundles under `website/src/Spipu/`, each following a consistent internal s
 | **DashboardBundle** | Widget-based dashboard system |
 | **ApiPartnerBundle** | REST API framework for partner integrations (scoped tokens, OAuth-style) |
 
+**Bundle git repos:** `website/src/Spipu` is listed in the root `.gitignore` — it is entirely excluded from the main repo. Each bundle is an independent git repo cloned from `git@github.com:spipu/symfony-bundle-{name}.git`. To commit bundle changes, `cd` into the bundle directory (e.g. `website/src/Spipu/CoreBundle/`) and commit there.
+
 **Bundle dependency graph** (enforced by deptrac):
 ```
 CoreBundle          (no bundle dependencies)
@@ -114,7 +118,7 @@ CoreBundle          (no bundle dependencies)
 
 ### ProcessBundle Step System
 
-Processes are defined in `website/config/process/` as YAML files. Each process is a sequence of **Steps** — PHP classes implementing `StepInterface`. Custom steps for the app live in `website/src/App/Step/`. Built-in steps are in `ProcessBundle/src/Step/` (Generic/, File/, plus `LoopStep.php` for iteration).
+Processes are defined in `website/config/process/` as YAML files. Each process is a sequence of **Steps** — PHP classes implementing `StepInterface`. Custom steps for the app live in `website/src/App/Step/`. Built-in steps are in `ProcessBundle/src/Step/`: `Generic/`, `File/`, `Database/`, `String/`, `ExportFile/`, `Test/`, plus `LoopStep.php` for iteration.
 
 **StepInterface** requires only one method:
 ```php
