@@ -42,12 +42,6 @@ class UserGridSubscriber implements EventSubscriberInterface
                         )
                         ->setDisplayed(false)
             )
-            ->addGlobalAction(
-                (new Grid\Action('create', 'spipu.ui.action.create', 10, 'spipu_user_admin_create'))
-                    ->setIcon('pen-to-square')
-                    ->setNeededRole('ROLE_ADMIN_MANAGE_USER_EDIT')
-                    ->setCssClass('success')
-            )
         ;
     }
 }
