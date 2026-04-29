@@ -110,9 +110,9 @@ class AdminDashboard implements DashboardDefinitionInterface
                         [
                             "widgets" => [
                                 [
-                                    "source" => "test-error",
-                                    "type" => "value_single",
-                                    "period" => "week",
+                                    "source" => "user-active-donut",
+                                    "type" => "donut",
+                                    "period" => null,
                                     "width" => 1,
                                     "height" => 2,
                                 ]

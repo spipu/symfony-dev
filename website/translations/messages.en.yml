@@ -17,6 +17,9 @@ spipu:
             test-error:
                 label: "Test of error"
                 title: "Test of error"
+            user-active-donut:
+                label: "Users - active vs inactive"
+                title: "Users - active vs inactive"
 
 app:
     role:
