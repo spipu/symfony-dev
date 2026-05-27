@@ -2,6 +2,8 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+> **Self-sufficiency notice for AI assistants:** This file is the **sole source of truth** for project conventions, coding standards, and collaboration rules. The repo is worked on from multiple machines; any local auto-memory (e.g. `~/.claude/projects/.../memory/`) is **not** synchronized between those machines and must not be read from or written to for this project. If a rule or fact isn't documented here, ask the maintainer — don't infer from local state. When the maintainer reveals a durable rule or preference during a session, propose updating `CLAUDE.md` rather than saving to local memory.
+
 ## Project Overview
 
 This is `spipu/symfony-dev`, a Symfony 7.4 microkernel application serving as the development and testing environment for a suite of reusable **Spipu Bundles**. The bundles are not installed via Composer — they live directly under `website/src/Spipu/` and are cloned from GitHub via `./architecture/add-bundles.sh`.
@@ -73,7 +75,7 @@ All repos (main repo + every bundle) share the same branch structure. The same r
 | `sf4` | Archived — read-only, kept for historical reference | 7.2 | 4.4 | 4 | 3.6 | 5 |
 
 - **New features:** developed on `sf6`, then merged up to `master`
-- **Bugfixes:** developed on `sf6`, then merged up to `master` and backported down to `sf5_php8`
+- **Bugfixes:** developed on `sf6`, then merged up to `master`. Backport to `sf5_php8` only for indispensable fixes (blocking regression, critical bug affecting an active consumer) — not by default.
 - **Security patches:** backported down the full chain: `master` → `sf6` → `sf5_php8` → `sf5_php7`
 
 ## Dev Environment
@@ -291,3 +293,47 @@ CoreBundle provides `SymfonyMock` test helpers (`getContainerBuilder()`, `getCon
 ### Database Schema
 
 - Do **not** use Symfony migrations. Use `doctrine:schema:update` to synchronize the database schema with entity definitions.
+
+## Collaboration Conventions
+
+These rules apply to AI assistants (Claude Code, etc.) working with the maintainer. They override default assistant behavior.
+
+### Language
+
+- Chat responses to the maintainer: **French** (maintainer's working language).
+- All committed content (`CLAUDE.md`, bundle docs under `doc/`, code comments, commit messages, PR descriptions): **English** (token efficiency on `CLAUDE.md` reload, broader audience for the open-source bundles).
+
+### Workflow for non-trivial changes
+
+For analyses or refactors touching multiple files, or any change with non-obvious side effects:
+
+1. Analyze first — read the code, do not modify yet.
+2. Report findings citing exact file paths and line numbers.
+3. Wait for explicit confirmation before editing.
+
+For small well-scoped tasks (single file, obvious fix), proceeding directly to the edit is fine.
+
+### Testing
+
+- Do **not** run `./quality/phpunit.sh` automatically to verify a change. Tests run on the maintainer's LXC container (`symfonydev.lxc`), not the local development machine. Mention the command if relevant, but do not execute it.
+
+### Commit messages
+
+- One concise line, ~80 characters max.
+- No bullet list of changes inside the message.
+- No `Co-Authored-By` trailer unless the maintainer explicitly asks for it.
+
+### Composer constraints for new dependencies
+
+- Prefer broad lower-bound constraints (`">=3.0"`) over capped ranges (`"^3.6 || ^4"`).
+- Transitive dependencies (e.g. ORM tightening DBAL) already cap the effective version. Don't artificially cap future majors unless a real incompatibility is known.
+
+### Intentional behaviors — do not "fix"
+
+- `mb_*` functions emitting warnings on invalid UTF-8 in `ProcessBundle` steps (`ToLowerCase`, `ToUpperCase`, `ToTitleCase`, `YesNo`, `FixedWidth`) and `ApiPartnerBundle` `StringParameter` are intentional: input files **must** be UTF-8, and the warnings act as implicit encoding validation. Don't add upstream encoding conversion and don't silence them.
+- Some files have explicit multi-type unions (`int|float`, `EntityInterface|array|null`) that intentionally violate the "nullable-only" rule from Typing Rules above. These are documented exceptions. Don't refactor typing without checking with the maintainer first.
+- `ProcessBundle/src/Step/File/ImportFileToTable::insertRows()` keeps its value-quoting switch inline (rather than delegating to `ConnectionQuoter::quoteValues()`) for performance. The code carries an explicit `IMPORTANT: DO NOT SPLIT THIS METHOD, WE NEED PERFORMANCES !!!!` comment — respect it.
+
+### Extension patterns
+
+- When extending a Spipu bundle from a consumer project, prefer implementing the bundle's native interfaces (`SourceDataDefinitionInterface`, `ConnectionQuoterFactoryInterface`, `RowReaderInterface`, etc.) over injecting closures as properties on bundle entities. Interfaces are typed, testable, and consistent with the bundle's existing design. Also aligns with the Typing Rules above (`callable` forbidden on properties).
