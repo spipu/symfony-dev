@@ -8,6 +8,7 @@ fi
 HOUR=$(date +%H:%M:%S)
 echo "[${HOUR}]===[CLEAN]==="
 sudo rm -rf ./${WEB_FOLDER}/var
+sudo rm -rf ./${WEB_FOLDER}/vendor
 echo ""
 
 HOUR=$(date +%H:%M:%S)
