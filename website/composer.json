@@ -5,7 +5,7 @@
     "description": "A project to develop bundles",
     "prefer-stable": true,
     "require": {
-        "php": "^8.1",
+        "php": "^7.4",
         "ext-ctype": "*",
         "ext-curl": "*",
         "ext-iconv": "*",
@@ -18,7 +18,7 @@
         "doctrine/annotations": "*",
         "doctrine/doctrine-bundle": "*",
         "doctrine/doctrine-migrations-bundle": "*",
-        "doctrine/orm": "^2.7",
+        "doctrine/orm": "*",
         "phpdocumentor/reflection-docblock": "*",
         "predis/predis": "^2.0",
         "sensio/framework-extra-bundle": "*",
@@ -48,11 +48,11 @@
         "symfony/web-link": "*",
         "symfony/yaml": "*",
         "twbs/bootstrap": "^4.0",
-        "twig/extra-bundle": "^3.0",
-        "twig/twig": "^3.0"
+        "twig/extra-bundle": "^3.0 <3.12",
+        "twig/twig": "^3.0 <3.12"
     },
     "require-dev": {
-        "qossmic/deptrac-shim": "*",
+        "qossmic/deptrac-shim": "0.23.0",
         "edgedesign/phpqa": "*",
         "php-parallel-lint/php-parallel-lint": "*",
         "pdepend/pdepend": "*",
@@ -77,7 +77,7 @@
         },
         "sort-packages": true,
         "platform": {
-            "php": "8.1.2",
+            "php": "7.4.3",
             "ext-bcmath": "1",
             "ext-ctype": "1",
             "ext-gd": "1",
@@ -101,6 +101,36 @@
             "composer/package-versions-deprecated": true,
             "symfony/flex": true,
             "symfony/runtime": true
+        },
+        "audit": {
+            "ignore": [
+                "PKSA-4t1p-xpk2-nsss",
+                "PKSA-dxyf-6n16-t87m",
+                "PKSA-2rbx-bjdx-4d4d",
+                "PKSA-8zx5-v2nz-58pb",
+                "PKSA-fbvq-z33h-r2np",
+                "PKSA-g9zw-qxh8-pq8w",
+                "PKSA-yd6k-t2gh-1m43",
+                "PKSA-1tmc-rt7x-12w6",
+                "PKSA-xx6c-6d96-db2w",
+                "PKSA-sjvz-tbbr-vwth",
+                "PKSA-h8hf-ytnd-5t9q",
+                "PKSA-wwb1-81rc-pd65",
+                "PKSA-kvv6-36cr-fkzb",
+                "PKSA-n14z-jjjg-g8vd",
+                "PKSA-3mcc-k66d-pydb",
+                "PKSA-gw7n-z4yx-7xjt",
+                "PKSA-dpx1-78wg-1kqs",
+                "PKSA-21g2-dzjv-sky5",
+                "PKSA-yhcn-xrg3-68b1",
+                "PKSA-2wrf-1xmk-1pky",
+                "PKSA-6319-ffpf-gx66",
+                "PKSA-n7sg-8f52-pqtf",
+                "PKSA-8kk8-h2xr-h5nx",
+                "PKSA-5k7f-wvjj-jrgw",
+                "PKSA-hgmw-wn4d-hpcy",
+                "PKSA-v3kg-5xkr-pykw"
+            ]
         }
     },
     "autoload": {
