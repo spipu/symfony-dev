@@ -337,3 +337,13 @@ For small well-scoped tasks (single file, obvious fix), proceeding directly to t
 ### Extension patterns
 
 - When extending a Spipu bundle from a consumer project, prefer implementing the bundle's native interfaces (`SourceDataDefinitionInterface`, `ConnectionQuoterFactoryInterface`, `RowReaderInterface`, etc.) over injecting closures as properties on bundle entities. Interfaces are typed, testable, and consistent with the bundle's existing design. Also aligns with the Typing Rules above (`callable` forbidden on properties).
+
+## Maintainer Documentation Base (conditional)
+
+If the directory `~/git/claude/memory/` exists on the current machine, load it at session start **in addition to** this file (it is a git-synchronized documentation base, not the local auto-memory excluded by the self-sufficiency notice above):
+
+1. All instruction files in `~/git/claude/memory/instructions/` (read `_main.md` first).
+2. Everything those instructions mandate (notably `~/git/claude/memory/index.md` and `~/git/claude/memory/prompts/_main.md`, including its `.claude/commands/spipu-*.md` synchronization directive).
+3. All files in `~/git/claude/memory/chantiers/`.
+
+If the directory does not exist, skip this section silently — this file remains the sole source of truth.
