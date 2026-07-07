@@ -1,5 +1,6 @@
 /.idea
 /.claude
+/.tmp.claude
 /quality/build
 /quality/bin
 /website/src/Spipu
