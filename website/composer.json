@@ -114,6 +114,7 @@
     },
     "autoload-dev": {
         "psr-4": {
+            "App\\Tests\\": "tests/",
             "Spipu\\ApiPartnerBundle\\Tests\\": "src/Spipu/ApiPartnerBundle/tests/",
             "Spipu\\ConfigurationBundle\\Tests\\": "src/Spipu/ConfigurationBundle/tests/",
             "Spipu\\CoreBundle\\Tests\\": "src/Spipu/CoreBundle/tests/",

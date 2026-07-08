@@ -21,6 +21,7 @@
         </testsuite>
         <testsuite name="Functional Tests">
             <directory>./src/Spipu/*/tests/Functional</directory>
+            <directory>./tests/Functional</directory>
         </testsuite>
     </testsuites>
 
