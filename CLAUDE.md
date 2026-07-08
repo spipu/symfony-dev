@@ -86,6 +86,10 @@ The application runs on a LXC container, not locally. Access:
 
 Composer and Symfony CLI commands must be executed on the container (from `/var/www/symfonydev/website/`).
 
+### Mail Catcher
+
+All outgoing emails in the dev environment are captured by **MailDev**, browsable at `http://symfonydev.lxc:1080/`. Nothing is sent to real recipients. Use it to run functional flows that rely on email autonomously (e.g. account creation, password recovery/reset): trigger the action, open MailDev (the web UI, e.g. via Playwright), and follow the recovery/confirmation link found in the captured message.
+
 ### Provisioning
 
 The `architecture/scripts/provision/` scripts run in numeric order during container creation (`01-repo`, `02-upgrade`, `03-packages`, `10-php`, `11-apache`, etc.). PHP is installed via the PPA `ondrej/php` (configured in `10-php.sh`).
