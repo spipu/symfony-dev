@@ -1,6 +1,6 @@
 spipu_process:
     test_temporary_table:
-        name: "Test - Temporary Table"
+        name: "Test Temporary Table"
 
         options:
             can_be_put_in_queue: true
