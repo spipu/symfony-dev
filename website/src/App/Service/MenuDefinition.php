@@ -33,6 +33,7 @@ class MenuDefinition implements DefinitionInterface
 
         $this->mainItem
             ->setIcon('code', 'dark', 'Dev environment')
+            ->setCssClass('bg-dark spipu-navbar-on-dark')
             ->addChild('spipu.ui.page.home', 'home', 'app_home')
                 ->getParentItem()
             ->addChild('spipu.dashboard.page.home.title', 'spipu-dashboard', 'app_dashboard')
