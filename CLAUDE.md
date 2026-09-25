@@ -33,14 +33,16 @@ All commands run from the repo root unless noted.
 **Run a specific test or filter:**
 ```bash
 # From website/ directory:
-php8.1 ./bin/phpunit -c ./.phpunit.xml --no-coverage --filter TestClassName
+php8.3 ./bin/phpunit -c ./.phpunit.xml --no-coverage --filter TestClassName
 ```
 
-> The test runner requires `APP_ENCRYPTOR_KEY_PAIR` env var (sodium keypair). The `phpunit.sh` script sets this automatically. If running phpunit manually, set it: `export APP_ENCRYPTOR_KEY_PAIR=$(php -r "echo sodium_bin2base64(sodium_crypto_box_keypair(), SODIUM_BASE64_VARIANT_ORIGINAL);")`
+> PHPUnit 12 requires **PHP >= 8.3** to run the tests, even though the code itself targets PHP 8.1 (see Coding Standards).
+
+> The test runner requires `APP_ENCRYPTOR_KEY_PAIR` env var (sodium keypair). The `phpunit.sh` script sets this automatically. If running phpunit manually, set it: `export APP_ENCRYPTOR_KEY_PAIR=$(php8.3 -r "echo sodium_bin2base64(sodium_crypto_box_keypair(), SODIUM_BASE64_VARIANT_ORIGINAL);")`
 
 **System requirements for running tests locally (no container):**
 ```bash
-sudo apt-get -y install php8.1-cli php-xdebug php-common php-soap php-pdo php-sqlite3
+sudo apt-get -y install php8.3-cli php8.3-xdebug php8.3-common php8.3-soap php8.3-sqlite3
 ```
 
 ## Architecture
