@@ -15,6 +15,8 @@ namespace App\Fixture;
 
 use Doctrine\DBAL\Connection;
 use Spipu\CoreBundle\Fixture\FixtureInterface;
+use Spipu\CoreBundle\Service\ConnectionQuoterFactoryInterface;
+use Spipu\CoreBundle\Service\ConnectionQuoterInterface;
 use Spipu\UserBundle\Entity\UserInterface;
 use Spipu\UserBundle\Repository\UserRepository;
 use Spipu\UserBundle\Service\ModuleConfigurationInterface;
@@ -30,6 +32,7 @@ class SampleUserFixture implements FixtureInterface
     private UserPasswordHasherInterface $hasher;
     private ModuleConfigurationInterface $moduleConfiguration;
     private Connection $connection;
+    private ConnectionQuoterInterface $quoter;
     private UserRepository $userRepository;
     private int $maxSteps = 500;
 
@@ -37,11 +40,13 @@ class SampleUserFixture implements FixtureInterface
         UserPasswordHasherInterface $hasher,
         ModuleConfigurationInterface $moduleConfiguration,
         Connection $connection,
-        UserRepository $userRepository
+        UserRepository $userRepository,
+        ConnectionQuoterFactoryInterface $quoterFactory
     ) {
         $this->hasher = $hasher;
         $this->moduleConfiguration = $moduleConfiguration;
         $this->connection = $connection;
+        $this->quoter = $quoterFactory->create($connection);
         $this->userRepository = $userRepository;
     }
 
@@ -130,7 +135,7 @@ class SampleUserFixture implements FixtureInterface
     {
         $keys = array_keys($list[0]);
         foreach ($keys as &$key) {
-            $key = $this->connection->quoteIdentifier($key);
+            $key = $this->quoter->quoteIdentifier($key);
         }
 
         foreach ($list as &$row) {
@@ -144,7 +149,7 @@ class SampleUserFixture implements FixtureInterface
 
         $query = sprintf(
             'INSERT INTO %1$s (%2$s) VALUES %3$s;',
-            $this->connection->quoteIdentifier('spipu_user'),
+            $this->quoter->quoteIdentifier('spipu_user'),
             implode(',', $keys),
             implode(',', $list)
         );
