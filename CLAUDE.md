@@ -71,7 +71,7 @@ All repos (main repo + every bundle) share the same branch structure. The same r
 | Branch | Role | PHP | Symfony | Bootstrap | jQuery | FontAwesome |
 |--------|------|-----|---------|-----------|--------|-------------|
 | `master` | Active development — new features and fixes | 8.3 | 7.4 | 5 | 4 | 7 |
-| `sf6` | Active support — new features, bugfixes and security patches | 8.1 | 6.4 | 4 | 3.7 | 5 |
+| `sf6` | Active support — new features, bugfixes and security patches | 8.3 | 6.4 | 4 | 3.7 | 5 |
 | `sf5_php8` | Active support — bugfixes and security patches only | 8.1 | 5.4 | 4 | 3.7 | 5 |
 | `sf5_php7` | Active support — security patches only | 7.4 | 5.4 | 4 | 3.7 | 5 |
 | `sf4` | Archived — read-only, kept for historical reference | 7.2 | 4.4 | 4 | 3.6 | 5 |
@@ -332,8 +332,8 @@ For small well-scoped tasks (single file, obvious fix), proceeding directly to t
 
 ### Composer constraints for new dependencies
 
-- Prefer broad lower-bound constraints (`">=3.0"`) over capped ranges (`"^3.6 || ^4"`).
-- Transitive dependencies (e.g. ORM tightening DBAL) already cap the effective version. Don't artificially cap future majors unless a real incompatibility is known.
+- Use a caret constraint on the minimum version actually required (`"^4.5"`), not an open lower bound (`">=4.5"`) nor a multi-major range (`"^3.6 || ^4"`).
+- A new major version is adopted explicitly, once the bundles have been tested with it.
 
 ### Intentional behaviors — do not "fix"
 
