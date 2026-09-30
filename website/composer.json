@@ -17,6 +17,7 @@
         "ext-zip": "*",
         "doctrine/doctrine-bundle": "*",
         "doctrine/doctrine-migrations-bundle": "*",
+        "doctrine/dbal": "^4.5",
         "doctrine/orm": "^3.7",
         "phpdocumentor/reflection-docblock": "*",
         "predis/predis": "*",
@@ -73,7 +74,7 @@
         "optimize-autoloader": true,
         "sort-packages": true,
         "platform": {
-            "php": "8.3.6",
+            "php": "8.3.30",
             "ext-bcmath": "1",
             "ext-ctype": "1",
             "ext-curl": "1",

@@ -25,7 +25,8 @@ It works with:
 * PHP >= 8.3
 * Composer
 * Symfony = 7.4.*
-* Doctrine ORM = 3.*.*
+* Doctrine ORM >= 3.7
+* Doctrine DBAL >= 4.5
 
 ## Others
 

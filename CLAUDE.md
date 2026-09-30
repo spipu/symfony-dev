@@ -12,6 +12,8 @@ This is `spipu/symfony-dev`, a Symfony 7.4 microkernel application serving as th
 
 All commands run from the repo root unless noted.
 
+> **Composer, `bin/console` and other project commands must be run ONLY inside the LXD container**, never from the host. Claude must not run them: suggest the command and let the user run it from the LXD.
+
 **Add/update Spipu bundles from GitHub:**
 ```bash
 ./architecture/add-bundles.sh
@@ -255,7 +257,7 @@ CoreBundle provides `SymfonyMock` test helpers (`getContainerBuilder()`, `getCon
 
 ### PHP Version and Strict Types
 
-- Target: **PHP 8.3**, **Symfony 7.4**, **Doctrine ORM 3** — do not use syntax or features from later versions.
+- Target: **PHP 8.3**, **Symfony 7.4**, **Doctrine ORM 3.7**, **Doctrine DBAL 4.5** — do not use syntax or features from later versions.
 - Code must remain compatible with PHP 8.3 through 8.5. Avoid patterns deprecated or removed in later versions:
   - Always use `?Type $param = null` (never implicit nullable `Type $param = null`).
   - Always use `{$var}` for string interpolation (never `${var}`).
