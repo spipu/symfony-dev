@@ -10,6 +10,8 @@ This is `spipu/symfony-dev`, a Symfony 6.4 microkernel application serving as th
 
 All commands run from the repo root unless noted.
 
+> **Composer, `bin/console` and other project commands must be run ONLY inside the LXD container**, never from the host. Claude must not run them: suggest the command and let the user run it from the LXD.
+
 **Add/update Spipu bundles from GitHub:**
 ```bash
 ./architecture/add-bundles.sh
@@ -36,7 +38,7 @@ All commands run from the repo root unless noted.
 php8.3 ./bin/phpunit -c ./.phpunit.xml --no-coverage --filter TestClassName
 ```
 
-> PHPUnit 12 requires **PHP >= 8.3** to run the tests, even though the code itself targets PHP 8.1 (see Coding Standards).
+> Tests run with **PHPUnit 9.6** (via `symfony/phpunit-bridge`) and **PHP >= 8.3** (see Coding Standards).
 
 > The test runner requires `APP_ENCRYPTOR_KEY_PAIR` env var (sodium keypair). The `phpunit.sh` script sets this automatically. If running phpunit manually, set it: `export APP_ENCRYPTOR_KEY_PAIR=$(php8.3 -r "echo sodium_bin2base64(sodium_crypto_box_keypair(), SODIUM_BASE64_VARIANT_ORIGINAL);")`
 
@@ -167,8 +169,8 @@ CoreBundle provides `SymfonyMock` test helpers (`getContainerBuilder()`, `getCon
 
 ### PHP Version and Strict Types
 
-- Target: **PHP 8.1**, **Symfony 6.4**, **Doctrine ORM 3** — do not use syntax or features from later versions.
-- Code must remain compatible with PHP 8.1 through 8.5. Avoid patterns deprecated or removed in later versions:
+- Target: **PHP 8.3**, **Symfony 6.4**, **Doctrine ORM 3.7**, **Doctrine DBAL 4.5** — do not use syntax or features from later versions.
+- Code must remain compatible with PHP 8.3 through 8.5. Avoid patterns deprecated or removed in later versions:
   - Always use `?Type $param = null` (never implicit nullable `Type $param = null`).
   - Always use `{$var}` for string interpolation (never `${var}`).
   - Never use `get_class()` or `get_parent_class()` without arguments — use `$object::class` or `static::class`.
