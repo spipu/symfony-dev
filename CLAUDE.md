@@ -184,6 +184,8 @@ Security hardening:
 - Password recovery is blocked for disabled accounts (Doctrine query filters on `active = true`)
 - Login error messages are normalized (generic translated message via `security` domain, prevents account enumeration)
 - `UserLoginSubscriber::onLoginFailed()` returns early if the account is already disabled (prevents redundant `disableUser()` calls and event spam)
+- `UserLoginSubscriber` ignores users not implementing `Spipu\UserBundle\Entity\UserInterface` (security events are dispatched on every firewall) and failures from `RememberMeAuthenticator` (an invalid cookie is not a failed login attempt)
+- Remember me: the checkbox is shown if `ModuleConfigurationInterface::hasAllowRememberMe()` (5th mandatory `ModuleConfiguration` argument, env `bool:APP_REMEMBER_ME` in the app); when `false`, `RememberMeSubscriber` (LoginSuccessEvent, priority -48, Spipu users only) disables the `RememberMeBadge` so a forged `_remember_me` creates no cookie; the feature itself is the firewall `remember_me` option (app's `security.yaml`: cookie `symfony_dev_main_remember`, unique per firewall, 30 days, `httponly`, `secure: auto`, signed with `password` + `email`)
 - Rate limiting via Symfony's `login_throttling` (5 attempts / 15 minutes, configured in app's `security.yaml`, requires `symfony/rate-limiter`)
 
 Key services:
