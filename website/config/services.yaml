@@ -8,6 +8,7 @@ parameters:
     # needed for functional tests
     env(APP_ACCOUNT_CREATION): "true"
     env(APP_ACCOUNT_RECOVERY): "true"
+    env(APP_REMEMBER_ME): "true"
     # Encryptor Configuration
     spipu.core.encryptor.key_pair: "%APP_SETTINGS_APP_ENCRYPTOR_KEY_PAIR%"
 
@@ -63,8 +64,9 @@ services:
         arguments:
             - '\App\Entity\User'
             - '\App\Entity\User'
-            - '%env(APP_ACCOUNT_CREATION)%'
-            - '%env(APP_ACCOUNT_RECOVERY)%'
+            - '%env(bool:APP_ACCOUNT_CREATION)%'
+            - '%env(bool:APP_ACCOUNT_RECOVERY)%'
+            - '%env(bool:APP_REMEMBER_ME)%'
 
     # Scope management
     spipu.configuration.service.scope_list:
