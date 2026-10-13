@@ -54,6 +54,7 @@ deptrac:
       - Spipu_Core
       - Spipu_Ui
       - Spipu_Configuration
+      - Spipu_Process
 
   formatters:
     graphviz:

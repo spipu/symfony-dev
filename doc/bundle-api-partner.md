@@ -10,6 +10,7 @@ The **ApiPartnerBundle** provides a REST API framework for secure partner integr
 - **Typed parameters** — path, query, and body parameters are declared and validated per route
 - **Response validation** — optional validation of the response structure
 - **Configurable logging** — requests are logged to `ApiLogPartner` (partner, IP, method, route, status, response code, memory, duration); errors, slow requests, and format failures are always kept, and a route can force or skip its own log
+- **Automatic log cleanup** — the `CleanLogs` process step deletes the logs older than a configurable delay (180 days by default)
 - **Admin log viewer** — filterable/sortable grid of API logs at `/admin/api-partner/log/`
 - **Swagger/OpenAPI** — documentation generation via `AbstractApiDocumentationService`
 

@@ -1,0 +1,11 @@
+spipu_process:
+    api_partner_clean_logs:
+        name: "API Partner - Clean Logs"
+
+        options:
+            can_be_put_in_queue: true
+            can_be_rerun_automatically: false
+
+        steps:
+            clean_logs:
+                class: Spipu\ApiPartnerBundle\Step\CleanLogs

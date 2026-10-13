@@ -137,12 +137,12 @@ CoreBundle          (no bundle dependencies)
 ├── UserBundle           → Core, Ui, Configuration
 ├── ProcessBundle        → Core, Ui, Configuration
 ├── DashboardBundle      → Core, Ui
-└── ApiPartnerBundle     → Core, Ui, Configuration
+└── ApiPartnerBundle     → Core, Ui, Configuration, Process
 ```
 
 ### ProcessBundle Step System
 
-Processes are defined in `website/config/process/` as YAML files. Each process is a sequence of **Steps** — PHP classes implementing `StepInterface`. Custom steps for the app live in `website/src/App/Step/`. Built-in steps are in `ProcessBundle/src/Step/`: `Generic/`, `File/`, `Database/`, `String/`, `ExportFile/`, `Test/`, plus `LoopStep.php` for iteration.
+Processes are defined in `website/config/process/` as YAML files. Each process is a sequence of **Steps** — PHP classes implementing `StepInterface`. Custom steps for the app live in `website/src/App/Step/`. ApiPartnerBundle provides `Step\CleanLogs` (purges API logs older than `api.partner.cleanup.logs_after` days, process `api_partner_clean_logs` in the app). Built-in steps are in `ProcessBundle/src/Step/`: `Generic/`, `File/`, `Database/`, `String/`, `ExportFile/`, `Test/`, plus `LoopStep.php` for iteration.
 
 **StepInterface** requires only one method:
 ```php
