@@ -16,3 +16,6 @@
 0    2 * * * {{MAIN_FOLDER}}/bin/console spipu:process:cron-manager cleanup   >> {{MAIN_FOLDER}}/var/log/cron.log 2>&1
 */5  * * * * {{MAIN_FOLDER}}/bin/console spipu:process:cron-manager rerun     >> {{MAIN_FOLDER}}/var/log/cron.log 2>&1
 */10 * * * * {{MAIN_FOLDER}}/bin/console spipu:process:cron-manager check-pid >> {{MAIN_FOLDER}}/var/log/cron.log 2>&1
+
+# Clean the old API partner logs
+30   2 * * * {{MAIN_FOLDER}}/bin/console spipu:process:run api_partner_clean_logs >> {{MAIN_FOLDER}}/var/log/cron.log 2>&1
