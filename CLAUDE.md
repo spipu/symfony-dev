@@ -292,6 +292,10 @@ CoreBundle provides `SymfonyMock` test helpers (`getContainerBuilder()`, `getCon
 
 - All commands must use the `#[AsCommand(name: '...', description: '...')]` attribute. Do not use `setName()` or `setDescription()` in `configure()`.
 
+### Layer Dependencies
+
+- Dependencies between layers (Command, Controller, Entity, Form, Repository, Service, Step, Ui, Validator...) and between bundles must follow the deptrac rules in `website/.depfile.mvc.yaml`, `website/.depfile.global.yaml` and `website/.depfile.bundles.yaml` (e.g. a Repository may only depend on Entity: no service import, constant or injection). Check the allowed layers before adding a dependency. Never add a `skip_violations` entry without the maintainer's approval: the existing ones are documented exceptions.
+
 ### PSR-12 and Formatting
 
 - Code must be PSR-12 compliant.
