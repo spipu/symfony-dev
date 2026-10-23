@@ -76,6 +76,7 @@ class Test extends AbstractRoute
             'required_rows' => $this->getTestParameters(true),
             'optional_rows' => $this->getTestParameters(false),
             'default_rows'  => $defaultParameter,
+            'password'      => (new SpipuParameter\StringParameter())->setSecret(true),
         ];
     }
 
