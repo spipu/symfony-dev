@@ -80,6 +80,7 @@ class DemoOrderGrid implements GridDefinitionInterface
                 (new Grid\Column('customer_phone', 'app.demo_order.field.customer_phone', 'customer.phone', 80))
                     ->setType(new Grid\ColumnType(Grid\ColumnType::TYPE_TEXT))
                     ->setFilter(new Grid\ColumnFilter(true))
+                    ->useSortable()
             )
             ->addColumn(
                 (new Grid\Column(
@@ -102,7 +103,7 @@ class DemoOrderGrid implements GridDefinitionInterface
                 (new Grid\Action('contact', 'app.demo_order.action.contact', 20, 'app_demo_order_show'))
                     ->setCssClass('secondary')
                     ->setIcon('envelope')
-                    ->setConditions(['customer.email' => ['neq' => '']])
+                    ->setConditions(['customer.email' => ['nin' => [null, '']]])
             )
         ;
     }
