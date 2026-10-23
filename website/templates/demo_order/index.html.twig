@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+{% import '@SpipuUi/macro/buttons.html.twig' as buttons %}
+
+{% set menuCurrentItem="demo-order" %}
+
+{% block header_title %}{{ parent() }} - {{ block('main_title') }}{% endblock %}
+
+{% block main_title %}{{ 'app.demo_order.page.list'|trans() }}{% endblock %}
+
+{% block main_actions %}
+{% endblock %}
+
+{% block body %}{{ renderManager(manager) }}{% endblock %}

@@ -28,4 +28,26 @@ app:
         process_big_name:    "Process \"Big Name\""
         api_partner:         "Api Partner"
     page:
-        test: "Test"
+        test:       "Test"
+        demo_order: "Demo orders"
+    demo_order:
+        page:
+            list: "Demo orders"
+            show: "Order #%id"
+        fieldset:
+            order:    "Order"
+            customer: "Customer"
+        field:
+            id:                      "ID"
+            reference:               "Reference"
+            status:                  "Status"
+            amount:                  "Amount"
+            city:                    "City"
+            personal_data_hidden_at: "Personal data hidden at"
+            customer_name:           "Customer name"
+            customer_email:          "Customer email"
+            customer_phone:          "Customer phone"
+        action:
+            contact: "Contact"
+        label:
+            hidden: "hidden personal data"
