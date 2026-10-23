@@ -27,6 +27,8 @@ $api->post(
         ],
         'default_rows'=> [
             []
-        ]
+        ],
+        // Secret parameter: must be logged as ###SECRET### in the API logs
+        'password' => 'my-secret-password',
     ])
 );
