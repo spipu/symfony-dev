@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{% import '@SpipuUi/macro/buttons.html.twig' as buttons %}
+
+{% set menuCurrentItem="demo-order" %}
+
+{% block header_title %}{{ parent() }} - {{ 'app.demo_order.page.list'|trans() }} - {{ block('main_title') }}{% endblock %}
+
+{% block main_title %}{{ 'app.demo_order.page.show'|trans({'%id': showManager.resource.id}) }} - {{ personal_data(showManager.resource, 'customer.name') ?? ('app.demo_order.label.hidden'|trans) }}{% endblock %}
+
+{% block main_actions %}
+    {{ buttons.back(path('app_demo_order_list')) }}
+{% endblock %}
+
+{% block body %}{{ renderManager(showManager) }}{% endblock %}
