@@ -28,26 +28,68 @@ app:
         process_big_name:    "Process \"Big Name\""
         api_partner:         "Api Partner"
     page:
-        test:       "Test"
-        demo_order: "Demo orders"
+        test:          "Test"
+        demo:          "Demo"
+        demo_customer: "Customers"
+        demo_order:    "Orders"
+    demo_customer:
+        page:
+            list: "Demo customers"
+            show: "Customer #%id"
+            edit: "Edit customer #%id"
+        tab:
+            information: "Information"
+            orders:      "Orders"
+        fieldset:
+            customer: "Customer"
+            activity: "Activity"
+        field:
+            id:              "ID"
+            firstname:       "First name"
+            lastname:        "Last name"
+            email:           "Email"
+            phone:           "Phone"
+            birthday:        "Birthday"
+            last_ordered_at: "Last ordered at"
+            created_at:      "Created at"
+            updated_at:      "Updated at"
+        label:
+            hidden: "The personal data of this customer are hidden: no order for a long time."
+        action:
+            count: "Count"
+        success:
+            mass_count: "%count visible customer(s) selected"
     demo_order:
         page:
             list: "Demo orders"
             show: "Order #%id"
         fieldset:
-            order:    "Order"
-            customer: "Customer"
+            order:            "Order"
+            customer:         "Customer (at order time)"
+            customer_account: "Customer account"
+            shipping_address: "Shipping address"
+            billing_address:  "Billing address"
         field:
-            id:                      "ID"
-            reference:               "Reference"
-            status:                  "Status"
-            amount:                  "Amount"
-            city:                    "City"
-            personal_data_hidden_at: "Personal data hidden at"
-            customer_name:           "Customer name"
-            customer_email:          "Customer email"
-            customer_phone:          "Customer phone"
-        action:
-            contact: "Contact"
+            id:                  "ID"
+            reference:           "Reference"
+            status:              "Status"
+            amount:              "Amount"
+            customer:            "Customer"
+            customer_first_name: "Customer first name"
+            customer_last_name:  "Customer last name"
+            customer_email:      "Customer email"
+            customer_birthday:   "Customer birthday"
+            created_at:          "Created at"
+            updated_at:          "Updated at"
         label:
-            hidden: "hidden personal data"
+            hidden_order: "The personal data of this order are hidden: the order is too old."
+    demo_order_address:
+        field:
+            firstname:   "First name"
+            lastname:    "Last name"
+            email:       "Email"
+            phone:       "Phone"
+            address:     "Address"
+            postal_code: "Postal code"
+            city:        "City"
+            country:     "Country"

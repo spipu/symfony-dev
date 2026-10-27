@@ -1,0 +1,5 @@
+{% import '@SpipuUi/macro/personal_data.html.twig' as personal_data %}
+<tr>
+    <th class="w-50">{{ label|trans }}</th>
+    <td>{{ personal_data.display(entity, field, value) }}</td>
+</tr>

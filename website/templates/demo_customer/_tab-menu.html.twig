@@ -1,0 +1,8 @@
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link{% if currentTab == 'information' %} active{% endif %}" href="{{ path('app_demo_customer_show', {'id': customer.id}) }}">{{ 'app.demo_customer.tab.information'|trans }}</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link{% if currentTab == 'orders' %} active{% endif %}" href="{{ path('app_demo_customer_show_tab_orders', {'id': customer.id}) }}">{{ 'app.demo_customer.tab.orders'|trans }}</a>
+    </li>
+</ul>

@@ -1,0 +1,23 @@
+<div class="col-12 col-md-6">
+    <div class="card mb-3">
+        <div class="card-header fw-bold">{{ title|trans }}</div>
+        {% if address %}
+            <table class="table table-striped table-sm mb-0">
+                {% for field, label in {
+                    'firstname':  'app.demo_order_address.field.firstname',
+                    'lastname':   'app.demo_order_address.field.lastname',
+                    'email':      'app.demo_order_address.field.email',
+                    'phone':      'app.demo_order_address.field.phone',
+                    'address':    'app.demo_order_address.field.address',
+                    'postalCode': 'app.demo_order_address.field.postal_code',
+                    'city':       'app.demo_order_address.field.city',
+                    'country':    'app.demo_order_address.field.country',
+                } %}
+                    {% include 'demo_order/_field.html.twig' with {'label': label, 'entity': address, 'field': field, 'value': attribute(address, field)} %}
+                {% endfor %}
+            </table>
+        {% else %}
+            <div class="card-body text-body-secondary">-</div>
+        {% endif %}
+    </div>
+</div>

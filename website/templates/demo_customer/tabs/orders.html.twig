@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% set menuCurrentItem="demo-customer" %}
+{% set currentTab="orders" %}
+
+{% block header_title %}{{ parent() }} - {{ 'app.demo_customer.page.list'|trans() }} - {{ block('main_title') }}{% endblock %}
+
+{% block main_title %}{{ 'app.demo_customer.page.show'|trans({'%id': customer.id}) }}{% endblock %}
+
+{% block main_actions %}
+    {% include 'demo_customer/_actions.html.twig' %}
+{% endblock %}
+
+{% block body %}
+    {% include 'demo_customer/_tab-menu.html.twig' %}
+    <div class="card border-top-0 rounded-0 rounded-bottom">
+        <div class="card-body">
+            {{ renderManager(manager) }}
+        </div>
+    </div>
+{% endblock %}

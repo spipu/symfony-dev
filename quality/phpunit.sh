@@ -1,5 +1,17 @@
 #!/bin/bash
 
+# Option --no-browser: do not open the reports in Firefox
+NO_BROWSER=0
+ARGS=()
+for ARG in "$@"; do
+  if [[ "$ARG" == "--no-browser" ]]; then
+    NO_BROWSER=1
+  else
+    ARGS+=("$ARG")
+  fi
+done
+set -- "${ARGS[@]}"
+
 # Go into the project folder
 cd "$( dirname "${BASH_SOURCE[0]}" )"
 cd ../website/
@@ -46,5 +58,9 @@ export APP_ENV
 
 # Output
 if [[ "$1" == "--coverage" ]]; then
-  firefox "${LOG_FOLDER}coverage/index.html"
+  if [[ "$NO_BROWSER" == "1" ]]; then
+    echo "Report: ${LOG_FOLDER}coverage/index.html"
+  else
+    firefox "${LOG_FOLDER}coverage/index.html"
+  fi
 fi

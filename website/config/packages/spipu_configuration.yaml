@@ -10,6 +10,12 @@ spipu_configuration:
         required: true
         default:  "Symfony Dev"
 
+    demo.personal_data.hide_after:
+        type:     integer
+        required: true
+        default:  1095
+        unit:     "day(s)"
+
     api.partner.enabled:
         type:     "boolean"
         required: true

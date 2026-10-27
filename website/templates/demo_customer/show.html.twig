@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% set menuCurrentItem="demo-customer" %}
+{% set currentTab="information" %}
+
+{% block header_title %}{{ parent() }} - {{ 'app.demo_customer.page.list'|trans() }} - {{ block('main_title') }}{% endblock %}
+
+{% block main_title %}{{ 'app.demo_customer.page.show'|trans({'%id': customer.id}) }}{% endblock %}
+
+{% block main_actions %}
+    {% include 'demo_customer/_actions.html.twig' %}
+{% endblock %}
+
+{% block body %}
+    {% include 'demo_customer/_tab-menu.html.twig' %}
+    <div class="card border-top-0 rounded-0 rounded-bottom">
+        <div class="card-body">
+            {% if is_personal_data_hidden_entity(customer) %}
+                <div class="alert alert-info">{{ 'app.demo_customer.label.hidden'|trans }}</div>
+            {% endif %}
+            {{ renderManager(showManager) }}
+        </div>
+    </div>
+{% endblock %}

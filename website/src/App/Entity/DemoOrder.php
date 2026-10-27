@@ -13,20 +13,28 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
-use App\Repository\DemoOrderRepository;
-use DateTimeImmutable;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Spipu\UiBundle\Entity\EntityInterface;
-use Spipu\UiBundle\Entity\PersonalDataProtectedInterface;
+use Spipu\UiBundle\Entity\TimestampableInterface;
+use Spipu\UiBundle\Entity\TimestampableTrait;
 
-#[ORM\Entity(repositoryClass: DemoOrderRepository::class)]
+#[ORM\Entity(repositoryClass: 'App\Repository\DemoOrderRepository')]
 #[ORM\Table(name: "demo_order")]
-class DemoOrder implements EntityInterface, PersonalDataProtectedInterface
+#[ORM\HasLifecycleCallbacks]
+class DemoOrder implements EntityInterface, TimestampableInterface
 {
+    use TimestampableTrait;
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
+
+    #[ORM\ManyToOne(targetEntity: DemoCustomer::class)]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?DemoCustomer $customer = null;
 
     #[ORM\Column(length: 32)]
     private string $reference = '';
@@ -37,34 +45,42 @@ class DemoOrder implements EntityInterface, PersonalDataProtectedInterface
     #[ORM\Column(type: "float")]
     private float $amount = 0.;
 
-    #[ORM\Column(length: 128)]
-    private string $city = '';
+    #[ORM\Column(length: 255)]
+    private string $customerFirstName = '';
 
-    #[ORM\Column(type: "datetime_immutable", nullable: true)]
-    private ?DateTimeImmutable $personalDataHiddenAt = null;
+    #[ORM\Column(length: 255)]
+    private string $customerLastName = '';
 
-    #[ORM\ManyToOne(targetEntity: DemoCustomer::class)]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?DemoCustomer $customer = null;
+    #[ORM\Column(length: 255)]
+    private string $customerEmail = '';
 
-    public static function getPersonalDataFields(): array
+    /**
+     * @var Collection<int, DemoOrderAddress>
+     */
+    #[ORM\OneToMany(targetEntity: DemoOrderAddress::class, mappedBy: "order", cascade: ["persist", "remove"])]
+    #[ORM\OrderBy(["type" => "DESC"])]
+    private Collection $addresses;
+
+    public function __construct()
     {
-        return ['customer.email', 'customer.name', 'customer.phone'];
-    }
-
-    public static function getPersonalDataHiddenAtField(): string
-    {
-        return 'personalDataHiddenAt';
-    }
-
-    public function isPersonalDataHidden(): bool
-    {
-        return (($this->personalDataHiddenAt !== null) && ($this->personalDataHiddenAt <= new DateTimeImmutable()));
+        $this->addresses = new ArrayCollection();
     }
 
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getCustomer(): ?DemoCustomer
+    {
+        return $this->customer;
+    }
+
+    public function setCustomer(DemoCustomer $customer): self
+    {
+        $this->customer = $customer;
+
+        return $this;
     }
 
     public function getReference(): string
@@ -103,38 +119,67 @@ class DemoOrder implements EntityInterface, PersonalDataProtectedInterface
         return $this;
     }
 
-    public function getCity(): string
+    public function getCustomerFirstName(): string
     {
-        return $this->city;
+        return $this->customerFirstName;
     }
 
-    public function setCity(string $city): self
+    public function setCustomerFirstName(string $customerFirstName): self
     {
-        $this->city = $city;
+        $this->customerFirstName = $customerFirstName;
 
         return $this;
     }
 
-    public function getPersonalDataHiddenAt(): ?DateTimeImmutable
+    public function getCustomerLastName(): string
     {
-        return $this->personalDataHiddenAt;
+        return $this->customerLastName;
     }
 
-    public function setPersonalDataHiddenAt(?DateTimeImmutable $personalDataHiddenAt): self
+    public function setCustomerLastName(string $customerLastName): self
     {
-        $this->personalDataHiddenAt = $personalDataHiddenAt;
+        $this->customerLastName = $customerLastName;
 
         return $this;
     }
 
-    public function getCustomer(): ?DemoCustomer
+    public function getCustomerEmail(): string
     {
-        return $this->customer;
+        return $this->customerEmail;
     }
 
-    public function setCustomer(DemoCustomer $customer): self
+    public function setCustomerEmail(string $customerEmail): self
     {
-        $this->customer = $customer;
+        $this->customerEmail = $customerEmail;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, DemoOrderAddress>
+     */
+    public function getAddresses(): Collection
+    {
+        return $this->addresses;
+    }
+
+    public function getAddress(string $type): ?DemoOrderAddress
+    {
+        foreach ($this->addresses as $address) {
+            if ($address->getType() === $type) {
+                return $address;
+            }
+        }
+
+        return null;
+    }
+
+    public function addAddress(DemoOrderAddress $address): self
+    {
+        if (!$this->addresses->contains($address)) {
+            $this->addresses->add($address);
+            $address->setOrder($this);
+        }
 
         return $this;
     }

@@ -1,0 +1,5 @@
+{% import '@SpipuUi/macro/buttons.html.twig' as buttons %}
+{{ buttons.back(path('app_demo_customer_list')) }}
+{% if not is_personal_data_hidden_entity(customer) %}
+    {{ buttons.edit(path('app_demo_customer_edit', {'id': customer.id})) }}
+{% endif %}

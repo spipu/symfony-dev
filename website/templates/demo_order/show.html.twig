@@ -5,10 +5,52 @@
 
 {% block header_title %}{{ parent() }} - {{ 'app.demo_order.page.list'|trans() }} - {{ block('main_title') }}{% endblock %}
 
-{% block main_title %}{{ 'app.demo_order.page.show'|trans({'%id': showManager.resource.id}) }} - {{ personal_data(showManager.resource, 'customer.name') ?? ('app.demo_order.label.hidden'|trans) }}{% endblock %}
+{% block main_title %}{{ 'app.demo_order.page.show'|trans({'%id': order.id}) }} - {{ order.reference }}{% endblock %}
 
 {% block main_actions %}
     {{ buttons.back(path('app_demo_order_list')) }}
 {% endblock %}
 
-{% block body %}{{ renderManager(showManager) }}{% endblock %}
+{% block body %}
+    {% if is_personal_data_hidden_entity(order) %}
+        <div class="alert alert-info">{{ 'app.demo_order.label.hidden_order'|trans }}</div>
+    {% endif %}
+    <div class="row">
+        <div class="col-12 col-lg-4">
+            <div class="card mb-3">
+                <div class="card-header fw-bold">{{ 'app.demo_order.fieldset.order'|trans }}</div>
+                <table class="table table-striped table-sm mb-0">
+                    <tr><th class="w-50">{{ 'app.demo_order.field.reference'|trans }}</th><td>{{ order.reference }}</td></tr>
+                    <tr><th>{{ 'app.demo_order.field.status'|trans }}</th><td>{{ order.status }}</td></tr>
+                    <tr><th>{{ 'app.demo_order.field.amount'|trans }}</th><td>{{ order.amount|number_format(2, '.', ' ') }}</td></tr>
+                    <tr><th>{{ 'app.demo_order.field.created_at'|trans }}</th><td>{{ order.createdAt|date('Y-m-d H:i:s') }}</td></tr>
+                    <tr><th>{{ 'app.demo_order.field.updated_at'|trans }}</th><td>{{ order.updatedAt|date('Y-m-d H:i:s') }}</td></tr>
+                </table>
+            </div>
+        </div>
+        <div class="col-12 col-lg-4">
+            <div class="card mb-3">
+                <div class="card-header fw-bold">{{ 'app.demo_order.fieldset.customer'|trans }}</div>
+                <table class="table table-striped table-sm mb-0">
+                    {% include 'demo_order/_field.html.twig' with {'label': 'app.demo_order.field.customer_first_name', 'entity': order, 'field': 'customerFirstName', 'value': order.customerFirstName} %}
+                    {% include 'demo_order/_field.html.twig' with {'label': 'app.demo_order.field.customer_last_name', 'entity': order, 'field': 'customerLastName', 'value': order.customerLastName} %}
+                    {% include 'demo_order/_field.html.twig' with {'label': 'app.demo_order.field.customer_email', 'entity': order, 'field': 'customerEmail', 'value': order.customerEmail} %}
+                </table>
+            </div>
+        </div>
+        <div class="col-12 col-lg-4">
+            <div class="card mb-3">
+                <div class="card-header fw-bold">{{ 'app.demo_order.fieldset.customer_account'|trans }}</div>
+                <table class="table table-striped table-sm mb-0">
+                    <tr><th class="w-50">{{ 'app.demo_order.field.customer'|trans }}</th><td><a href="{{ path('app_demo_customer_show', {'id': order.customer.id}) }}">#{{ order.customer.id }}</a></td></tr>
+                    {% include 'demo_order/_field.html.twig' with {'label': 'app.demo_customer.field.firstname', 'entity': order.customer, 'field': 'firstname', 'value': order.customer.firstname} %}
+                    {% include 'demo_order/_field.html.twig' with {'label': 'app.demo_customer.field.lastname', 'entity': order.customer, 'field': 'lastname', 'value': order.customer.lastname} %}
+                    {% include 'demo_order/_field.html.twig' with {'label': 'app.demo_customer.field.email', 'entity': order.customer, 'field': 'email', 'value': order.customer.email} %}
+                    {% include 'demo_order/_field.html.twig' with {'label': 'app.demo_customer.field.birthday', 'entity': order.customer, 'field': 'birthday', 'value': order.customer.birthday ? order.customer.birthday|date('Y-m-d') : '-'} %}
+                </table>
+            </div>
+        </div>
+        {% include 'demo_order/_address.html.twig' with {'title': 'app.demo_order.fieldset.shipping_address', 'address': shippingAddress} %}
+        {% include 'demo_order/_address.html.twig' with {'title': 'app.demo_order.fieldset.billing_address', 'address': billingAddress} %}
+    </div>
+{% endblock %}

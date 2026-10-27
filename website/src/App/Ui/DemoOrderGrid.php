@@ -59,36 +59,46 @@ class DemoOrderGrid implements GridDefinitionInterface
                     ->useSortable()
             )
             ->addColumn(
-                (new Grid\Column('city', 'app.demo_order.field.city', 'city', 50))
-                    ->setType(new Grid\ColumnType(Grid\ColumnType::TYPE_TEXT))
-                    ->setFilter(new Grid\ColumnFilter(true))
-                    ->useSortable()
-            )
-            ->addColumn(
-                (new Grid\Column('customer_name', 'app.demo_order.field.customer_name', 'customer.name', 60))
-                    ->setType(new Grid\ColumnType(Grid\ColumnType::TYPE_TEXT))
-                    ->setFilter(new Grid\ColumnFilter(true, true))
-                    ->useSortable()
-            )
-            ->addColumn(
-                (new Grid\Column('customer_email', 'app.demo_order.field.customer_email', 'customer.email', 70))
+                (new Grid\Column(
+                    'customer_first_name',
+                    'app.demo_order.field.customer_first_name',
+                    'customerFirstName',
+                    50
+                ))
                     ->setType(new Grid\ColumnType(Grid\ColumnType::TYPE_TEXT))
                     ->setFilter(new Grid\ColumnFilter(true, true))
-                    ->useSortable()
-            )
-            ->addColumn(
-                (new Grid\Column('customer_phone', 'app.demo_order.field.customer_phone', 'customer.phone', 80))
-                    ->setType(new Grid\ColumnType(Grid\ColumnType::TYPE_TEXT))
-                    ->setFilter(new Grid\ColumnFilter(true))
                     ->useSortable()
             )
             ->addColumn(
                 (new Grid\Column(
-                    'personal_data_hidden_at',
-                    'app.demo_order.field.personal_data_hidden_at',
-                    'personalDataHiddenAt',
-                    90
+                    'customer_last_name',
+                    'app.demo_order.field.customer_last_name',
+                    'customerLastName',
+                    60
                 ))
+                    ->setType(new Grid\ColumnType(Grid\ColumnType::TYPE_TEXT))
+                    ->setFilter(new Grid\ColumnFilter(true, true))
+                    ->useSortable()
+            )
+            ->addColumn(
+                (new Grid\Column('customer_email', 'app.demo_order.field.customer_email', 'customerEmail', 70))
+                    ->setType(new Grid\ColumnType(Grid\ColumnType::TYPE_TEXT))
+                    ->setFilter(new Grid\ColumnFilter(true, true))
+                    ->useSortable()
+            )
+            ->addColumn(
+                (new Grid\Column(
+                    'customer_birthday',
+                    'app.demo_order.field.customer_birthday',
+                    'customer.birthday',
+                    80
+                ))
+                    ->setType(new Grid\ColumnType(Grid\ColumnType::TYPE_DATE))
+                    ->setFilter((new Grid\ColumnFilter(true))->useRange())
+                    ->useSortable()
+            )
+            ->addColumn(
+                (new Grid\Column('created_at', 'app.demo_order.field.created_at', 'createdAt', 90))
                     ->setType(new Grid\ColumnType(Grid\ColumnType::TYPE_DATETIME))
                     ->setFilter((new Grid\ColumnFilter(true))->useRange())
                     ->useSortable()
@@ -98,12 +108,6 @@ class DemoOrderGrid implements GridDefinitionInterface
                 (new Grid\Action('show', 'spipu.ui.action.show', 10, 'app_demo_order_show'))
                     ->setCssClass('primary')
                     ->setIcon('eye')
-            )
-            ->addRowAction(
-                (new Grid\Action('contact', 'app.demo_order.action.contact', 20, 'app_demo_order_show'))
-                    ->setCssClass('secondary')
-                    ->setIcon('envelope')
-                    ->setConditions(['customer.email' => ['nin' => [null, '']]])
             )
         ;
     }

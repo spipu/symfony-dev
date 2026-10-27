@@ -12,7 +12,10 @@ This is `spipu/symfony-dev`, a Symfony 7.4 microkernel application serving as th
 
 All commands run from the repo root unless noted.
 
-> **Composer, `bin/console` and other project commands must be run ONLY inside the LXD container**, never from the host. Claude must not run them: suggest the command and let the user run it from the LXD.
+> - Composer, `bin/console` and other project commands run **only inside the LXD container**, never from the host.
+> - Claude does not run them one by one.
+> - Claude runs `install.sh` and the `quality/` scripts as described in "Autonomous development loop".
+> - For any other command: Claude suggests it, the user runs it.
 
 **Add/update Spipu bundles from GitHub:**
 ```bash
@@ -51,6 +54,8 @@ All commands run from the repo root unless noted.
 ./quality/phpunit.sh --coverage "--filter=TestClassName"
 ```
 
+> `--no-browser` (all `quality/` scripts): do not open the reports in Firefox, print their paths instead.
+
 > Always use `./quality/phpunit.sh` to run tests — it sets required env vars (`APP_ENCRYPTOR_KEY_PAIR`, `APP_ENV`). Do not call phpunit directly.
 
 **Update Composer dependencies (on the dev server):**
@@ -71,12 +76,12 @@ All repos (main repo + every bundle) share the same branch structure. The same r
 | Branch | Role | PHP | Symfony | Bootstrap | jQuery | FontAwesome |
 |--------|------|-----|---------|-----------|--------|-------------|
 | `master` | Active development — new features and fixes | 8.3 | 7.4 | 5 | 4 | 7 |
-| `sf6` | Active support — new features, bugfixes and security patches | 8.3 | 6.4 | 4 | 3.7 | 5 |
+| `sf6` | Active support — bugfixes and security patches only | 8.3 | 6.4 | 4 | 3.7 | 5 |
 | `sf5_php8` | Active support — bugfixes and security patches only | 8.1 | 5.4 | 4 | 3.7 | 5 |
 | `sf5_php7` | Active support — security patches only | 7.4 | 5.4 | 4 | 3.7 | 5 |
 | `sf4` | Archived — read-only, kept for historical reference | 7.2 | 4.4 | 4 | 3.6 | 5 |
 
-- **New features:** developed on `sf6`, then merged up to `master`
+- **New features:** developed on `master` only (never on `sf6` or older branches)
 - **Bugfixes:** developed on `sf6`, then merged up to `master`. Backport to `sf5_php8` only for indispensable fixes (blocking regression, critical bug affecting an active consumer) — not by default.
 - **Security patches:** backported down the full chain: `master` → `sf6` → `sf5_php8` → `sf5_php7`
 
@@ -203,6 +208,7 @@ The `website/src/App/` directory is where application-specific implementations l
 - `App\Step\` — custom process steps (tagged `spipu.process.step`)
 - `App\WidgetSource\` — custom dashboard widgets (tagged `spipu.widget.source`, implement `SourceDefinitionInterface` + `SourceDataDefinitionInterface`)
 - `App\Api\Route\` — custom API endpoints (auto-registered)
+- `App\Service\PersonalData\` — personal data protection rules of the demo entities (tagged `spipu.ui.personal-data.rule`, implement `PersonalDataRuleInterface`, threshold from the configuration `demo.personal_data.hide_after`)
 - `App\DependencyInjection\AppExtension.php` — app-level role hierarchy via `RoleDefinitionInterface`
 - `App\Kernel.php` — registers `AppExtension` manually in `build()` (Symfony 7.4 no longer auto-detects it)
 
@@ -215,6 +221,7 @@ Each bundle can contribute RBAC roles by returning a `RoleDefinitionInterface` f
 `website/config/services.yaml` wires the application:
 - Dashboard widgets tagged as `spipu.widget.source`
 - Process steps tagged as `spipu.process.step`
+- Personal data protection rules tagged as `spipu.ui.personal-data.rule`
 - API routes registered via `App\Api\Route\`
 - Sessions backed by Redis via Predis
 
@@ -294,7 +301,14 @@ CoreBundle provides `SymfonyMock` test helpers (`getContainerBuilder()`, `getCon
 
 ### Layer Dependencies
 
-- Dependencies between layers (Command, Controller, Entity, Form, Repository, Service, Step, Ui, Validator...) and between bundles must follow the deptrac rules in `website/.depfile.mvc.yaml`, `website/.depfile.global.yaml` and `website/.depfile.bundles.yaml` (e.g. a Repository may only depend on Entity: no service import, constant or injection). Check the allowed layers before adding a dependency. Never add a `skip_violations` entry without the maintainer's approval: the existing ones are documented exceptions.
+- Before coding, read the deptrac rule files:
+  - `website/.depfile.global.yaml` (App / Spipu)
+  - `website/.depfile.mvc.yaml` (layers inside a bundle)
+  - `website/.depfile.bundles.yaml` (bundles)
+- Every new dependency must be allowed by these rules.
+- Example: a Repository may only depend on Entity (no service import, constant or injection).
+- Never add a `skip_violations` entry without the maintainer's approval.
+- The existing `skip_violations` entries are documented exceptions.
 
 ### PSR-12 and Formatting
 
@@ -326,9 +340,28 @@ For analyses or refactors touching multiple files, or any change with non-obviou
 
 For small well-scoped tasks (single file, obvious fix), proceeding directly to the edit is fine.
 
-### Testing
+### Autonomous development loop
 
-- Do **not** run `./quality/phpunit.sh` automatically to verify a change. Tests run on the maintainer's LXC container (`symfonydev.lxc`), not the local development machine. Mention the command if relevant, but do not execute it.
+- When: at the end of a stable development phase.
+- Not after every small step.
+- Claude runs it itself, without asking.
+
+Steps:
+
+1. Apply the change in the container:
+   ```bash
+   ssh delivery@symfonydev.lxc /var/www/symfonydev/architecture/scripts/install.sh
+   ```
+   - It runs composer install, assets, schema update, caches and fixtures.
+   - It resets the dev database.
+2. Run from the host (repo root), in this order:
+   1. `./quality/deptrac.sh --no-browser` (architecture)
+   2. `./quality/analyze.sh --no-browser` (code quality)
+   3. `./quality/phpunit.sh --no-browser` (tests)
+3. Fix the issues introduced by the change.
+4. Rerun steps 1 and 2 until everything is green.
+
+- Pre-existing issues unrelated to the change: report them, do not fix them.
 
 ### Commit messages
 

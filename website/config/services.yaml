@@ -81,6 +81,13 @@ services:
         tags: [ 'spipu.widget.source' ]
         autowire: true
 
+    # Personal data protection rules
+    App\Service\PersonalData\:
+        resource: '../src/App/Service/PersonalData/*'
+        exclude: '../src/App/Service/PersonalData/Abstract*'
+        tags: ['spipu.ui.personal-data.rule']
+        autowire: true
+
     # Process Steps
     App\Step\:
         resource: '../src/App/Step/*'
