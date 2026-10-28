@@ -16,7 +16,7 @@ namespace App\Service\PersonalData;
 use App\Service\DemoConfiguration;
 use DateTimeImmutable;
 use DateTimeInterface;
-use Spipu\UiBundle\Service\Ui\PersonalData\PersonalDataRuleInterface;
+use Spipu\UiBundle\Service\PersonalData\PersonalDataRuleInterface;
 
 abstract class AbstractDemoRule implements PersonalDataRuleInterface
 {
