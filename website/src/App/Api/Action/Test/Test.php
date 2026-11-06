@@ -32,9 +32,11 @@ class Test implements ActionInterface
             'params' => [
                 'test_id'       => $context->getPathParameter('test_id'),
                 'name'          => $context->getQueryParameter('name'),
+                'email'         => $context->getQueryParameter('email'),
                 'required_rows' => $context->getBodyParameter('required_rows'),
                 'optional_rows' => $context->getBodyParameter('optional_rows'),
                 'default_rows'  => $context->getBodyParameter('default_rows'),
+                'customer'      => $context->getBodyParameter('customer'),
             ],
         ];
 
