@@ -12,9 +12,15 @@ $api = new EngineApiPartner(
 
 $api->get('/hello_world', ['name' => 'Foo']);
 $api->get('/version');
+// Privacy parameters: must be logged as ###PRIVACY### in the API logs (route, query, body, JSON response)
+$api->post(
+    '/privacy/42',
+    ['email' => 'foo@example.com'],
+    json_encode(['customer' => ['full_name' => 'John Doe', 'newsletter' => true]])
+);
 $api->post(
     '/test/1',
-    ['name' => 'Foo'],
+    ['name' => 'Foo', 'email' => 'foo@example.com'],
     json_encode([
         'required_rows' => [
             [
@@ -30,5 +36,6 @@ $api->post(
         ],
         // Secret parameter: must be logged as ###SECRET### in the API logs
         'password' => 'my-secret-password',
+        'customer' => ['full_name' => 'John Doe', 'newsletter' => true],
     ])
 );

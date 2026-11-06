@@ -46,7 +46,7 @@ class Test extends AbstractRoute
     public function getPathParameters(): array
     {
         return [
-            'test_id' => (new SpipuParameter\IntegerParameter())->setMinValue(0, true),
+            'test_id' => (new SpipuParameter\IntegerParameter())->setMinValue(0, true)->setPrivacy(true),
         ];
     }
 
@@ -56,7 +56,8 @@ class Test extends AbstractRoute
     public function getQueryParameters(): array
     {
         return [
-            'name' => (new SpipuParameter\StringParameter())->setRequired(true)->setMinLength(1),
+            'name'  => (new SpipuParameter\StringParameter())->setRequired(true)->setMinLength(1),
+            'email' => (new SpipuParameter\StringParameter())->setPrivacy(true),
         ];
     }
 
@@ -77,6 +78,7 @@ class Test extends AbstractRoute
             'optional_rows' => $this->getTestParameters(false),
             'default_rows'  => $defaultParameter,
             'password'      => (new SpipuParameter\StringParameter())->setSecret(true),
+            'customer'      => $this->getCustomerParameter(),
         ];
     }
 
@@ -85,8 +87,10 @@ class Test extends AbstractRoute
         return (new ResponseFormat('json'))->setJsonContent([
             'test'   => (new SpipuParameter\StringParameter())->setRequired(true),
             'params' => (new SpipuParameter\ObjectParameter())
-                ->addProperty('test_id', (new SpipuParameter\IntegerParameter())->setMinValue(0, true))
+                ->addProperty('test_id', (new SpipuParameter\IntegerParameter())->setMinValue(0, true)->setPrivacy(true))
                 ->addProperty('name', (new SpipuParameter\StringParameter())->setRequired(true)->setMinLength(1))
+                ->addProperty('email', (new SpipuParameter\StringParameter())->setPrivacy(true))
+                ->addProperty('customer', $this->getCustomerParameter())
                 ->addProperty('required_rows', $this->getTestParameters(true))
                 ->addProperty('optional_rows', $this->getTestParameters(false))
                 ->addProperty('default_rows', $this->getTestParameters(false))
@@ -107,6 +111,14 @@ class Test extends AbstractRoute
                     ->addProperty('test_number', (new SpipuParameter\NumberParameter())->setRequired($required))
                     ->addProperty('test_string', (new SpipuParameter\StringParameter())->setRequired($required))
             )
+        ;
+    }
+
+    private function getCustomerParameter(): SpipuParameter\ObjectParameter
+    {
+        return (new SpipuParameter\ObjectParameter())
+            ->addProperty('full_name', (new SpipuParameter\StringParameter())->setPrivacy(true))
+            ->addProperty('newsletter', new SpipuParameter\BooleanParameter())
         ;
     }
 }
