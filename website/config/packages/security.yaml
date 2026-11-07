@@ -31,7 +31,7 @@ security:
             remember_me:
                 secret: "%kernel.secret%"
                 name: symfony_dev_main_remember
-                lifetime: 2592000 # 30 days
+                lifetime: 604800 # 7 days
                 httponly: true
                 secure: auto
                 signature_properties: ['password', 'email']

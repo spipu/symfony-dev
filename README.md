@@ -30,7 +30,7 @@ It works with:
 
 ## Others
 
-Needed for Unit tests / Analyze the code without having to create LXC / LXD container
+Needed for Unit tests / Analyze the code without having to create LXD container
 
 ```bash
 sudo apt-get -y install php8.3-cli php8.3-xdebug php8.3-common php8.3-soap php8.3-pdo php8.3-sqlite3 php8.3-xml php8.3-mbstring php8.3-zip

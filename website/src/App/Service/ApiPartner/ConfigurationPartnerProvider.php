@@ -11,14 +11,14 @@
 
 declare(strict_types=1);
 
-namespace App\Repository;
+namespace App\Service\ApiPartner;
 
 use App\Model\Partner;
 use Spipu\ApiPartnerBundle\Entity\PartnerInterface;
 use Spipu\ApiPartnerBundle\Repository\PartnerRepositoryInterface;
 use Spipu\ConfigurationBundle\Service\ConfigurationManager;
 
-class PartnerRepository implements PartnerRepositoryInterface
+class ConfigurationPartnerProvider implements PartnerRepositoryInterface
 {
     private ConfigurationManager $configurationManager;
     private Partner $partner;

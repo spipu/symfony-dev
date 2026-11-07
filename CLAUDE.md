@@ -87,15 +87,15 @@ All repos (main repo + every bundle) share the same branch structure. The same r
 
 ## Dev Environment
 
-The application runs on a LXC container, not locally. Access:
-- **App user:** `ssh delivery@symfonydev.lxc` — run Symfony/Composer commands here
-- **Root (provisioning):** `ssh root@symfonydev.lxc`
+The application runs on a LXD container, not locally. Access:
+- **App user:** `ssh delivery@symfonydev.lxd` — run Symfony/Composer commands here
+- **Root (provisioning):** `ssh root@symfonydev.lxd`
 
 Composer and Symfony CLI commands must be executed on the container (from `/var/www/symfonydev/website/`).
 
 ### Mail Catcher
 
-All outgoing emails in the dev environment are captured by **MailDev**, browsable at `http://symfonydev.lxc:1080/`. Nothing is sent to real recipients. Use it to run functional flows that rely on email autonomously (e.g. account creation, password recovery/reset): trigger the action, open MailDev (the web UI, e.g. via Playwright), and follow the recovery/confirmation link found in the captured message.
+All outgoing emails in the dev environment are captured by **MailDev**, browsable at `http://symfonydev.lxd:1080/`. Nothing is sent to real recipients. Use it to run functional flows that rely on email autonomously (e.g. account creation, password recovery/reset): trigger the action, open MailDev (the web UI, e.g. via Playwright), and follow the recovery/confirmation link found in the captured message.
 
 ### Provisioning
 
@@ -114,7 +114,7 @@ website/          # Symfony 7.4 application
     process/      # YAML process definitions for ProcessBundle workflows
   tests/          # PHPUnit bootstrap
 quality/          # Test and analysis scripts
-architecture/     # Scripts for LXC/LXD/Docker environment setup
+architecture/     # Scripts for LXD/Docker environment setup
 doc/              # Bundle documentation
 ```
 
@@ -350,7 +350,7 @@ Steps:
 
 1. Apply the change in the container:
    ```bash
-   ssh delivery@symfonydev.lxc /var/www/symfonydev/architecture/scripts/install.sh
+   ssh delivery@symfonydev.lxd /var/www/symfonydev/architecture/scripts/install.sh
    ```
    - It runs composer install, assets, schema update, caches and fixtures.
    - It resets the dev database.
