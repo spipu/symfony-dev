@@ -353,7 +353,7 @@ Steps:
    ssh delivery@symfonydev.lxd /var/www/symfonydev/architecture/scripts/install.sh
    ```
    - It runs composer install, assets, schema update, caches and fixtures.
-   - It resets the dev database.
+   - It never resets the dev database: data entered in dev is kept, fixtures are idempotent. For a fresh database, recreate the container with `./architecture/create-lxd.sh`.
 2. Run from the host (repo root), in this order:
    1. `./quality/deptrac.sh --no-browser` (architecture)
    2. `./quality/analyze.sh --no-browser` (code quality)
