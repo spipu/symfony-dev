@@ -2,7 +2,7 @@
 
 {% set menuCurrentItem="api_partner_log" %}
 
-{% block header_title %}{{  parent() }} - Home{% endblock %}
+{% block header_title %}{{ parent() }} - {{ block('main_title') }}{% endblock %}
 
 {% block main_title %}{{ 'spipu.api_partner.label.api_logs'|trans }}{% endblock %}
 

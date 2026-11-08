@@ -19,6 +19,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Spipu\UiBundle\Entity\EntityInterface;
 use Spipu\UiBundle\Entity\TimestampableInterface;
 use Spipu\UiBundle\Entity\TimestampableTrait;
+use SortDirection;
 
 #[ORM\Entity(repositoryClass: 'App\Repository\DemoOrderRepository')]
 #[ORM\Table(name: "demo_order")]
@@ -58,7 +59,7 @@ class DemoOrder implements EntityInterface, TimestampableInterface
      * @var Collection<int, DemoOrderAddress>
      */
     #[ORM\OneToMany(targetEntity: DemoOrderAddress::class, mappedBy: "order", cascade: ["persist", "remove"])]
-    #[ORM\OrderBy(["type" => "DESC"])]
+    #[ORM\OrderBy(["type" => SortDirection::Descending])]
     private Collection $addresses;
 
     public function __construct()
