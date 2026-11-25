@@ -258,10 +258,6 @@ All bundle controllers must extend `Spipu\CoreBundle\Controller\AbstractControll
 
 CoreBundle provides `SymfonyMock` test helpers (`getContainerBuilder()`, `getContainerConfigurator()`) for testing bundle configuration loading. ProcessBundle provides `SpipuProcessMock` for process-related test setup. ConfigurationBundle provides `SpipuConfigurationMock::getManager()` for mocking `ConfigurationManager`. UserBundle provides `SpipuUserMock` for user entity and token manager mocks, and `UserManagerTest::getService()` as a factory for creating `UserManager` instances in tests.
 
-### Composer Patches
-
-`cweagans/composer-patches` v2.0 is used to patch `consolidation/robo` (PHPQA dependency) for Symfony Console 7.4 compatibility. Patch file: `website/patches/robo-symfony-console-deprecation.patch`. When Robo releases a fix, the patch and dependency can be removed.
-
 ## Coding Standards
 
 ### PHP Version and Strict Types
