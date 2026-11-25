@@ -33,6 +33,9 @@ RUN chown -R root:root /root/.ssh
 RUN sed -i "s/# export/export/g" /root/.bashrc
 RUN sed -i "s/# alias/alias/g"   /root/.bashrc
 
+# Configure Delivery User - REMOVE THE STOCK UID 1000 USER (ubuntu >= 24.04 ships one)
+RUN if id -u ubuntu > /dev/null 2>&1; then userdel -r ubuntu; fi
+
 # Configure Delivery User - CREATE
 RUN groupadd -f www-data
 # Configure Delivery User - REMOVE THE STOCK UID 1000 USER (ubuntu >= 24.04 ships one)

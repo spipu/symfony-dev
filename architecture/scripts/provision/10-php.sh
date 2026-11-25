@@ -3,9 +3,12 @@
 PHP_VERSION="8.3"
 PHP_FOLDER="php/8.3"
 
-showMessage " > PHP - Add PPA ondrej/php"
+showMessage " > PHP - Add repo Ondrej Sury"
 
-add-apt-repository -y ppa:ondrej/php > /dev/null
+curl -sSLo /tmp/debsuryorg-archive-keyring.deb https://packages.sury.org/debsuryorg-archive-keyring.deb
+dpkg -i /tmp/debsuryorg-archive-keyring.deb > /dev/null
+rm -f /tmp/debsuryorg-archive-keyring.deb
+echo "deb [signed-by=/usr/share/keyrings/deb.sury.org-php.gpg] https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list
 apt-get -qq update > /dev/null
 
 showMessage " > PHP - Install ${PHP_VERSION}"
@@ -17,6 +20,7 @@ apt-get -qq -y install \
     php${PHP_VERSION}-common \
     php${PHP_VERSION}-curl \
     php${PHP_VERSION}-gd \
+    php${PHP_VERSION}-iconv \
     php${PHP_VERSION}-intl \
     php${PHP_VERSION}-mbstring \
     php${PHP_VERSION}-mysql \

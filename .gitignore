@@ -1,9 +1,9 @@
 /.idea
 /.claude
+/.report
 /.tmp.claude
 /quality/build
 /quality/bin
 /website/src/Spipu
 /website/var-test
 /website/config/crontab.local
-/.report
