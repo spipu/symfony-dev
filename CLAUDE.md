@@ -363,7 +363,7 @@ Steps:
 
 - One concise line, ~80 characters max.
 - No bullet list of changes inside the message.
-- No `Co-Authored-By` trailer unless the maintainer explicitly asks for it.
+- Never add a `Co-Authored-By` trailer (or any other Claude attribution) to commit messages or PR descriptions.
 
 ### Composer constraints for new dependencies
 
