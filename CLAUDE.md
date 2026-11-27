@@ -99,7 +99,7 @@ All outgoing emails in the dev environment are captured by **MailDev**, browsabl
 
 ### Provisioning
 
-The `architecture/scripts/provision/` scripts run in numeric order during container creation (`01-repo`, `02-upgrade`, `03-packages`, `10-php`, `11-apache`, etc.). PHP is installed via the PPA `ondrej/php` (configured in `10-php.sh`).
+The `architecture/scripts/provision/` scripts run in numeric order during container creation (`01-repo`, `02-upgrade`, `03-packages`, `10-php`, `11-apache`, etc.). PHP is installed from the sury.org repository (`https://packages.sury.org/php/`, configured in `10-php.sh`); the PPA `ondrej/php` is frozen and must not be used.
 
 ## Architecture
 
